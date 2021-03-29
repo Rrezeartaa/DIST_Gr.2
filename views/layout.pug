@@ -1,7 +1,9 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    block head
+      title= title
+      link(rel='icon' href='/images/high-school.png')
+      link(rel='stylesheet' type='text/css' href='/stylesheets/general.css')
   body
     block content
