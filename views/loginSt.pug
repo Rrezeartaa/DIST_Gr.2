@@ -7,15 +7,15 @@ append head
 
 block content
     .login-form
-        img.high-school-img(src='/images/high-school.png' alt='')
+        img.student-img(src='/images/student.jpg' alt='')
         .form-title E-Shkolla
         span.alert #{message}
-        form(action='/index' method='POST')
+        form(action='' method='POST')
             .form-group
-                span.title P&euml;rdoruesi
+                span.title ID e studentit
                 .input-group
                     .input-group-prepend
-                    input#UserName.form-control(name="username" type='text' placeholder='Shenoni email-in' required='')
+                    input#UserName.form-control(name="username" type='text' placeholder='Shenoni ID' required='')
             .form-group.log-status
                 span.title Fjal&euml;kalimi
                 .input-group
@@ -23,4 +23,3 @@ block content
                     input#Password.form-control(name="password" type='password' placeholder='Shenoni fjalekalimin' required='')
             button.log-btn(type='Submit') Identifikohu
             a.link(href='#') Keni harruar fjal&euml;kalimin?
-            a.link2(href='#') Regjistrohu

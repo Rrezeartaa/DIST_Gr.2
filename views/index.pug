@@ -1,6 +1,17 @@
 extends layout
 
+append head
+    link(rel='stylesheet' type='text/css' href='/stylesheets/index.css')
+    link(rel='stylesheet' type='text/css' href='/stylesheets/login.css')
+
 block content
-  h1= title
-  p Welcome to #{title}
-  
+  div.hyrja
+    img.high-school-img(src='/images/high-school.png' alt='')
+    h1= title
+    p Mireserdhet ne #{title} !
+    h2 A jeni student apo profesor klikoni me poshte:
+    a(href="/loginSt")
+      button Student 
+    a(href="/loginPr") 
+      button Profesor 
+    

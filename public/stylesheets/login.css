@@ -23,7 +23,7 @@
 }
 
 .form-title {
-    margin: 10px;
+    margin: 5px;
     font-size: 20px;
     text-align: center;
     font-weight: bold;
@@ -35,6 +35,13 @@
     width: 100px;
     height: 100px;
     margin: 0px 95px 10px 95px;
+}
+
+
+.student-img {
+    width: 150px;
+    height: 100px;
+    margin: 0px 95px 10px 70px;
 }
 
 .form-control {
