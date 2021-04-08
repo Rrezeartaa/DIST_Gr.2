@@ -12,6 +12,9 @@ router.get('/loginPr', function(req, res, next) {
 router.get('/loginSt', function(req, res, next) {
   res.render('loginSt', { title: 'Login' });
 });
+router.get('/index', function(req, res, next) {
+  res.render('students/faqjakryesore', { title: 'Faqja Kryesore' });
+});
 
 
 module.exports = router;
