@@ -15,6 +15,8 @@ router.get('/loginSt', function(req, res, next) {
 router.get('/index', function(req, res, next) {
   res.render('students/faqjakryesore', { title: 'Faqja Kryesore' });
 });
-
+router.get('/student-chat', function(req, res, next) {
+  res.render('students/student-chat', { title: 'Student Chat' });
+});
 
 module.exports = router;
