@@ -1,0 +1,44 @@
+append head
+    
+    link(href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet")
+    link(href="stylesheets/link.css" rel="stylesheet")
+    script(src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer)
+
+body.bg-gray-300.text-gray-800
+    header.border-t-4.border-blue-600.bg-white.shadow-md
+        nav.container.mx-auto.px-4.flex.items-center.justify-between.py-4(x-data="{ isOpen: false }")
+            div.flex
+                button(@click="isOpen = true")
+                    svg(fill="currentColor" viewBox="0 0 24 24" width="24" height="24")
+                        path(fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 7h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0")
+                  
+            div.absolute.top-0.left-0.bg-white.border.border-right.h-full.w-48.hiddenf(x-show="isOpen")
+                div.flex.justify-end
+                    button.text-2xl.mr-3.mt-1(@click="isOpen = false") &times;
+                ul
+                    li
+                        a(href="#").flex.items-center.px-3.py-3
+                            img(src="https://img.icons8.com/officel/25/000000/user.png")
+                            p.ml-3 Profili im 
+                    li
+                        a(href="#").flex.items-center.px-3.py-3
+                            img(src="https://img.icons8.com/cute-clipart/25/000000/book.png")
+                            p.ml-3 Lendet 
+                    li
+                        a(href="#").flex.items-center.px-3.py-3
+                            img(src="https://img.icons8.com/nolan/25/report-card.png")
+                            p.ml-3 Notat
+                    li
+                        a(href="#").flex.items-center.px-3.py-3
+                            img(src="https://img.icons8.com/ios-filled/25/000000/student-registration.png")
+                            p.ml-3 Shto studente
+                    li
+                        a(href="/").flex.items-center.px-3.py-3 
+                            img(src="https://img.icons8.com/ios-filled/25/000000/logout-rounded-up.png")
+                            p.ml-3 Logout
+    div.absolute.bottom-0.right-0.w-auto.h-15.ml-50
+        div.justify-end.flex
+            a(href="/admin-chat")
+                button.m-5
+                    img(src="https://img.icons8.com/flat-round/55/000000/chat.png")
+            

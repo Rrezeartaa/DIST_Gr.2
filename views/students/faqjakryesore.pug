@@ -1,11 +1,12 @@
 append head
     
     link(href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet")
-    link(href="chat.css" rel="stylesheet")
+    link(href="stylesheets/link.css" rel="stylesheet")
     script(src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer)
 
+
 body.bg-gray-300.text-gray-800
-    header.border-t-4.border-blue-800.bg-white.shadow-md
+    header.border-t-4.border-blue-600.bg-white.shadow-md
         nav.container.mx-auto.px-4.flex.items-center.justify-between.py-4(x-data="{ isOpen: false }")
             div.flex
                 button(@click="isOpen = true")
@@ -18,18 +19,18 @@ body.bg-gray-300.text-gray-800
                 ul
                     li
                         a(href="#").flex.items-center.px-3.py-3
-                            img(src="https://img.icons8.com/ios-filled/25/000000/guest-male--v1.png")
+                            img(src="https://img.icons8.com/officel/25/000000/user.png")
                             p.ml-3 Profili im 
                     li
                         a(href="#").flex.items-center.px-3.py-3
-                            img(src="https://img.icons8.com/android/24/000000/settings.png")
+                            img(src="https://img.icons8.com/cute-clipart/25/000000/book.png")
                             p.ml-3 Lendet 
                     li
                         a(href="#").flex.items-center.px-3.py-3
-                            img(src="https://img.icons8.com/android/24/000000/settings.png")
+                            img(src="https://img.icons8.com/nolan/25/report-card.png")
                             p.ml-3 Notat
                     li
-                        a(href="#").flex.items-center.px-3.py-3 
+                        a(href="/").flex.items-center.px-3.py-3 
                             img(src="https://img.icons8.com/ios-filled/25/000000/logout-rounded-up.png")
                             p.ml-3 Logout
     div.absolute.bottom-0.right-0.w-auto.h-15.ml-50

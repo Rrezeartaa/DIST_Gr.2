@@ -1,0 +1,4 @@
+a:hover, a:focus{
+    font-weight: bold;
+    background-color: rgb(182, 196, 223);
+}
