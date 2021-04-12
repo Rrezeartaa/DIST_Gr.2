@@ -8,18 +8,15 @@
   "scripts": {
     "start": "node app.js"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/webtutsplus/videoChat-WebFrontend.git"
   },
-
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/webtutsplus/videoChat-WebFrontend/issues"
   },
-  
   "homepage": "https://github.com/webtutsplus/videoChat-WebFrontend#readme",
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -27,9 +24,10 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "peer": "^0.6.1",
     "pug": "2.0.0-beta11",
-    "socket.io": "^4.0.1"
+    "randomcolor": "^0.6.2",
+    "socket.io": "^4.0.1",
+    "uuid": "^8.3.2"
   }
 }
-
-  
