@@ -20,9 +20,9 @@ router.get('/admin-index', function(req, res, next) {
   res.render('admin/adminPage', { title: 'Faqja Kryesore' });
 });
 
-router.get('/student-chat', function(req, res, next) {
-  res.render('students/student-chat', { title: 'Student Chat' });
-});
+// router.get('/student-chat', function(req, res, next) {
+//   res.render('students/student-chat', { title: 'Student Chat' });
+// });
 
 router.get('/admin-chat', function(req, res, next) {
   res.render('admin/admin-chat', { title: 'Admin Chat' });

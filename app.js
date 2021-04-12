@@ -37,8 +37,8 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-const server = require('http').createServer(app)
-
+const server = http.createServer(app)
+server.listen(process.env.PORT || 3000);
 const io = socketIO(server);
 
 io.sockets.on('connection', function(socket) {
@@ -104,10 +104,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-const port = process.env.PORT | 5000
-server.listen(port, () => {
-  console.log(`Express server listening on port ${port}`)
-})
 
 module.exports = app;
