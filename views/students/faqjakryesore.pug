@@ -26,7 +26,7 @@ body.bg-gray-300.text-gray-800
                         img(src='https://img.icons8.com/metro/25/000000/logout-rounded-left.png')
                         span.ml-2 Logout
 
-            div.absolute.top-0.left-0.bg-white.border.border-right.h-full.w-48.hiddenf(x-show="isOpen")
+            div.absolute.top-0.left-0.bg-white.border.border-right.h-full.w-48(x-show="isOpen" @click.away="isOpen = false" x-transition:enter='transition ease-out duration-500 -ml-64' x-transition:enter-start='' x-transition:enter-end='transform translate-x-64' x-transition:leave='transition ease-out duration-500' x-transition:leave-start='' x-transition:leave-end='transform -translate-x-64')
                 div.flex.justify-end
                     button.text-2xl.mr-3.mt-1(@click="isOpen = false") &times;
                 ul
@@ -42,6 +42,10 @@ body.bg-gray-300.text-gray-800
                         a(href="#" class='hover:bg-gray-200').flex.items-center.px-3.py-3
                             img(src="https://img.icons8.com/nolan/25/report-card.png")
                             p.ml-3 Notat 
+                    li
+                        a(href="#" class='hover:bg-gray-200').flex.items-center.px-3.py-3
+                            img(src="https://img.icons8.com/nolan/25/bell.png")
+                            p.ml-3 Njoftime
                     li
                         a(href="#" class='hover:bg-gray-200').flex.items-center.px-3.py-3
                             img(src="https://img.icons8.com/nolan/25/tear-off-calendar.png")
