@@ -40,5 +40,9 @@ router.get("/ngjarjet", function(req, res, next){
 	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
 });
 
+router.get("/studentet", function(req, res, next){
+	res.render("admin/shtoStudent", { title: 'Studentet' });
+});
+
 
 module.exports = router;
