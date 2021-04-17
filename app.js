@@ -8,7 +8,11 @@ var logger = require('morgan');
 const server = require("http").Server(app);
 const { v4: uuidv4 } = require("uuid");
 app.set("view engine", "ejs");
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: '*'
+  }
+});
 const { ExpressPeerServer } = require("peer");
 const peerServer = ExpressPeerServer(server, {
   debug: true,
@@ -39,23 +43,22 @@ app.get("/:room", function(req, res){
 	res.render("students/student-chat", { roomId: req.param.room });
   });
   
-  io.on("connection", function(socket){
-	socket.on("join-room", function(roomId, userId, userName){
+  io.on("connection", (socket)=>{
+	socket.on("join-room", (roomId, userId, userName)=>{
 	  socket.join(roomId);
 	  socket.to(roomId).emit("user-connected", userId);
-	  socket.on("message", function(message) {
+	  socket.on("message", (message)=> {
 		io.to(roomId).emit("createMessage", message, userName);
 	  });
 	});
   });
-  
-  server.listen(process.env.PORT || 3001);  
+
+  server.listen(process.env.PORT || 5000);  
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
 
 
 app.use(function(err, req, res, next) { 

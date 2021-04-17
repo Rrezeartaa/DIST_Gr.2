@@ -32,7 +32,7 @@ router.get('/student-profile', function(req, res, next) {
   res.render('students/student-profile', { title: 'Student Profile' });
 });
 
-// router.get("/chat", function(req, res, next){
-// 	res.render("students/student-chat", { title: 'Student Profile' });
-// });
+router.get("/chat", function(req, res, next){
+	res.render("students/student-chat", { title: 'Student Profile' });
+});
 module.exports = router;
