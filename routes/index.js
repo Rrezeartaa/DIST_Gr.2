@@ -29,10 +29,16 @@ router.get('/admin-chat', function(req, res, next) {
 });
 
 router.get('/student-profile', function(req, res, next) {
-  res.render('students/student-profile', { title: 'Student Profile' });
+  res.render('students/student-profile', { title: 'Profili i studentit' });
 });
 
 router.get("/chat", function(req, res, next){
 	res.render("students/student-chat", { title: 'Student Profile' });
 });
+
+router.get("/ngjarjet", function(req, res, next){
+	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
+});
+
+
 module.exports = router;
