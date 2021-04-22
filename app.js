@@ -42,6 +42,12 @@ app.use('/users', usersRouter);
 app.get("/:room", function(req, res){
 	res.render("students/student-chat", { roomId: req.param.room });
   });
+
+app.get('/', (req, res) => {
+    res.render('index.pug', {
+        title: 'Home Page'
+    });
+});
   
   io.on("connection", (socket)=>{
 	socket.on("join-room", (roomId, userId, userName)=>{
