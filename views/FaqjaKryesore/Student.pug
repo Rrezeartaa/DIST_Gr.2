@@ -1,0 +1,50 @@
+extends layout.pug
+block content
+    form
+      .container
+        center
+          h1  Add New Student
+        hr
+        label  Firstname 
+        input(type='text' name='firstname' placeholder='Firstname' size='15' required='')
+        label  Middlename: 
+        input(type='text' name='middlename' placeholder='Middlename' size='15' required='')
+        label  Lastname: 
+        input(type='text' name='lastname' placeholder='Lastname' size='15' required='')
+        div
+          label
+            | Course :
+          select
+            option(value='DDD') DDD
+            option(value='DDD') DDD
+            option(value='DDD') DDD
+            option(value='DDD') DDD
+            option(value='DDD') DDD
+            option(value='DDD') DDD
+            option(value='DDD') DDD
+        div
+          label
+            | Gender :
+          br
+          input(type='radio' value='Male' name='gender' checked='')
+          |  Male   
+          input(type='radio' value='Female' name='gender')
+          |  Female   
+          input(type='radio' value='Other' name='gender')
+          |  Other
+        label
+          | Phone :
+        input(type='text' name='country code' placeholder='Country Code' value='+91' size='2')
+        input(type='text' name='phone' placeholder='phone no.' size='10' required='')
+        | Current Address :  
+        textarea(cols='80' rows='5' placeholder='Current Address' value='address' required='')
+        label(for='email')
+          b Email
+        input(type='text' placeholder='Enter Email' name='email' required='')
+        label(for='psw')
+          b Password
+        input(type='password' placeholder='Enter Password' name='psw' required='')
+        label(for='psw-repeat')
+          b Re-type Password
+        input(type='password' placeholder='Retype Password' name='psw-repeat' required='')
+        button.registerbtn(type='submit') Register
