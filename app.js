@@ -48,6 +48,12 @@ app.get('/', (req, res) => {
         title: 'Home Page'
     });
 });
+
+app.get('/about', (req, res) => {
+    res.render('Student.pug', {
+        title: 'About Page'
+    });
+});
   
   io.on("connection", (socket)=>{
 	socket.on("join-room", (roomId, userId, userName)=>{
