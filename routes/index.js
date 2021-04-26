@@ -51,3 +51,6 @@ router.get("/studentet", function(req, res, next){
 router.post('/createUser', user_cont.createUser);
 
 module.exports = router;
+
+
+

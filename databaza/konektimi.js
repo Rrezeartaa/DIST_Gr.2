@@ -1,13 +1,26 @@
 const Pool = require('pg').Pool
 
 const pool = new Pool({
-    user: 'root',
+    user: 'postgres',
     host: 'localhost',
-    database: 'Shkolla',
-    password: '',
-    port: 80,
+    database: 'shkolla',
+    password: 'root',
+    port: 5432,
 })
 
 module.exports = {
     pool
 }
+
+// const mysql = require('mysql');
+
+// const config = {
+//     host: 'localhost',
+//     user: 'root',
+//     password : '',
+//     database : 'Shkolla',
+// };
+
+// const pool = mysql.createPool(config);
+
+// module.exports = pool;
