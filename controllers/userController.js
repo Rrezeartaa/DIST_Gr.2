@@ -14,6 +14,21 @@ class UserController {
             res.redirect('/students')
         })
     }
+
+    showUser(req, res){
+
+        pool.query('SELECT * FROM students', (error, results) => {
+            if(error){
+                throw error
+            }
+            var students = results.rows
+
+            res.render('admin/shtoStudent', {
+                title: 'Studentet',
+                students: students
+            });
+        })
+    }
    
     
 }
