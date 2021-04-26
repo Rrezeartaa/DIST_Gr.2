@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+var user_controller = require('../controllers/userController');
+
+var user_cont = new user_controller();
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'E-Shkolla' });
@@ -44,5 +48,6 @@ router.get("/studentet", function(req, res, next){
 	res.render("admin/shtoStudent", { title: 'Studentet' });
 });
 
+router.post('/createUser', user_cont.createUser);
 
 module.exports = router;
