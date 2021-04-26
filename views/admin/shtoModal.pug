@@ -7,25 +7,25 @@ script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.j
       form(action='/studentet' method='post')
         .modal-body.mb-5.mt-3.grid.grid-cols-6.gap-4
             label(for='id') ID
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' value="")
+            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='id' value="")
             label(for='name') Emri dhe mbiemri
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' value="")
+            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='name' value="")
             label(for='prindi') Emri i prindit
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' value="")
-            label(for='name') Data e lindjes
-            input(type='date' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' value="")
-            label(for='name') Vendi i lindjes
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' value="")
-            label(for='name') Adresa
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' value="")
-            label(for='number') Numri i telefonit
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' value="")
-            label(for='gender') Gjinia
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' value="")
+            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='prindi' value="")
+            label(for='data') Data e lindjes
+            input(type='date' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='data' value="")
+            label(for='vendi') Vendi i lindjes
+            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='vendi' value="")
+            label(for='adresa') Adresa
+            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='adresa' value="")
+            label(for='numri') Numri i telefonit
+            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='numri' value="")
+            label(for='gjinia') Gjinia
+            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='gjinia' value="")
             label(for='email') Email
             input(type='email' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' value="")
             label(for='password') Fjalekalimi
-            input(type='password' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' value="")
+            input(type='password' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='password' value="")
         .my-5.items-center
           button.w-32.rounded-md.text-sm.p-3.mr-4(class='hover:bg-gray-100' @click='isOpen = false' x-ref='modalCloseButton') Cancel
           button.w-32.bg-black.rounded-md.text-white.text-sm.p-3 Save
