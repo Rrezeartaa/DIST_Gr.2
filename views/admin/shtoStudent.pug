@@ -14,7 +14,7 @@ div.bg-white
                                 tr.bg-gray-200.text-gray-600.uppercase.text-sm.leading-normal
                                 th.py-3.px-6.text-left ID
                                 th.py-3.px-6.text-left Emri dhe Mbiemri
-                                th.py-3.px-6.text-center ###
+                                th.py-3.px-6.text-center Adresa
                                 th.py-3.px-6.text-center ###
                                 th.py-3.px-6.text-center ###
                             tbody.text-gray-600.text-sm.font-light
@@ -26,16 +26,12 @@ div.bg-white
                                                     span.font-medium #{val.ids}
                                         td.py-3.px-6.text-left
                                             .flex.items-center
-                                                .mr-2
-                                                    img.w-6.h-6.rounded-full(src='https://randomuser.me/api/portraits/men/1.jpg')
-                                                span ###
+                                                .mr-2   
+                                                    span.font-medium #{val.name}
                                         td.py-3.px-6.text-center
-                                            .flex.items-center.justify-center
-                                                img.w-6.h-6.rounded-full.border-gray-200.border.transform(class='hover:scale-125' src='https://randomuser.me/api/portraits/men/1.jpg')
-                                                img.w-6.h-6.rounded-full.border-gray-200.border.-m-1.transform(class='hover:scale-125' src='https://randomuser.me/api/portraits/women/2.jpg')
-                                                img.w-6.h-6.rounded-full.border-gray-200.border.-m-1.transform(class='hover:scale-125' src='https://randomuser.me/api/portraits/men/3.jpg')
+                                                span.font-medium #{val.adresa}
                                         td.py-3.px-6.text-center
-                                            span.bg-purple-200.text-purple-600.py-1.px-3.rounded-full.text-xs #{val.name}
+                                            span.bg-purple-200.text-purple-600.py-1.px-3.rounded-full.text-xs Active
                                         td.py-3.px-6.text-center
                                             .flex.item-center.justify-center
                                                 .w-4.mr-2.transform(class='hover:text-purple-500 hover:scale-110')
