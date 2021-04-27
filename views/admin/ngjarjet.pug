@@ -1,6 +1,50 @@
 include adminPage
-
-div.bg-white
-    p.text-2xl.font-semibold.text-center Ngjarjet
-    .px-10.justify-end.flex
-        button.bg-blue-600.text-white.rounded.p-2 Shto ngjarje
+link(rel='dns-prefetch' href='//unpkg.com')
+link(rel='dns-prefetch' href='//cdn.jsdelivr.net')
+link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
+script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
+style.
+    [x-cloak] {
+    display: none;
+    }
+.antialiased.sans-serif.bg-gray-100.h-screen
+        div(x-data='app()' x-init='[initDate(), getNoOfDays()]' x-cloak='')
+            .container.mx-auto.px-4.py-2(class='md:py-24')
+            
+                .bg-white.rounded-lg.shadow.overflow-hidden
+                    .flex.items-center.justify-between.py-2.px-6
+                        div
+                            span.text-lg.font-bold.text-gray-800(x-text='MONTH_NAMES[month]')
+                            span.ml-1.text-lg.text-gray-600.font-normal(x-text='year')
+                        .border.rounded-lg.px-1(style='padding-top: 2px;')
+                            button.leading-none.rounded-lg.transition.ease-in-out.duration-100.inline-flex.cursor-pointer.p-1.items-center(type='button' class='hover:bg-gray-200' :class="{'cursor-not-allowed opacity-25': month == 0 }" :disabled='month == 0 ? true : false' @click='month--; getNoOfDays()')
+                                svg.h-6.w-6.text-gray-500.inline-flex.leading-none(fill='none' viewbox='0 0 24 24' stroke='currentColor')
+                                    path(stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M15 19l-7-7 7-7')
+                            .border-r.inline-flex.h-6
+                                button.leading-none.rounded-lg.transition.ease-in-out.duration-100.inline-flex.items-center.cursor-pointer.p-1(type='button' class='hover:bg-gray-200' :class="{'cursor-not-allowed opacity-25': month == 11 }" :disabled='month == 11 ? true : false' @click='month++; getNoOfDays()')
+                                    svg.h-6.w-6.text-gray-500.inline-flex.leading-none(fill='none' viewbox='0 0 24 24' stroke='currentColor')
+                                        path(stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7')
+                    .-mx-1.-mb-1
+                        .flex.flex-wrap(style='margin-bottom: -40px;')
+                            template(x-for='(day, index) in DAYS' :key='index')
+                                .px-2.py-2(style='width: 14.26%')
+                                    .text-gray-600.text-sm.uppercase.tracking-wide.font-bold.text-center(x-text='day')
+                        .flex.flex-wrap.border-t.border-l
+                            template(x-for='blankday in blankdays')
+                                .text-center.border-r.border-b.px-4.pt-2(style='width: 14.28%; height: 120px')
+                            template(x-for='(date, dateIndex) in no_of_days' :key='dateIndex')
+                                .px-4.pt-2.border-r.border-b.relative(style='width: 14.28%; height: 120px')
+                                    .inline-flex.w-6.h-6.items-center.justify-center.cursor-pointer.text-center.leading-none.rounded-full.transition.ease-in-out.duration-100(@click='showEventModal(date)' x-text='date' :class="{'bg-blue-500 text-white': isToday(date) == true, 'text-gray-700 hover:bg-blue-200': isToday(date) == false }")
+                                        .overflow-y-auto.mt-1(style='height: 80px;')
+                        
+                                            template(x-for='event in events.filter(e => new Date(e.event_date).toDateString() ===  new Date(year, month, date).toDateString() )')
+                                                .px-2.py-1.rounded-lg.mt-1.overflow-hidden.border(:class="{\
+                                                'border-blue-200 text-blue-800 bg-blue-100': event.event_theme === 'blue',\
+                                                'border-red-200 text-red-800 bg-red-100': event.event_theme === 'red',\
+                                                'border-yellow-200 text-yellow-800 bg-yellow-100': event.event_theme === 'yellow',\
+                                                'border-green-200 text-green-800 bg-green-100': event.event_theme === 'green',\
+                                                'border-purple-200 text-purple-800 bg-purple-100': event.event_theme === 'purple'\
+                                                }")
+                                                    p.text-sm.truncate.leading-tight(x-text='event.event_title')
+        
+        

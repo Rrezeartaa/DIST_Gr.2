@@ -40,6 +40,7 @@ class UserController {
   
             res.redirect('/students')
         })
+        res.json('Successfully created!')
     }
 
     showUser(req, res){
