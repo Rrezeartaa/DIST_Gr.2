@@ -3,6 +3,33 @@ const { pool } = require('../databaza/konektimi')
 
 class UserController {
 
+    login(req, res) {
+        var message = '';
+
+        if (req.method == "POST") {
+            var post = req.body;
+            var username = post.username;
+            var password = post.password;
+
+            pool.query('SELECT * FROM students WHERE students.idS = $1',[idS], (error, results) => {
+                if (error) {
+                    throw error;
+                }
+                else if(idS == results.rows[0]['idS'] && password == results.rows[0]['password']){
+                    req.session.userId = idS;
+                    // var role =  results.rows[0]['role'];
+                    // var  user_id = results.rows[0]['idS'];
+                    // req.session.role = role;
+                    req.session.user = user_id;
+                    res.redirect('/index')                   
+                }else{
+                    message = 'Nuk e keni shkruar përdoruesin ose fjalëkalimin e saktë!';
+                    res.render('loginSt', { title: 'Login', message: message });
+                }
+            })
+        }
+    }
+
     createUser(req,res){
         const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} = req.body
        
@@ -30,6 +57,20 @@ class UserController {
         })
     }
    
+   updateUser(req,res, next){ 
+        const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} = req.body
+
+        pool.query(
+            'UPDATE students SET idS=$1, name=$2, prindi=$3, data=$4, vendi=$5, adresa=$6, numri=$7, gjinia=$8, email=$9, password=$10 WHERE username =$17', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password],
+            (error, results) => {
+                if (error) {
+                    throw error
+                }
+                    res.redirect('/students')
+               
+            }
+        )
+    }
     
 }
 
