@@ -8,19 +8,19 @@ class UserController {
 
         if (req.method == "POST") {
             var post = req.body;
-            var username = post.username;
+            var idS = post.idS;
             var password = post.password;
 
-            pool.query('SELECT * FROM students WHERE students.idS = $1',[idS], (error, results) => {
+            pool.query('SELECT * FROM students WHERE students.ids = $1',[idS], (error, results) => {
                 if (error) {
                     throw error;
                 }
-                else if(idS == results.rows[0]['idS'] && password == results.rows[0]['password']){
-                    req.session.userId = idS;
-                    // var role =  results.rows[0]['role'];
-                    // var  user_id = results.rows[0]['idS'];
-                    // req.session.role = role;
-                    req.session.user = user_id;
+                else if(idS == results.rows[0]['ids'] && password == results.rows[0]['password']){
+                    // req.session.userId = idS;
+                    // // var role =  results.rows[0]['role'];
+                    // var  user_id = results.rows[0]['ids'];
+                    // // req.session.role = role;
+                    // req.session.user = user_id;
                     res.redirect('/index')                   
                 }else{
                     message = 'Nuk e keni shkruar përdoruesin ose fjalëkalimin e saktë!';

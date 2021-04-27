@@ -52,6 +52,8 @@ router.get('/studentet',user_cont.showUser);
 
 router.post('/createUser', user_cont.createUser);
 
+router.post('/index', user_cont.login);
+
 module.exports = router;
 
 

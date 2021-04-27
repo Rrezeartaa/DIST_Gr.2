@@ -10,16 +10,16 @@ block content
         img.student-img(src='/images/student.jpg' alt='')
         .form-title E-Shkolla
         span.alert #{message}
-        form(action='' method='POST')
+        form(action='/index' method='POST')
             .form-group
                 span.title ID e studentit
                 .input-group
                     .input-group-prepend
-                    input#UserName.form-control(name="username" type='text' placeholder='Shenoni ID' required='')
+                    input#UserName.form-control(name="idS" type='text' placeholder='Shenoni ID' required='')
             .form-group.log-status
                 span.title Fjal&euml;kalimi
                 .input-group
                     .input-group-prepend
                     input#Password.form-control(name="password" type='password' placeholder='Shenoni fjalekalimin' required='')
             button.log-btn(type='Submit') Identifikohu
-            a.link(href="/index") Keni harruar fjal&euml;kalimin?
+            a.link(href="#") Keni harruar fjal&euml;kalimin?
