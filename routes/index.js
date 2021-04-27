@@ -54,6 +54,8 @@ router.post('/createUser', user_cont.createUser);
 
 router.post('/index', user_cont.login);
 
+router.post('/studentet', user_cont.deleteUser);
+
 module.exports = router;
 
 

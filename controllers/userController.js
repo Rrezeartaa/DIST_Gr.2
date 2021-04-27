@@ -71,6 +71,16 @@ class UserController {
             }
         )
     }
+
+    deleteUser(req, res){
+
+        pool.query('DELETE FROM students WHERE students.ids = $1',[idS],  (error, results) => {
+            if(error){
+                throw error
+            }
+            res.redirect('/students')
+        })
+    }
     
 }
 
