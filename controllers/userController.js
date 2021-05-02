@@ -40,7 +40,6 @@ class UserController {
   
             res.redirect('/students')
         })
-        res.json('Successfully created!')
     }
 
     showUser(req, res){
@@ -75,12 +74,12 @@ class UserController {
 
     deleteUser(req, res){
 
-        pool.query('DELETE FROM students WHERE students.ids = $1',[idS],  (error, results) => {
+        pool.query('DELETE FROM students WHERE ids = $1',[req.body.idS],  (error, results) => {
             if(error){
                 throw error
             }
             res.redirect('/students')
-        })
+        });
     }
     
 }

@@ -6,7 +6,7 @@ append head
 
 body.bg-gray-300.text-gray-800
     header.border-t-4.border-blue-600.bg-white.shadow-md
-        nav.container.mx-auto.px-4.flex.items-center.justify-between.py-4(x-data="{ isOpen: false }")
+        nav.container.mx-auto.px-4.flex.items-center.justify-between.py-4.z-40(x-data="{ isOpen: false }")
             div.flex
                 button(@click="isOpen = true")
                     svg(fill="currentColor" viewBox="0 0 24 24" width="24" height="24")
@@ -45,7 +45,7 @@ body.bg-gray-300.text-gray-800
                             p.ml-3 Shto ngjarje
     div.absolute.bottom-0.right-0.w-auto.h-15.ml-50
         div.justify-end.flex
-            a(href="/admin-chat")
+            a(href="/chat")
                 button.m-5
                     img(src="https://img.icons8.com/flat-round/55/000000/chat.png")
             
