@@ -43,17 +43,17 @@ app.get("/:room", function(req, res){
 	res.render("students/student-chat", { roomId: req.param.room });
   });
 
-app.get('/', (req, res) => {
-    res.render('index.pug', {
-        title: 'Home Page'
-    });
-});
+// app.get('/', (req, res) => {
+//     res.render('index.pug', {
+//         title: 'Home Page'
+//     });
+// });
 
-app.get('/about', (req, res) => {
-    res.render('Student.pug', {
-        title: 'About Page'
-    });
-});
+// app.get('/about', (req, res) => {
+//     res.render('Student.pug', {
+//         title: 'About Page'
+//     });
+// });
   
   io.on("connection", (socket)=>{
 	socket.on("join-room", (roomId, userId, userName)=>{
