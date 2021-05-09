@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
+const { pool } = require('../databaza/konektimi');
 
 var user_controller = require('../controllers/userController');
 var Test = require('../controllers/eventController');
 
 var user_cont = new user_controller();
-var event_cont = new Test();
+// var event_cont = new Test();
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'E-Shkolla' });
@@ -39,17 +40,26 @@ router.get("/ngjarjet", function(req, res, next){
 
 router.get('/studentet',user_cont.showUser);
 
+router.put('/updateUser/2', user_cont.updateUser);
+
+router.delete("/delete/:id", (req, res) => {
+  const { ids } = req.params;
+
+  pool.query("DELETE FROM students WHERE ids = $1", [ids], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.sendStatus(200);
+  });
+});
+
 router.post('/createUser', user_cont.createUser);
 
-router.post('/createEvent', event_cont.createEvent);
-
-router.put('/updateUser/:id', user_cont.updateUser);
+// router.post('/createEvent', event_cont.createEvent);
 
 router.post('/index', user_cont.login);
 
-router.get('/delete', user_cont.deleteUser)
-
-module.exports = router, EventController;
+module.exports = router;
 
 
 

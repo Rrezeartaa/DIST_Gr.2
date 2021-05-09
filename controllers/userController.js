@@ -1,5 +1,5 @@
 var moment = require('moment');
-const { pool } = require('../databaza/konektimi')
+const { pool } = require('../databaza/konektimi');
 
 class UserController {
 
