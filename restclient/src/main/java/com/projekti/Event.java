@@ -36,11 +36,11 @@ public class Event {
         return this.event_date;
     }
 
-    public void setDcity(Date event_date) {
+    public void setEventDate(Date event_date) {
         this.event_date = event_date;
     }
 
-    public String theme() {
+    public String getTheme() {
         return this.theme;
     }
 
