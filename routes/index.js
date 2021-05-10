@@ -1,5 +1,7 @@
+'use strict'
 var express = require('express');
 var router = express.Router();
+const api = require('./api')
 const { pool } = require('../databaza/konektimi');
 
 var user_controller = require('../controllers/userController');
@@ -58,6 +60,8 @@ router.post('/createUser', user_cont.createUser);
 // router.post('/createEvent', event_cont.createEvent);
 
 router.post('/index', user_cont.login);
+
+router.user('/api',api)
 
 module.exports = router;
 
