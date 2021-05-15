@@ -11,7 +11,7 @@ public final class App {
     static final String baseUrl = "http://localhost:5000/api";
     static final JsonHelper<Event> json = new JsonHelper<>(Event.class);
     public static void main(String[] args) throws Exception {
-        int createRes = Integer.parseInt(post("/event", json.serializeJson(new Event(0, "Test",new Date(23/04/2021),"Red"))));
+        int createRes = Integer.parseInt(post("/event", json.serializeJson(new Event(0, "Test", new Date(23/04/2021),"Red"))));
         System.out.println("post /event " + createRes);
 
         Event[] listAllRes = json.deserializeJsonList(get("/event"));

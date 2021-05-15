@@ -61,7 +61,7 @@ router.post('/createUser', user_cont.createUser);
 
 router.post('/index', user_cont.login);
 
-router.user('/api',api)
+router.use('/api',api);
 
 module.exports = router;
 

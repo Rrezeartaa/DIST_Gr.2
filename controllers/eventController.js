@@ -14,6 +14,7 @@ class EventController {
   }
 
   listAll (req, res) {
+    
     return res.status(HttpStatus.OK).json(this.list)
   }
 
@@ -23,7 +24,7 @@ class EventController {
       const event = this.list.find(x => x.id === id)
       if (!event) throw new createError.NotFound()
 
-      return res.status(HttpStatus.OK).json(todo)
+      return res.status(HttpStatus.OK).json(event)
     } catch (err) {
       next(err)
     }
@@ -31,7 +32,7 @@ class EventController {
 
   createEvent (req, res, next) {
     try {
-      const { text } = req.body
+      const { title, event_date, theme } = req.body
       const id = this.list.length > 0 ? this.list[this.list.length - 1].id + 1 : 1
       const event = new Event({ id, title, event_date, theme })
       this.list.push(event)
@@ -71,3 +72,5 @@ class EventController {
     }
   }
 }
+
+module.exports = EventController
