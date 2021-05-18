@@ -1,26 +1,12 @@
-const Pool = require('pg').Pool
+//Import the mongoose module
+var mongoose = require('mongoose');
 
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'shkolla',
-    password: 'root',
-    port: 5432,
-})
+//Set up default mongoose connection
+var mongoDB = 'mongodb://127.0.0.1/schoolmx';
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 
-module.exports = {
-    pool
-}
+//Get the default connection
+var db = mongoose.connection;
 
-// const mysql = require('mysql');
-
-// const config = {
-//     host: 'localhost',
-//     user: 'root',
-//     password : '',
-//     database : 'Shkolla',
-// };
-
-// const pool = mysql.createPool(config);
-
-// module.exports = pool;
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));

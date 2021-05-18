@@ -6,8 +6,9 @@ const { pool } = require('../databaza/konektimi');
 
 var user_controller = require('../controllers/userController');
 var Test = require('../controllers/eventController');
+const UserController = require("../controllers/UserController");
 
-var user_cont = new user_controller();
+// var user_cont = new user_controller();
 // var event_cont = new Test();
 
 router.get('/', function(req, res, next) {
@@ -40,28 +41,31 @@ router.get("/ngjarjet", function(req, res, next){
 	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
 });
 
-router.get('/studentet',user_cont.showUser);
+// router.get('/studentet',user_cont.showUser);
 
-router.put('/updateUser/2', user_cont.updateUser);
+// router.put('/updateUser/2', user_cont.updateUser);
 
-router.delete("/delete/:id", (req, res) => {
-  const { ids } = req.params;
+// router.delete("/delete/:id", (req, res) => {
+//   const { ids } = req.params;
 
-  pool.query("DELETE FROM students WHERE ids = $1", [ids], (error, results) => {
-    if (error) {
-      throw error;
-    }
-    res.sendStatus(200);
-  });
-});
+//   pool.query("DELETE FROM students WHERE ids = $1", [ids], (error, results) => {
+//     if (error) {
+//       throw error;
+//     }
+//     res.sendStatus(200);
+//   });
+// });
 
-router.post('/createUser', user_cont.createUser);
+// router.post('/createUser', user_cont.createUser);
 
-// router.post('/createEvent', event_cont.createEvent);
+// // router.post('/createEvent', event_cont.createEvent);
 
-router.post('/index', user_cont.login);
+// router.post('/index', user_cont.login);
 
-router.use('/api',api);
+// router.use('/api',api);
+
+router.post("/loginPr", UserController.postLogin);
+
 
 module.exports = router;
 
