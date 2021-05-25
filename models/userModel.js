@@ -7,55 +7,57 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  name: {
+//   name: {
+//     type: String,
+//     required: true,
+//   },
+//   parent_name: {
+//     type: String,
+//     required: true,
+//   },
+//   birthday: {
+//     type: String,
+//     required: true,
+//   },
+//   address: {
+//     type: String,
+//     required: true,
+//   },
+//   address: {
+//     type: String,
+//     required: true,
+//   },
+//   country: {
+//     type: String,
+//     required: true,
+//   },
+//   gender: {
+//     type: String,
+//     required: true,
+//   },
+//   phone: {
+//     type: String,
+//     required: true,
+//   },
+//  email: {
+//     type: String,
+//     required: true,
+//   },
+  paassword: {
     type: String,
     required: true,
-  },
-  parent_name: {
-    type: String,
-    required: true,
-  },
-  birthday: {
-    type: String,
-    required: true,
-  },
-  address: {
-    type: String,
-    required: true,
-  },
-  address: {
-    type: String,
-    required: true,
-  },
-  country: {
-    type: String,
-    required: true,
-  },
-  gender: {
-    type: String,
-    required: true,
-  },
-  phone: {
-    type: String,
-    required: true,
-  },
- email: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  dateOfRegistration: {
-    type: String,
-    default: Date.now(),
-  },
-  isAdmin: {
-    type: Boolean,
-    default: false,
   }
+  // dateOfRegistration: {
+  //   type: String,
+  //   default: Date.now(),
+  // },
+  // isAdmin: {
+  //   type: Boolean,
+  //   default: false,
+  // }
 });
+
+const User =  mongoose.model("User", userSchema)
  
-module.exports = mongoose.model("User", userSchema);
+module.exports = User;
 

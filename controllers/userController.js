@@ -9,6 +9,14 @@ exports.postLogin = (req, res, next) => {
   const studentID = req.body.studentID;
   const password = req.body.password;
 
+  myData.save()
+//     .then(item => {
+//       res.send("item saved to database");
+//     })
+//     .catch(err => {
+//       res.status(400).send("unable to save to database");
+//     });
+
   UserModel.findOne({ studentID: studentID, password: password }).then((user) => {
     if (!user) {
       return res.redirect("/loginPr");

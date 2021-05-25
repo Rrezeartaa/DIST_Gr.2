@@ -7,6 +7,8 @@ const { pool } = require('../databaza/konektimi');
 var user_controller = require('../controllers/userController');
 var Test = require('../controllers/eventController');
 const UserController = require("../controllers/UserController");
+const UserModel = require("../models/UserModel");
+
 
 // var user_cont = new user_controller();
 // var event_cont = new Test();
@@ -65,6 +67,19 @@ router.get("/ngjarjet", function(req, res, next){
 // router.use('/api',api);
 
 router.post("/loginPr", UserController.postLogin);
+
+
+
+// router.post("/addname", (req, res) => {
+//   var myData = new UserModel(req.body);
+//   myData.save()
+//     .then(item => {
+//       res.send("item saved to database");
+//     })
+//     .catch(err => {
+//       res.status(400).send("unable to save to database");
+//     });
+// });
 
 
 module.exports = router;

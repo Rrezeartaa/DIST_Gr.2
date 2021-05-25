@@ -10,20 +10,20 @@ block content
         img.high-school-img(src='/images/high-school.png' alt='')
         .form-title E-Shkolla
         span.alert #{message}
-        each n in db
-            form(action='/loginPr' method='POST')
-                .form-group
-            
-                    span.title ID e profesorit
-                    .input-group
-                        .input-group-prepend
-                        input#UserName.form-control(name="studentID" type='text' value="<%= n.studentID %>" placeholder='Shenoni ID' required='')
-                .form-group.log-status
-                    span.title Fjal&euml;kalimi 
-                    .input-group
-                        .input-group-prepend
-                        input#Password.form-control(name="password" type='password' placeholder='Shenoni fjalekalimin' required='')
-            
-                button.log-btn(type='Submit') Identifikohu
-                a.link(href='/admin-index') Keni harruar fjal&euml;kalimin?
-                a.link2(href='#') Regjistrohu
+        
+        form(action='/loginPr' method='POST')
+            .form-group
+           
+                span.title ID e profesorit
+                .input-group
+                    .input-group-prepend
+                    input#studentID.form-control(name="studentID" type='text' placeholder='Shenoni ID' required='')
+            .form-group.log-status
+                span.title Fjal&euml;kalimi 
+                .input-group
+                    .input-group-prepend
+                    input#paassword.form-control(name="password" type='password' placeholder='Shenoni fjalekalimin' required='')
+        
+            button.log-btn(type='submit') Identifikohu
+            a.link(href='/admin-index') Keni harruar fjal&euml;kalimin?
+            a.link2(href='#') Regjistrohu
