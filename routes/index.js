@@ -5,9 +5,12 @@ const api = require('./api')
 const { pool } = require('../databaza/konektimi');
 
 var user_controller = require('../controllers/userController');
+
+var user_cont = new user_controller();
+// var user_controller = require('../controllers/userController');
 var Test = require('../controllers/eventController');
-const UserController = require("../controllers/UserController");
-const UserModel = require("../models/UserModel");
+// const UserController = require("../controllers/UserController");
+// const UserModel = require("../models/UserModel");
 
 
 // var user_cont = new user_controller();
@@ -62,14 +65,17 @@ router.get("/ngjarjet", function(req, res, next){
 
 // // router.post('/createEvent', event_cont.createEvent);
 
-// router.post('/index', user_cont.login);
+
 
 // router.use('/api',api);
+router.get('/studentet',user_cont.showUser);
+router.get('/updateUser/:id', user_cont.editUser)
 
-router.post("/loginPr", UserController.postLogin);
+router.post('/createUser', user_cont.createUser);
+router.post('/index', user_cont.login);
 
-
-
+router.post('/updateUser/:id', user_cont.updateUser)
+router.post('/deleteUser/:id', user_cont.deleteUser)
 // router.post("/addname", (req, res) => {
 //   var myData = new UserModel(req.body);
 //   myData.save()
