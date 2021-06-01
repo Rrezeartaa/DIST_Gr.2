@@ -1,63 +1,45 @@
-const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
+{ idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} 
 
-const userSchema = new Schema({
-  studentID: {
-    type: String,
-    required: true,
-  },
-//   name: {
-//     type: String,
-//     required: true,
-//   },
-//   parent_name: {
-//     type: String,
-//     required: true,
-//   },
-//   birthday: {
-//     type: String,
-//     required: true,
-//   },
-//   address: {
-//     type: String,
-//     required: true,
-//   },
-//   address: {
-//     type: String,
-//     required: true,
-//   },
-//   country: {
-//     type: String,
-//     required: true,
-//   },
-//   gender: {
-//     type: String,
-//     required: true,
-//   },
-//   phone: {
-//     type: String,
-//     required: true,
-//   },
-//  email: {
-//     type: String,
-//     required: true,
-//   },
-  paassword: {
-    type: String,
-    required: true,
-  }
-  // dateOfRegistration: {
-  //   type: String,
-  //   default: Date.now(),
-  // },
-  // isAdmin: {
-  //   type: Boolean,
-  //   default: false,
-  // }
-});
-
-const User =  mongoose.model("User", userSchema)
- 
-module.exports = User;
-
+module.exports = (sequelize, Sequelize) => {
+	const Student = sequelize.define('student', {	
+	  id: {
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+    },
+	  idS: {
+			type: Sequelize.STRING
+	  },
+	  name: {
+		  type: Sequelize.STRING
+  	},
+	  prindi: {
+			type: Sequelize.STRING
+	  },
+	  data: {
+			type: Sequelize.DATE
+    },
+    vendi: {
+        type: Sequelize.STRING
+    },
+    adresa: {
+        type: Sequelize.STRING
+    },
+    numri: {
+        type: Sequelize.STRING
+    },
+    gjinia: {
+        type: Sequelize.STRING
+    },
+    email: {
+        type: Sequelize.STRING
+    },
+    password: {
+        type: Sequelize.STRING
+    },
+    
+	});
+	
+	return Customer;
+}

@@ -3,10 +3,6 @@ var createError = require('http-errors');
 var express = require('express');
 var app = express();
 var path = require('path');
-const MongoClient = require("mongodb").MongoClient;
-const ObjectId = require("mongodb").ObjectID;
-const CONNECTION_URL = "mongodb://localhost:27017/schoolmx";
-const DATABASE_NAME = "schoolmx";
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const server = require("http").Server(app);
@@ -17,6 +13,8 @@ const io = require("socket.io")(server, {
     origin: '*'
   }
 });
+// const io = require('socket.io');
+
 const { ExpressPeerServer } = require("peer");
 const peerServer = ExpressPeerServer(server, {
   debug: true,
@@ -38,9 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/peerjs", peerServer);
 
-app.get("/chat", function(req, res){
-	res.redirect(`/${uuidv4()}`);  //students/student-chat
-});
+// app.get("/chat", function(req, res){
+// 	res.redirect(`/${uuidv4()}`);  //students/student-chat
+// });
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -73,27 +71,9 @@ app.get("/:room", function(req, res){
 	});
   });
 
-  // server.listen(process.env.PORT || 5000);  
+  server.listen(process.env.PORT || 5000);  
 
-  app.listen(5000, () => {
-    MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
-        if(error) {
-            throw error;
-        }
-        database = client.db(DATABASE_NAME);
-        collection = database.collection("users");
-        console.log("Connected to `" + DATABASE_NAME + "`!");
-    });
-});
 
-app.post("/test", (request, response) => {
-  collection.insert(request.body, (error, result) => {
-      if(error) {
-          return response.status(500).send(error);
-      }
-      response.send(result.result);
-  });
-});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
