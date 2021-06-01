@@ -4,13 +4,13 @@ script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.j
     .bg-white.rounded.h-60.px-8.py-8
       p.font-black.text-lg.mb-3 Edito studentin 
       hr
-      form(action='/createUser' method='post')
+      form(action='/updateUser/:id' method='post')
         .modal-body.mb-5.mt-3.grid.grid-cols-6.gap-4
             input(name="id", type="hidden", value=students.id) 
             label(for='id') ID
             input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='idS' name='idS' value=idS)
             label(for='name') Emri dhe mbiemri
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='name' name='name' value=students.name)
+            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='name' name='name' value=students)
             label(for='prindi') Emri i prindit
             input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='prindi' name='prindi' value=students.prindi)
             label(for='data') Data e lindjes

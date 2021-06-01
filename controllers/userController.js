@@ -57,6 +57,24 @@ class UserController {
       })
   }
 
+  showUserById(req, res){
+
+    var post = req.body;
+    var id = post.id;
+    pool.query('SELECT * FROM students WHERE id = $1',[id], (error, results) => {
+        if(error){
+            throw error
+        }
+        var students = results.rows
+
+        res.render('students/student-profile', {
+            title: 'Studentet',
+            students: students
+        });
+    })
+}
+
+
 
   editUser(req,res){
 
@@ -77,11 +95,12 @@ class UserController {
   }
 
   updateUser(req,res){ 
-    const id = parseInt(request.params.id)
-    const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} = req.body
 
+    var post = req.body;
+    var id = post.id;
+    const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} = req.body
     pool.query(
-        'UPDATE students SET idS=$1, name=$2, prindi=$3, data=$4, vendi=$5, adresa=$6, numri=$7, gjinia=$8, email=$9, password=$10 WHERE id =$11', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password,id],
+        'UPDATE students SET idS=$1, name=$2, prindi=$3, data=$4, vendi=$5, adresa=$6, numri=$7, gjinia=$8, email=$9, password=$10 WHERE id=$11', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password, id],
         (error, results) => {
             if (error) {
                 throw error

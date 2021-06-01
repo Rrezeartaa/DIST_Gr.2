@@ -34,9 +34,9 @@ router.get('/admin-index', function(req, res, next) {
   res.render('admin/adminPage', { title: 'Faqja Kryesore' });
 });
 
-router.get('/student-profile', function(req, res, next) {
-  res.render('students/student-profile', { title: 'Profili i studentit' });
-});
+// router.get('/student-profile', function(req, res, next) {
+//   res.render('students/student-profile', { title: 'Profili i studentit' });
+// });
 
 router.get("/chat", function(req, res, next){
 	res.render("students/student-chat", { title: 'Student Profile' });
@@ -70,6 +70,7 @@ router.get("/ngjarjet", function(req, res, next){
 // router.use('/api',api);
 router.get('/studentet',user_cont.showUser);
 router.get('/updateUser/:id', user_cont.editUser)
+router.get('/profile/:id', user_cont.showUserById)
 
 router.post('/createUser', user_cont.createUser);
 router.post('/index', user_cont.login);
