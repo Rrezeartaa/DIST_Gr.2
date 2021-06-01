@@ -59,26 +59,29 @@ class UserController {
 
   showUserById(req, res){
 
-    var post = req.body;
-    var id = post.id;
-    pool.query('SELECT * FROM students WHERE id = $1',[id], (error, results) => {
-        if(error){
-            throw error
-        }
-        var students = results.rows
+    // var post = req.body;
+    console.log(req.body.id)
+    // var id = parseInt(req.params.id);
+    // pool.query('SELECT * FROM students WHERE id = $1',[id], (error, results) => {
+    //     if(error){
+    //         throw error
+    //     }
+    //     var students = results.rows
 
-        res.render('students/student-profile', {
-            title: 'Studentet',
-            students: students
-        });
-    })
+    //     res.render('students/student-profile', {
+    //         title: 'Studentet',
+    //         students: students
+    //     });
+    // })
 }
 
 
 
   editUser(req,res){
 
-    var post = req.body;
+
+
+    var post = req.query;
     var id = post.id;
     pool.query('SELECT * FROM students WHERE id = $1', [id], (error, results) => {
       if (error) {
@@ -87,7 +90,8 @@ class UserController {
       var students = results.rows
 
           res.render('admin/editModal', {
-              students: students
+              students: students,
+              prindi: req.body.prindi
 
           });
     })

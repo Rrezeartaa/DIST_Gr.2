@@ -69,13 +69,13 @@ router.get("/ngjarjet", function(req, res, next){
 
 // router.use('/api',api);
 router.get('/studentet',user_cont.showUser);
-router.get('/updateUser/:id', user_cont.editUser)
+router.get('/updateUser', user_cont.editUser)
 router.get('/profile/:id', user_cont.showUserById)
 
 router.post('/createUser', user_cont.createUser);
 router.post('/index', user_cont.login);
 
-router.post('/updateUser/:id', user_cont.updateUser)
+router.post('/updateUser', user_cont.updateUser)
 router.post('/deleteUser/:id', user_cont.deleteUser)
 // router.post("/addname", (req, res) => {
 //   var myData = new UserModel(req.body);
