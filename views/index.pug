@@ -1,17 +1,21 @@
-extends layout
-
-append head
-    link(rel='stylesheet' type='text/css' href='/stylesheets/index.css')
-    link(rel='stylesheet' type='text/css' href='/stylesheets/login.css')
-
+extends layout.pug
 block content
-  div.hyrja
-    img.high-school-img(src='/images/high-school.png' alt='')
-    h1= title
-    p Mireserdhet ne #{title} !
-    h2 A jeni student apo profesor klikoni me poshte:
-    a(href="/loginSt")
-      button Student 
-    a(href="/loginPr") 
-      button Profesor 
-    
+    .header
+        img(src="/images/1.jpg", alt="image")
+        .title
+            h1 Welcome to #{title}
+            p HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+    h1.cardsTitle HHHHH
+    .cards
+        .card
+            img(src="/images/3.jpg", alt="image")
+            h1 OUR TEAM
+            p HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+        .card
+            img(src="/images/3.jpg", alt="image")
+            h1 OUR TEAM 
+            p HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+        .card
+            img(src="/images/3.jpg", alt="image")
+            h1 OUR TEAM
+            p HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
