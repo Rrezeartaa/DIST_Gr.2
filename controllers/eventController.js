@@ -9,7 +9,7 @@ const Event = require('../models/Event')
 
 class EventController {
   constructor() {
-    /** @type {Array<Event>} */
+
     this.list = []
   }
 

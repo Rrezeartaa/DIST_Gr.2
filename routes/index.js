@@ -30,6 +30,10 @@ router.get('/index', function(req, res, next) {
   res.render('students/faqjakryesore', { title: 'Faqja Kryesore' });
 });
 
+router.get('/st-ngjarjet', function(req, res, next) {
+  res.render('students/ngjarjet', { title: 'Ngjarjet' });
+});
+
 router.get('/admin-index', function(req, res, next) {
   res.render('admin/adminPage', { title: 'Faqja Kryesore' });
 });
@@ -46,26 +50,17 @@ router.get("/ngjarjet", function(req, res, next){
 	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
 });
 
-// router.get('/studentet',user_cont.showUser);
 
-// router.put('/updateUser/2', user_cont.updateUser);
+const EventController = require('../controllers/EventController')
 
-// router.delete("/delete/:id", (req, res) => {
-//   const { ids } = req.params;
+const event = new EventController()
 
-//   pool.query("DELETE FROM students WHERE ids = $1", [ids], (error, results) => {
-//     if (error) {
-//       throw error;
-//     }
-//     res.sendStatus(200);
-//   });
-// });
+router.get('/event', event.listAll.bind(event))
+router.get('/event/:id', event.find.bind(event))
 
-// router.post('/createUser', user_cont.createUser);
-
-// // router.post('/createEvent', event_cont.createEvent);
-
-
+// router.put('/event/:id', event.updateEvent.bind(event))
+// router.patch('/event/:id', event.updateEvent.bind(event))
+// router.delete('/event/:id', event.deleteEvent.bind(event))
 
 // router.use('/api',api);
 router.get('/studentet',user_cont.showUser);
@@ -77,17 +72,7 @@ router.post('/index', user_cont.login);
 
 router.post('/updateUser', user_cont.updateUser)
 router.post('/deleteUser/:id', user_cont.deleteUser)
-// router.post("/addname", (req, res) => {
-//   var myData = new UserModel(req.body);
-//   myData.save()
-//     .then(item => {
-//       res.send("item saved to database");
-//     })
-//     .catch(err => {
-//       res.status(400).send("unable to save to database");
-//     });
-// });
-
+router.post('/event', event.createEvent.bind(event))
 
 module.exports = router;
 

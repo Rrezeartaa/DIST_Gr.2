@@ -79,10 +79,9 @@ class UserController {
 
   editUser(req,res){
 
-
-
     var post = req.query;
     var id = post.id;
+
     pool.query('SELECT * FROM students WHERE id = $1', [id], (error, results) => {
       if (error) {
         throw error
@@ -90,17 +89,19 @@ class UserController {
       var students = results.rows
 
           res.render('admin/editModal', {
-              students: students,
+              students: students,     //kshyr nmujsh me ndreq qe me mujt me marr bile emrin se id i rash ne fije
               prindi: req.body.prindi
 
           });
+      // console.log(res.json(results.rows));
+      // res.status(200).json(results.rows);
     })
 
   }
 
   updateUser(req,res){ 
 
-    var post = req.body;
+    var post = req.query;
     var id = post.id;
     const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} = req.body
     pool.query(
