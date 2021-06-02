@@ -1,4 +1,4 @@
-extends layout
+//- extends layout
 
 append head
     link(rel='stylesheet' type='text/css' href='/stylesheets/login.css')
@@ -14,7 +14,7 @@ block content
         form(action='/loginPr' method='POST')
             .form-group
            
-                span.title ID e profesorit
+                span.title ID 
                 .input-group
                     .input-group-prepend
                     input#studentID.form-control(name="studentID" type='text' placeholder='Shenoni ID' required='')
