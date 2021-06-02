@@ -16,9 +16,9 @@ var Test = require('../controllers/eventController');
 // var user_cont = new user_controller();
 // var event_cont = new Test();
 
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'E-Shkolla' });
-// });
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'E-Shkolla' });
+});
 
 router.get('/loginPr', function(req, res, next) {
   res.render('loginPr', { title: 'Login' });
@@ -46,7 +46,7 @@ router.get('/admin-index', function(req, res, next) {
 //   res.render('students/student-profile', { title: 'Profili i studentit' });
 // });
 
-router.get("/", function(req, res, next){
+router.get("/chat", function(req, res, next){
 	res.render("students/student-chat", { title: 'Student Chat' });
 });
 
