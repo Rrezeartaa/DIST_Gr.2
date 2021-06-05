@@ -16,6 +16,7 @@ class EventController {
   listAll (req, res) {
     
     return res.status(HttpStatus.OK).json(this.list)
+   
   }
 
   find (req, res, next) {

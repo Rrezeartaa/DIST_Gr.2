@@ -39,7 +39,7 @@ class UserController {
                 throw error
             }
 
-            res.redirect('/students')
+            res.redirect('/studentet')
         })
     }
     showUser(req, res){
@@ -90,7 +90,7 @@ class UserController {
 
           res.render('admin/editModal', {
               students: students,     //kshyr nmujsh me ndreq qe me mujt me marr bile emrin se id i rash ne fije
-              prindi: req.body.prindi
+              prindi: req.query.prindi
 
           });
       // console.log(res.json(results.rows));
@@ -110,7 +110,7 @@ class UserController {
             if (error) {
                 throw error
             }
-                res.redirect('/students')
+                res.redirect('/studentet')
 
         }
     )
@@ -127,7 +127,7 @@ deleteUser(req,res){
     if (error) {
       throw error
     }
-    res.redirect('/students')
+    res.redirect('/studentet')
     // response.status(200).send(`User deleted with ID: ${id}`)
   })
 }
