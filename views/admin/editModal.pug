@@ -1,33 +1,43 @@
-script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js' defer='')
-.mx-auto.absolute.top-0.left-0.w-full.h-full.flex.items-center.shadow-lg.overflow-y-auto(style='background-color:rgba(0,0,0,.5)' x-show='isOpenModal')
-  .container.rounded.p-4.mt-2.overflow-y-auto
-    .bg-white.rounded.h-60.px-8.py-8
-      p.font-black.text-lg.mb-3 Edito studentin 
-      hr
-      form(action='/updateUser' method='post')
-        .modal-body.mb-5.mt-3.grid.grid-cols-6.gap-4
-            input(name="id", type="hidden", value=2) 
-            label(for='id') ID
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='idS' name='idS' value=idS)
-            label(for='name') Emri dhe mbiemri
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='name' name='name' value=students)
-            label(for='prindi') Emri i prindit
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='prindi' name='prindi' value=prindi)
-            label(for='data') Data e lindjes
-            input(type='date' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='data' name='data' value=data)
-            label(for='vendi') Vendi i lindjes
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='vendi' name='vendi' value=vendi)
-            label(for='adresa') Adresa
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='adresa' name='adresa' value=adresa)
-            label(for='numri') Numri i telefonit
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='numri' name='numri' value=numri)
-            label(for='gjinia') Gjinia
-            input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='gjinia' name='gjinia' value=gjinia)
-            label(for='email') Email
-            input(type='email' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' value=email)
-            label(for='password') Fjalekalimi
-            input(type='password' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='password' name='password' value=password)
-        .my-5.items-center
-          a(@click='isOpenModal = false' x-ref='modalCloseButton')
-            button.w-32.rounded-md.text-sm.p-3.mr-4(class='hover:bg-gray-100' type="reset") Cancel
-          button.w-32.bg-black.rounded-md.text-white.text-sm.p-3(type="submit") Save
+append head
+    link(href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet")
+    link(href="stylesheets/link.css" rel="stylesheet")
+include adminPage
+.mt-5(class='md:mt-4 md:col-span-2 md:mx-48')
+      form(action='/updateUser' method='POST')
+        .shadow.overflow-hidden(class='sm:rounded-md')
+          .px-4.py-5.bg-white(class='sm:p-6')
+            h1(class="mb-6 font-semibold text-lg") Edito studentin
+            .grid.grid-cols-6.gap-6
+              .col-span-6(class='sm:col-span-3')
+                label.block.text-sm.font-medium.text-gray-700(for='idS') ID
+                input#idS.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='idS' autocomplete='idS' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+              .col-span-6(class='sm:col-span-3')
+                label.block.text-sm.font-medium.text-gray-700(for='name') Emri dhe mbiemri
+                input#name.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='name' autocomplete='family-name' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+              .col-span-6(class='sm:col-span-3')
+                label.block.text-sm.font-medium.text-gray-700(for='prindi') Emri i prindit
+                input#prindi.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='prindi' autocomplete='email' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+              .col-span-6(class='sm:col-span-3')
+                label.block.text-sm.font-medium.text-gray-700(for='data') Data e lindjes
+                input#data.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='date' name='data' autocomplete='street-address' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+              .col-span-6(class='sm:col-span-6 lg:col-span-2')
+                label.block.text-sm.font-medium.text-gray-700(for='vendi') Vendi i lindjes
+                input#vendi.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='vendi' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+              .col-span-6(class='sm:col-span-3 lg:col-span-2')
+                label.block.text-sm.font-medium.text-gray-700(for='adresa') Adresa
+                input#adresa.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='adresa' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+              .col-span-6(class='sm:col-span-3 lg:col-span-2')
+                label.block.text-sm.font-medium.text-gray-700(for='numri') Numri i telefonit
+                input#numri.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='numri' autocomplete='numri' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+              .col-span-6(class='sm:col-span-3 lg:col-span-2')
+                label.block.text-sm.font-medium.text-gray-700(for='gjinia') Gjinia
+                input#gjinia.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='gjinia' autocomplete='gjinia' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+              .col-span-6(class='sm:col-span-3 lg:col-span-2')
+                label.block.text-sm.font-medium.text-gray-700(for='email') Email
+                input#email.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='email' name='email' autocomplete='email' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+              .col-span-6(class='sm:col-span-3 lg:col-span-2')
+                label.block.text-sm.font-medium.text-gray-700(for='password') Password
+                input#password.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='password' name='password' autocomplete='password' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+          .px-4.py-3.bg-white.text-right(class='sm:px-6')
+            button.inline-flex.justify-center.py-2.px-4.border.border-transparent.shadow-sm.text-sm.font-medium.rounded-md.text-white.bg-indigo-600(type='submit' class='hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500')
+              | Save
