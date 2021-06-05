@@ -7,37 +7,38 @@ include adminPage
         .shadow.overflow-hidden(class='sm:rounded-md')
           .px-4.py-5.bg-white(class='sm:p-6')
             h1(class="mb-6 font-semibold text-lg") Edito studentin
+            input(id="id" type="hidden" name="id" value=id)
             .grid.grid-cols-6.gap-6
               .col-span-6(class='sm:col-span-3')
                 label.block.text-sm.font-medium.text-gray-700(for='idS') ID
-                input#idS.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='idS' autocomplete='idS' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                input#idS.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' value=idS name='idS' autocomplete='idS' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
               .col-span-6(class='sm:col-span-3')
                 label.block.text-sm.font-medium.text-gray-700(for='name') Emri dhe mbiemri
-                input#name.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='name' autocomplete='family-name' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                input#name.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' value=name name='name' autocomplete='family-name' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
               .col-span-6(class='sm:col-span-3')
                 label.block.text-sm.font-medium.text-gray-700(for='prindi') Emri i prindit
-                input#prindi.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='prindi' autocomplete='email' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                input#prindi.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' value=prindi name='prindi' autocomplete='email' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
               .col-span-6(class='sm:col-span-3')
                 label.block.text-sm.font-medium.text-gray-700(for='data') Data e lindjes
-                input#data.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='date' name='data' autocomplete='street-address' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                input#data.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='date' value=data name='data' autocomplete='street-address' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
               .col-span-6(class='sm:col-span-6 lg:col-span-2')
                 label.block.text-sm.font-medium.text-gray-700(for='vendi') Vendi i lindjes
-                input#vendi.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='vendi' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                input#vendi.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' value=vendi name='vendi' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
               .col-span-6(class='sm:col-span-3 lg:col-span-2')
                 label.block.text-sm.font-medium.text-gray-700(for='adresa') Adresa
-                input#adresa.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='adresa' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                input#adresa.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' value=adresa name='adresa' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
               .col-span-6(class='sm:col-span-3 lg:col-span-2')
                 label.block.text-sm.font-medium.text-gray-700(for='numri') Numri i telefonit
-                input#numri.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='numri' autocomplete='numri' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                input#numri.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' value=numri name='numri' autocomplete='numri' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
               .col-span-6(class='sm:col-span-3 lg:col-span-2')
                 label.block.text-sm.font-medium.text-gray-700(for='gjinia') Gjinia
-                input#gjinia.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' name='gjinia' autocomplete='gjinia' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                input#gjinia.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' value=gjinia name='gjinia' autocomplete='gjinia' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
               .col-span-6(class='sm:col-span-3 lg:col-span-2')
                 label.block.text-sm.font-medium.text-gray-700(for='email') Email
-                input#email.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='email' name='email' autocomplete='email' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                input#email.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='email' value=email name='email' autocomplete='email' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
               .col-span-6(class='sm:col-span-3 lg:col-span-2')
                 label.block.text-sm.font-medium.text-gray-700(for='password') Password
-                input#password.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='password' name='password' autocomplete='password' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
+                input#password.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='password' value=password name='password' autocomplete='password' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm')
           .px-4.py-3.bg-white.text-right(class='sm:px-6')
             button.inline-flex.justify-center.py-2.px-4.border.border-transparent.shadow-sm.text-sm.font-medium.rounded-md.text-white.bg-indigo-600(type='submit' class='hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500')
               | Save

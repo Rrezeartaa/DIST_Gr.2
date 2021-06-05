@@ -75,8 +75,6 @@ class UserController {
     // })
 }
 
-
-
   editUser(req,res){
 
     var post = req.query;
@@ -86,23 +84,29 @@ class UserController {
       if (error) {
         throw error
       }
+
       var students = results.rows
 
           res.render('admin/editModal', {
-              students: students,     //kshyr nmujsh me ndreq qe me mujt me marr bile emrin se id i rash ne fije
-              prindi: req.query.prindi
-
+              id: id,
+              idS: students[0]['ids'],
+              name: students[0]['name'],        
+              prindi: students[0]['prindi'],
+              data: students[0]['data'],
+              vendi: students[0]['vendi'],
+              adresa: students[0]['adresa'],
+              numri: students[0]['numri'],
+              gjinia : students[0]['gjinia'],
+              email: students[0]['email'],
+              password: students[0]['password']
           });
-      // console.log(res.json(results.rows));
-      // res.status(200).json(results.rows);
     })
 
   }
 
   updateUser(req,res){ 
 
-    var post = req.query;
-    var id = post.id;
+    const id = req.body.id
     const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} = req.body
     pool.query(
         'UPDATE students SET idS=$1, name=$2, prindi=$3, data=$4, vendi=$5, adresa=$6, numri=$7, gjinia=$8, email=$9, password=$10 WHERE id=$11', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password, id],
@@ -110,8 +114,7 @@ class UserController {
             if (error) {
                 throw error
             }
-                res.redirect('/studentet')
-
+            res.redirect('/studentet')
         }
     )
   
@@ -121,14 +124,12 @@ deleteUser(req,res){
 
   var post = req.body;
   var id = post.id;
-  // const id = request.params.id)
 
   pool.query('DELETE FROM students WHERE id = $1', [id], (error, results) => {
     if (error) {
       throw error
     }
     res.redirect('/studentet')
-    // response.status(200).send(`User deleted with ID: ${id}`)
   })
 }
 
