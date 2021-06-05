@@ -50,7 +50,7 @@ router.get("/chat", function(req, res, next){
 	res.render("students/student-chat", { title: 'Student Chat' });
 });
 
-router.get("/ngjarjet", function(req, res, next){
+router.get("/event", function(req, res, next){
 	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
 });
 
@@ -59,14 +59,9 @@ const EventController = require('../controllers/EventController')
 
 const event = new EventController()
 
-router.get('/event', event.listAll.bind(event))
+router.get('/ev', event.listAll.bind(event))
 router.get('/event/:id', event.find.bind(event))
 
-// router.put('/event/:id', event.updateEvent.bind(event))
-// router.patch('/event/:id', event.updateEvent.bind(event))
-// router.delete('/event/:id', event.deleteEvent.bind(event))
-
-// router.use('/api',api);
 router.get('/studentet',user_cont.showUser);
 router.get('/updateUser', user_cont.editUser)
 router.get('/profile/:id', user_cont.showUserById)
@@ -76,7 +71,11 @@ router.post('/index', user_cont.login);
 
 router.post('/updateUser', user_cont.updateUser)
 router.post('/deleteUser/:id', user_cont.deleteUser)
+
 router.post('/event', event.createEvent.bind(event))
+router.put('/event/:id', event.updateEvent.bind(event))
+router.patch('/event/:id', event.updateEvent.bind(event))
+router.delete('/event/:id', event.deleteEvent.bind(event))
 
 module.exports = router;
 

@@ -10,7 +10,7 @@ const Event = require('../models/Event')
 class EventController {
   constructor() {
 
-    this.list = []
+    this.list = [{"id":1,"title":"Hej there!","event_date":"Wed Jun 02 2021","theme":"blue"}]
   }
 
   listAll (req, res) {
@@ -38,7 +38,7 @@ class EventController {
       const event = new Event({ id, title, event_date, theme })
       this.list.push(event)
 
-      return res.status(HttpStatus.CREATED).json(id)
+      return res.status(HttpStatus.CREATED).json(event)
     } catch (err) {
       next(err)
     }
