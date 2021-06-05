@@ -5,6 +5,7 @@ html(lang="en")
         link(rel="stylesheet", href="/stylesheets/index-style.css")
          link(rel="stylesheet", href="/stylesheets/students.css")
          link(rel="stylesheet", href="/stylesheets/map.css")
+          link(rel="stylesheet", href="/stylesheets/footercss.css")
          
     body
         nav
@@ -14,3 +15,36 @@ html(lang="en")
                 li
                     a(href="/about") About
         block content
+footer.footer-distributed
+  .footer-left
+    h3
+      | Company
+      span logo
+    p.footer-links
+      a(href='#') Home
+      | 					·
+      a(href='#') Blog
+      | 					·
+      a(href='#') Pricing
+      | 					·
+      a(href='#') About
+      | 					·
+      a(href='#') Faq
+      | 					·
+      a(href='#') Contact
+    p.footer-company-name Company Name © 2015
+    .footer-icons
+      a(href='#')
+        i.fa.fa-facebook
+      a(href='#')
+        i.fa.fa-twitter
+      a(href='#')
+        i.fa.fa-linkedin
+      a(href='#')
+        i.fa.fa-github
+  .footer-right
+    p Contact Us
+    form(action='#' method='post')
+      input(type='text' name='email' placeholder='Email')
+      textarea(name='message' placeholder='Message')
+      button Send
