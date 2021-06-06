@@ -23,9 +23,7 @@ router.get('/', function(req, res, next) {
 router.get('/loginPr', function(req, res, next) {
   res.render('loginPr', { title: 'Login' });
 });
-// router.get('/loginSt', function(req, res, next) {
-//   res.render('loginSt', { title: 'Login' });
-// });
+
 router.get('/index', function(req, res, next) {
   res.render('students/faqjakryesore', { title: 'Faqja Kryesore' });
 });
@@ -42,9 +40,9 @@ router.get('/admin-index', function(req, res, next) {
   res.render('admin/adminPage', { title: 'Faqja Kryesore' });
 });
 
-// router.get('/student-profile', function(req, res, next) {
-//   res.render('students/student-profile', { title: 'Profili i studentit' });
-// });
+router.get('/student-profile', function(req, res, next) {
+  res.render('students/student-profile', { title: 'Profili i studentit' });
+});
 
 router.get("/chat", function(req, res, next){
 	res.render("students/student-chat", { title: 'Student Chat' });

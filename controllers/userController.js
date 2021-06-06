@@ -12,7 +12,7 @@ class UserController {
       
       pool.query('SELECT * from students WHERE email = $1', [email], (error, results) => {
         var emaili = results.rows
-        console.log(emaili)   //kshyre edhe per idS se per email e ndreqa!!!!!
+        console.log(emaili)   //kshyre edhe per idS se per email e ndreqa!!!!! edhe te Edit me kshyr!
       
       if(emaili.length == 1){ 
         console.log('This email exists!')
@@ -22,7 +22,7 @@ class UserController {
       const saltRounds = 10;
       bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(password, salt, function(err, hash) {
-        pool.query('INSERT INTO students (idS, name, prindi, data, vendi, adresa, numri, gjinia,email, password) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, hash], (error, results) => {
+        pool.query('INSERT INTO students (idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, hash], (error, results) => {
         if (error) {
                 throw error
             }

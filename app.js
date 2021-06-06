@@ -47,18 +47,17 @@ io.of( '/stream' ).on( 'connection', stream );
 app.get("/loginSt", checkAuthenticated, (req, res) => {
     // console.log(req.session.flash.error);
     res.render("loginSt");
-  });
+});
   
-  app.get("/index", checkNotAuthenticated, (req, res) => {
+app.get("/index", checkNotAuthenticated, (req, res) => {
     console.log(req.isAuthenticated());
     res.render("students/faqjakryesore", { user: req.user.name });
-  });
+});
   
-  app.get("/logout", (req, res) => {
+app.get("/logout", (req, res) => {
     req.logout();
     res.render("loginSt", { message: "You have logged out successfully" });
-  });
-
+});
   
 app.post(
     "/loginSt",
