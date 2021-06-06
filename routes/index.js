@@ -23,9 +23,9 @@ router.get('/', function(req, res, next) {
 router.get('/loginPr', function(req, res, next) {
   res.render('loginPr', { title: 'Login' });
 });
-router.get('/loginSt', function(req, res, next) {
-  res.render('loginSt', { title: 'Login' });
-});
+// router.get('/loginSt', function(req, res, next) {
+//   res.render('loginSt', { title: 'Login' });
+// });
 router.get('/index', function(req, res, next) {
   res.render('students/faqjakryesore', { title: 'Faqja Kryesore' });
 });
@@ -67,7 +67,7 @@ router.get('/updateUser', user_cont.editUser)
 router.get('/profile/:id', user_cont.showUserById)
 
 router.post('/createUser', user_cont.createUser);
-router.post('/index', user_cont.login);
+// router.post('/index', user_cont.login);
 
 router.post('/updateUser', user_cont.updateUser)
 router.post('/deleteUser/:id', user_cont.deleteUser)
