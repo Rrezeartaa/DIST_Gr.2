@@ -8,16 +8,17 @@ class UserController {
 
     createUser(req,res){
       const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} = req.body
-      // pool.query('SELECT * from students WHERE email = $1', [email], (error, results) => {
-      //   var emaili = results.rows
-      // });
+      pool.query('SELECT * from students WHERE email = $1', [email], (error, results) => {
+        var emaili = results.rows
+        console.log(emaili)   //kshyre edhe per idS se per email e ndreqa!!!!!
+      
       if (prindi === '' || email === '' || name === '' || idS === '' || password === '' || data === '' || vendi === '' || adresa === '' || numri  === '' || gjinia === ''){
         message = 'Duhet te jepni te gjitha te dhenat per studentin!';
       }
-      // else if(emaili){ 
-      //   console.log('LaLaLa')
+      else if(emaili.length == 1){ 
+        console.log('This email exists!')
 
-      // }
+      }
       else {
       const saltRounds = 10;
       bcrypt.genSalt(saltRounds, function(err, salt) {
@@ -32,7 +33,7 @@ class UserController {
         });
       });
     }
-      
+  });
     }
 
     showUser(req, res){

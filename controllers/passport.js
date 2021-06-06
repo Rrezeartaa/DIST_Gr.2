@@ -27,13 +27,13 @@ function initialize(passport) {
               return done(null, user);
             } else {
               //password eshte gabim
-              return done(null, false, { message: "Password is incorrect" });
+              return done(null, false, { message: "Password eshte i pasakte!" });
             }
           });
         } else {
           // Nuk ka user
           return done(null, false, {
-            message: "No user with that email address"
+            message: "Nuk ka student me kete id"
           });
         }
       }

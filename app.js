@@ -45,8 +45,7 @@ io.of( '/stream' ).on( 'connection', stream );
 
 
 app.get("/loginSt", checkAuthenticated, (req, res) => {
-    // flash sets a messages variable. passport sets the error message
-    console.log(req.session.flash.error);
+    // console.log(req.session.flash.error);
     res.render("loginSt");
   });
   
