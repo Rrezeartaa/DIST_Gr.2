@@ -1,47 +1,40 @@
 var moment = require('moment');
+var LocalStrategy    = require('passport-local').Strategy;
 const { pool } = require('../databaza/konektimi')
+const bcrypt = require('bcrypt')
+const validation = require('../controllers/validation.js')
 
 class UserController {
 
-
-  login(req, res) {
-    var message = '';
-
-    if (req.method == "POST") {
-        var post = req.body;
-        var idS = post.idS;
-        var password = post.password;
-
-        pool.query('SELECT * FROM students WHERE students.ids = $1',[idS], (error, results) => {
-            if (error) {
-                throw error;
-            }
-            else if(idS == results.rows[0]['ids'] && password == results.rows[0]['password']){
-                // req.session.userId = idS;
-                // var role =  results.rows[0]['role'];
-                // var  user_id = results.rows[0]['idS'];
-                // req.session.role = role;
-                // req.session.user = user_id;
-                res.redirect('/index')                   
-            }else{
-                message = 'Nuk e keni shkruar përdoruesin ose fjalëkalimin e saktë!';
-                res.render('loginSt', { title: 'Login', message: message });
-            }
-        })
-    }
-}
-
     createUser(req,res){
       const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} = req.body
-      
-      pool.query('INSERT INTO students (idS, name, prindi, data, vendi, adresa, numri, gjinia,email, password) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password], (error, results) => {
+      // pool.query('SELECT * from students WHERE email = $1', [email], (error, results) => {
+      //   var emaili = results.rows
+      // });
+      if (prindi === '' || email === '' || name === '' || idS === '' || password === '' || data === '' || vendi === '' || adresa === '' || numri  === '' || gjinia === ''){
+        message = 'Duhet te jepni te gjitha te dhenat per studentin!';
+      }
+      // else if(emaili){ 
+      //   console.log('LaLaLa')
+
+      // }
+      else {
+      const saltRounds = 10;
+      bcrypt.genSalt(saltRounds, function(err, salt) {
+        bcrypt.hash(password, salt, function(err, hash) {
+        pool.query('INSERT INTO students (idS, name, prindi, data, vendi, adresa, numri, gjinia,email, password) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, hash], (error, results) => {
         if (error) {
                 throw error
             }
 
             res.redirect('/studentet')
         })
+        });
+      });
     }
+      
+    }
+
     showUser(req, res){
 
       pool.query('SELECT * FROM students', (error, results) => {
@@ -108,15 +101,22 @@ class UserController {
 
     const id = req.body.id
     const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} = req.body
+    if (prindi === '' || email === '' || name === '' || idS === '' || password === '' || data === '' || vendi === '' || adresa === '' || numri  === '' || gjinia === ''){
+      message = 'Duhet te jepni te gjitha te dhenat per studentin!';
+    }
+    else{
+    const saltRounds = 10;
+      bcrypt.genSalt(saltRounds, function(err, salt) {
+        bcrypt.hash(password, salt, function(err, hash) {
     pool.query(
-        'UPDATE students SET idS=$1, name=$2, prindi=$3, data=$4, vendi=$5, adresa=$6, numri=$7, gjinia=$8, email=$9, password=$10 WHERE id=$11', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password, id],
+        'UPDATE students SET idS=$1, name=$2, prindi=$3, data=$4, vendi=$5, adresa=$6, numri=$7, gjinia=$8, email=$9, password=$10 WHERE id=$11', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, hash, id],
         (error, results) => {
             if (error) {
                 throw error
             }
             res.redirect('/studentet')
         }
-    )
+    )});});}
   
 }
 
