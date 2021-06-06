@@ -2,20 +2,19 @@ var moment = require('moment');
 var LocalStrategy    = require('passport-local').Strategy;
 const { pool } = require('../databaza/konektimi')
 const bcrypt = require('bcrypt')
-const validation = require('../controllers/validation.js')
+// const validation = require('../controllers/validation.js')
+const { body, validationResult } = require('express-validator');
 
 class UserController {
 
     createUser(req,res){
       const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} = req.body
+      
       pool.query('SELECT * from students WHERE email = $1', [email], (error, results) => {
         var emaili = results.rows
         console.log(emaili)   //kshyre edhe per idS se per email e ndreqa!!!!!
       
-      if (prindi === '' || email === '' || name === '' || idS === '' || password === '' || data === '' || vendi === '' || adresa === '' || numri  === '' || gjinia === ''){
-        message = 'Duhet te jepni te gjitha te dhenat per studentin!';
-      }
-      else if(emaili.length == 1){ 
+      if(emaili.length == 1){ 
         console.log('This email exists!')
 
       }
