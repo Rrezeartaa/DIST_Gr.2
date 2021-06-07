@@ -6,7 +6,6 @@ function initialize(passport) {
   console.log("Initialized");
 
   const authenticateUser = (idS, password, done) => {
-    console.log(idS, password);
     pool.query(
       `SELECT * FROM students WHERE idS = $1`,
       [idS],

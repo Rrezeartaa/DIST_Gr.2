@@ -50,10 +50,14 @@ app.get("/loginSt", checkAuthenticated, (req, res) => {
 });
   
 app.get("/index", checkNotAuthenticated, (req, res) => {
-    console.log(req.isAuthenticated());
-    res.render("students/faqjakryesore", { user: req.user.name });
+    console.log(req.isAuthenticated());  
+    res.render("students/faqjakryesore", { user: req.user.name }); 
 });
   
+app.get('/student-profile', checkNotAuthenticated, function(req, res, next) {
+  res.render('students/student-profile', { user: req.user });  //ndreqe qe mos me mujt me hi ktu pa u logu se per index e ndreqa
+});
+
 app.get("/logout", (req, res) => {
     req.logout();
     res.render("loginSt", { message: "You have logged out successfully" });
