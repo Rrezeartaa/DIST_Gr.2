@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace asp.Controllers
 {
-    [Route("api/events")]
+    [Route("api/[controller]")]
  
     [ApiController]
     public class EventsController : ControllerBase 
@@ -23,14 +23,14 @@ namespace asp.Controllers
         {  
             return _dataAccessProvider.GetEventRecords();  
         }  
-  
+
         [HttpPost]  
         public IActionResult Create([FromBody]Event events)  
         {  
             if (ModelState.IsValid)  
             {  
                 Guid obj = Guid.NewGuid();  
-                events.ngjarja_id = 1;  
+                events.ngjarja_id = obj.ToString();  
                 _dataAccessProvider.AddEventRecord(events);  
                 return Ok();  
             }  
@@ -38,7 +38,7 @@ namespace asp.Controllers
         }  
   
         [HttpGet("{id}")]  
-        public Event Details(int id)  
+        public Event Details(string id)  
         {  
             return _dataAccessProvider.GetEventSingleRecord(id);  
         }  
@@ -55,7 +55,7 @@ namespace asp.Controllers
         }  
   
         [HttpDelete("{id}")]  
-        public IActionResult DeleteConfirmed(int id)  
+        public IActionResult DeleteConfirmed(string id)  
         {  
             var data = _dataAccessProvider.GetEventSingleRecord(id);  
             if (data == null)  

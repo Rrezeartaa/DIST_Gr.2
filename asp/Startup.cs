@@ -30,7 +30,7 @@ namespace asp
 
             services.AddControllers();
 
-            var sqlConnectionString = Configuration["postgresql://localhost/shkolla?user=postgres&password=root"];
+            var sqlConnectionString = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=root;Database=shkolla;Pooling=false";
             services.AddDbContext<PostgreSqlContext>(options => options.UseNpgsql(sqlConnectionString));  
   
             services.AddScoped<IDataAccessProvider, DataAccessProvider>();  

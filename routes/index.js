@@ -16,6 +16,8 @@ var Test = require('../public/javascripts/eventController');
 // var user_cont = new user_controller();
 // var event_cont = new Test();
 
+const ApiEvent = require('C:/Users/Admin/DIST_PROJECT_Gr.2/public/javascripts/eventController.js')
+
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'E-Shkolla' });
 });

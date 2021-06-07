@@ -25,14 +25,14 @@ namespace asp.DataAccess
             _context.SaveChanges();  
         }  
   
-        public void DeleteEventRecord(int id)  
+        public void DeleteEventRecord(string id)  
         {  
             var entity = _context.events.FirstOrDefault(t => t.ngjarja_id == id);  
             _context.events.Remove(entity);  
             _context.SaveChanges();  
         }  
   
-        public Event GetEventSingleRecord(int id)  
+        public Event GetEventSingleRecord(string id)  
         {  
             return _context.events.FirstOrDefault(t => t.ngjarja_id == id);  
         }  

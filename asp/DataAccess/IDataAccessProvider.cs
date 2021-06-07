@@ -6,8 +6,8 @@ namespace asp.DataAccess
     {
         void AddEventRecord(Event events);  
         void UpdateEventRecord(Event events);  
-        void DeleteEventRecord(int id);  
-        Event GetEventSingleRecord(int id);  
+        void DeleteEventRecord(string id);  
+        Event GetEventSingleRecord(string id);  
         List<Event> GetEventRecords();
     }
 }

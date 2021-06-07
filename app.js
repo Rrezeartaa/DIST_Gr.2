@@ -4,6 +4,7 @@ const flash = require("express-flash");
 var express = require('express');
 var passport = require('passport');
 var app = express();
+var cors = require('cors');
 var path = require('path');
 let stream = require( 'C:/Users/Admin/DIST_PROJECT_Gr.2/ws/stream' );
 var cookieParser = require('cookie-parser');
@@ -37,6 +38,7 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash());
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

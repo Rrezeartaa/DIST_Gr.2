@@ -79,14 +79,15 @@
 
 
 
-const uri = 'api/events';
+const uri = 'http://localhost:5000/api/events';
+
 let events = [];
 
 function getItems() {
-  fetch(uri)
-    .then(response => response.json())
-    .then(data => _displayItems(data))
-    .catch(error => console.error('Unable to get items.', error));
+  // fetch(uri)
+  //   .then(response => response.json())
+  //   .then(data => _displayItems(data))
+  //   .catch(error => console.error('Unable to get items.', error));
 }
 
 function addItem() {
@@ -100,19 +101,55 @@ function addItem() {
     theme: addNameTextbox2.value.trim()
   };
 
-  fetch(uri, {
+  fetch(uri,{
+    
     method: 'POST',
+    mode: 'no-cors',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin':  'http://localhost:5000/api/events',
+    },
+    body: JSON.stringify(item)
+  })
+    .then(response => response.json())
+    // .then(() => {
+    //   getItems();
+    //   addNameTextbox.value = '';
+    // })
+    .catch(error => console.error('Unable to add item.', error));
+
+}
+
+function deleteItem(id) {
+  fetch(`${uri}/${id}`, {
+    method: 'DELETE'
+  })
+  .then(() => getItems())
+  .catch(error => console.error('Unable to delete item.', error));
+}
+
+function updateItem() {
+  const itemId = 1;
+  const item = {
+    ngjarja_id: parseInt(itemId, 10),
+    title: 'tedttt',
+    event_date: 'tdujg',
+    theme: 'pink'
+  };
+
+  fetch(`${uri}/${itemId}`, {
+    method: 'PUT',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(item)
   })
-    .then(response => response.json())
-    .then(() => {
-      getItems();
-      addNameTextbox.value = '';
-    })
-    .catch(error => console.error('Unable to add item.', error));
+  .then(() => getItems())
+  .catch(error => console.error('Unable to update item.', error));
 
+  // closeInput();
+
+  return false;
 }
