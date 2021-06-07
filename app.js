@@ -55,7 +55,11 @@ app.get("/index", checkNotAuthenticated, (req, res) => {
 });
   
 app.get('/student-profile', checkNotAuthenticated, function(req, res, next) {
-  res.render('students/student-profile', { user: req.user });  //ndreqe qe mos me mujt me hi ktu pa u logu se per index e ndreqa
+  res.render('students/student-profile', { user: req.user });  
+});
+
+app.get("/chat", checkNotAuthenticated, function(req, res, next){
+	res.render("students/student-chat", { user: req.user });
 });
 
 app.get("/logout", (req, res) => {

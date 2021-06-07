@@ -40,14 +40,9 @@ router.get('/admin-index', function(req, res, next) {
   res.render('admin/adminPage', { title: 'Faqja Kryesore' });
 });
 
-router.get("/chat", function(req, res, next){
-	res.render("students/student-chat", { title: 'Student Chat' });
-});
-
 router.get("/event", function(req, res, next){
 	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
 });
-
 
 const EventController = require('../controllers/EventController')
 
