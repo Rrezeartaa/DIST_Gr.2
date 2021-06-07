@@ -11,7 +11,7 @@ include adminPage
             .grid.grid-cols-6.gap-6
               .col-span-6(class='sm:col-span-3')
                 label.block.text-sm.font-medium.text-gray-700(for='idS') ID
-                input#idS.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' value=idS name='idS' autocomplete='idS' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' required)
+                input#idS.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' value=idS name='idS' autocomplete='idS' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' pattern="^\d{8}" required)
               .col-span-6(class='sm:col-span-3')
                 label.block.text-sm.font-medium.text-gray-700(for='name') Emri dhe mbiemri
                 input#name.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='text' value=name name='name' autocomplete='family-name' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' maxlength="255" minlength="2" required)
