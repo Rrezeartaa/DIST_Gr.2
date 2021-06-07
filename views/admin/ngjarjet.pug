@@ -187,23 +187,24 @@ style.
                     }
                     }
                     }
-        script.
-            function doPost(form){
-                var formData = {title: form.title.value, event_date: form.event_date.value, theme: form.theme.value}
+        
+        //- script.
+        //-     function doPost(form){
+        //-         var formData = {title: form.title.value, event_date: form.event_date.value, theme: form.theme.value}
             
-                    jQuery.ajax({
-                        url: "/do-post",
-                        method: "POST",
-                        data: formData,
-                        success: function(response){
-                            alert(response.title);
+        //-             jQuery.ajax({
+        //-                 url: "/do-post",
+        //-                 method: "POST",
+        //-                 data: formData,
+        //-                 success: function(response){
+        //-                     alert(response.title);
 
-                            formData._id = response._id;
+        //-                     formData._id = response._id;
 
-                            var socket = io();
-                            socket.emit("new_post",formData);
+        //-                     var socket = io();
+        //-                     socket.emit("new_post",formData);
 
-                        }
-                    });
-                    return false;
-            }
+        //-                 }
+        //-             });
+        //-             return false;
+        //-     }

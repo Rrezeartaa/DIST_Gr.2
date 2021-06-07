@@ -8,7 +8,7 @@ var user_controller = require('../controllers/userController');
 
 var user_cont = new user_controller();
 // var user_controller = require('../controllers/userController');
-var Test = require('../controllers/eventController');
+var Test = require('../public/javascripts/eventController');
 // const UserController = require("../controllers/UserController");
 // const UserModel = require("../models/UserModel");
 
@@ -44,12 +44,12 @@ router.get("/event", function(req, res, next){
 	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
 });
 
-const EventController = require('../controllers/EventController')
+// const EventController = require('../controllers/EventController')
 
-const event = new EventController()
+// const event = new EventController()
 
-router.get('/ev', event.listAll.bind(event))
-router.get('/event/:id', event.find.bind(event))
+// router.get('/ev', event.listAll.bind(event))
+// router.get('/event/:id', event.find.bind(event))
 
 router.get('/studentet',user_cont.showUser);
 router.get('/updateUser', user_cont.editUser)
@@ -61,10 +61,10 @@ router.post('/createUser', user_cont.createUser);
 router.post('/updateUser', user_cont.updateUser)
 router.post('/deleteUser/:id', user_cont.deleteUser)
 
-router.post('/event', event.createEvent.bind(event))
-router.put('/event/:id', event.updateEvent.bind(event))
-router.patch('/event/:id', event.updateEvent.bind(event))
-router.delete('/event/:id', event.deleteEvent.bind(event))
+// router.post('/event', event.createEvent.bind(event))
+// router.put('/event/:id', event.updateEvent.bind(event))
+// router.patch('/event/:id', event.updateEvent.bind(event))
+// router.delete('/event/:id', event.deleteEvent.bind(event))
 
 module.exports = router;
 

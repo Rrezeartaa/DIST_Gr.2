@@ -30,7 +30,7 @@ namespace asp.Controllers
             if (ModelState.IsValid)  
             {  
                 Guid obj = Guid.NewGuid();  
-                // events.id = obj.ToString();  
+                events.ngjarja_id = 1;  
                 _dataAccessProvider.AddEventRecord(events);  
                 return Ok();  
             }  
