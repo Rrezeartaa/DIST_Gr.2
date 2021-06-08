@@ -132,26 +132,28 @@ function deleteItem(id) {
 }
 
 function updateItem() {
-  const itemId = 1;
+  const itemId = document.getElementById('edit-id').value;
   const item = {
-    ngjarja_id: parseInt(itemId, 10),
-    title: 'tedttt',
-    event_date: 'tdujg',
-    theme: 'pink'
+    ngjarjaid: itemId,
+    title: document.getElementById('edit-title').value,
+    // event_date: document.getElementById('edit-date').value.trim(),
+    // theme: document.getElementById('edit-theme').value.trim,
+    event_date: 'test',
+    theme: 'green',
   };
 
-  fetch(`${uri}/${itemId}`, {
+  fetch(`${uri}`, {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+     'Access-Control-Allow-Methods': '*'
+
     },
     body: JSON.stringify(item)
   })
   .then(() => getItems())
   .catch(error => console.error('Unable to update item.', error));
-
-  // closeInput();
 
   return false;
 }
@@ -162,6 +164,15 @@ function _displayCount(itemCount) {
   document.getElementById('counter').innerText = `${itemCount} ${name}`;
 }
 
+function displayEditForm(id) {
+  const item = todos.find(item => item.ngjarjaid === id);
+  
+  document.getElementById('edit-title').value = item.title;
+  // document.getElementById('edit-theme').value = item.theme;
+  document.getElementById('edit-id').value = item.ngjarjaid;
+  // document.getElementById('edit-data').checked = item.event_date;
+  document.getElementById('editForm').style.display = 'block';
+}
 
 function _displayItems(data) {
   const tBody = document.getElementById('todos');
@@ -169,7 +180,7 @@ function _displayItems(data) {
 
   _displayCount(data.length);
 
-  // const button = document.createElement('button');
+  const button = document.createElement('button');
 
   data.forEach(item => {
     // let isCompleteCheckbox = document.createElement('input');
@@ -177,13 +188,14 @@ function _displayItems(data) {
     // isCompleteCheckbox.disabled = true;
     // isCompleteCheckbox.checked = item.isComplete;
 
-    // let editButton = button.cloneNode(false);
-    // editButton.innerText = 'Edit';
-    // editButton.setAttribute('onclick', `displayEditForm(${item.id})`);
+    let editButton = button.cloneNode(false);
+    editButton.innerText = 'Edit';
+    editButton.setAttribute('onclick', `displayEditForm('${item.ngjarjaid}')`);
 
-    // let deleteButton = button.cloneNode(false);
-    // deleteButton.innerText = 'Delete';
-    // deleteButton.setAttribute('onclick', `deleteItem(${item.id})`);
+    let deleteButton = button.cloneNode(false);
+    deleteButton.innerText = 'Delete';
+    deleteButton.setAttribute('onclick', `deleteItem('${item.ngjarjaid}')`);
+
 
     let tr = tBody.insertRow();
     
@@ -194,11 +206,11 @@ function _displayItems(data) {
     let textNode = document.createTextNode(item.title);
     td2.appendChild(textNode);
 
-    // let td3 = tr.insertCell(2);
-    // td3.appendChild(editButton);
+    let td3 = tr.insertCell(1);
+    td3.appendChild(editButton);
 
-    // let td4 = tr.insertCell(3);
-    // td4.appendChild(deleteButton);
+    let td4 = tr.insertCell(2);
+    td4.appendChild(deleteButton);
   });
 
   todos = data;

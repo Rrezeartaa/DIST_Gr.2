@@ -11,6 +11,12 @@ style.
     display: none;
     }
 .antialiased.sans-serif.bg-gray-100.h-screen
+        div(id='editForm')
+            h3 Edit
+            form(action='javascript:void(0);' onsubmit='updateItem()')
+                input(type='hidden' id='edit-id')
+                input(type='text' id='edit-title')
+                input(type='submit' value='Save')
         button(onclick="getItems()") Test
         p(id="counter")
         table

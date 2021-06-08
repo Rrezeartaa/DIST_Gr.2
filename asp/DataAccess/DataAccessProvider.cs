@@ -27,14 +27,14 @@ namespace asp.DataAccess
   
         public void DeleteEventRecord(string id)  
         {  
-            var entity = _context.events.FirstOrDefault(t => t.ngjarja_id == id);  
+            var entity = _context.events.FirstOrDefault(t => t.ngjarjaid == id);  
             _context.events.Remove(entity);  
             _context.SaveChanges();  
         }  
   
         public Event GetEventSingleRecord(string id)  
         {  
-            return _context.events.FirstOrDefault(t => t.ngjarja_id == id);  
+            return _context.events.FirstOrDefault(t => t.ngjarjaid == id);  
         }  
   
         public List<Event> GetEventRecords()  
