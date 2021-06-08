@@ -50,24 +50,6 @@ class UserController {
       })
   }
 
-  showUserById(req, res){
-
-    // var post = req.body;
-    console.log(req.body.id)
-    // var id = parseInt(req.params.id);
-    // pool.query('SELECT * FROM students WHERE id = $1',[id], (error, results) => {
-    //     if(error){
-    //         throw error
-    //     }
-    //     var students = results.rows
-
-    //     res.render('students/student-profile', {
-    //         title: 'Studentet',
-    //         students: students
-    //     });
-    // })
-}
-
   editUser(req,res){
 
     var post = req.query;

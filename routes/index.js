@@ -55,7 +55,7 @@ router.get("/event", function(req, res, next){
 
 router.get('/studentet',user_cont.showUser);
 router.get('/updateUser', user_cont.editUser)
-router.get('/profile/:id', user_cont.showUserById)
+// router.get('/profile/:id', user_cont.showUserById)
 
 router.post('/createUser', user_cont.createUser);
 // router.post('/index', user_cont.login);
