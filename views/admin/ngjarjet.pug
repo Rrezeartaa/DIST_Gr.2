@@ -5,11 +5,18 @@ link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
 script(src="/static/socket.io.js")
 script(src="/static/user/vendor/jquery/jquery.min.js")
+script(src="javascripts/eventController.js" asp-append-version="true")
 style.
     [x-cloak] {
     display: none;
     }
 .antialiased.sans-serif.bg-gray-100.h-screen
+        button(onclick="getItems()") Test
+        p(id="counter")
+        table
+            tr
+                th Title
+            tbody(id="todos")
         div(x-data='app()' x-init='[initDate(), getNoOfDays()]' x-cloak='')
             .container.mx-auto.px-4.py-2(class='md:py-24')
                 .bg-white.rounded-lg.shadow.overflow-hidden
@@ -46,7 +53,6 @@ style.
                                             'border-purple-200 text-purple-800 bg-purple-100': event.event_theme === 'purple'\
                                             }")
                                                 p.text-sm.truncate.leading-tight(x-text='event.event_title')
-        
             .fixed.z-40.top-0.right-0.left-0.bottom-0.h-full.w-full(style=' background-color: rgba(0, 0, 0, 0.8)' x-show.transition.opacity='openEventModal')
                 .p-4.max-w-xl.mx-auto.relative.absolute.left-0.right-0.overflow-hidden.mt-24
                     .shadow.absolute.right-0.top-0.w-10.h-10.rounded-full.bg-white.text-gray-500.inline-flex.items-center.justify-center.cursor-pointer(class='hover:text-gray-800' x-on:click='openEventModal = !openEventModal')
@@ -75,10 +81,9 @@ style.
                                 | Cancel
                                 button.bg-gray-800.text-white.font-semibold.py-2.px-4.border.border-gray-700.rounded-lg.shadow-sm(type='submit' class='hover:bg-gray-700' @click='addEvent()')
                                 | Save Event
-        
-        script(src="javascripts/eventController.js" asp-append-version="true")
-        //- script(type="text/javascript")
-        //-     getItems()
+
+        script(type="text/javascript")
+            
         script.
             const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
