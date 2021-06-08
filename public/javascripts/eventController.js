@@ -1,84 +1,3 @@
-// // var moment = require('moment');
-// // const { pool } = require('../databaza/konektimi')
-// 'use strict'
-
-// const createError = require('http-errors')
-// const HttpStatus = require('http-status-codes')
-// const Event = require('../models/Event')
-// const fetch = require("node-fetch");
-
-// class EventController {
-//   constructor() {
-
-//     this.list = [{"id":1,"title":"Hej there!","event_date":"Wed Jun 02 2021","theme":"blue"}]
-//   }
-
-//   listAll (req, res) {
-    
-//     return res.status(HttpStatus.OK).json(this.list)
-//     // fetch('http://localhost:3000/api')
-//     // .then(response => response.json())
-//   }  //e kshyr edhe niher
-
-//   find (req, res, next) {
-//     try {
-//       const id = parseInt(req.params.id, 10)
-//       const event = this.list.find(x => x.id === id)
-//       if (!event) throw new createError.NotFound()
-
-//       return res.status(HttpStatus.OK).json(event)
-//     } catch (err) {
-//       next(err)
-//     }
-//   }
-
-//   createEvent (req, res, next) {
-//     try {
-//       const { title, event_date, theme } = req.body
-//       const id = this.list.length > 0 ? this.list[this.list.length - 1].id + 1 : 1
-//       const event = new Event({ id, title, event_date, theme })
-//       this.list.push(event)
-
-//       return res.status(HttpStatus.CREATED).json(event)
-//     } catch (err) {
-//       next(err)
-//     }
-//   }
-
-//   updateEvent (req, res, next) {
-//     try {
-//       const id = parseInt(req.params.id, 10)
-//       const { title, event_date, theme } = req.body
-//       const event = this.list.find(x => x.id === id)
-//       if (!event) throw new createError.NotFound()
-//       event.title = title
-//       event.event_date = event_date
-//       event.theme = theme
-
-//       return res.status(HttpStatus.OK).end()
-//     } catch (err) {
-//       next(err)
-//     }
-//   }
-
-//   deleteEvent (req, res, next) {
-//     try {
-//       const id = parseInt(req.params.id, 10)
-//       const event = this.list.find(x => x.id === id)
-//       if (!event) throw new createError.NotFound()
-//       this.list = this.list.filter(x => x.id !== id)
-
-//       return res.status(HttpStatus.OK).end()
-//     } catch (err) {
-//       next(err)
-//     }
-//   }
-// }
-
-// module.exports = EventController
-
-
-
 const uri = 'http://localhost:5000/api/events';
 
 let events = [];
@@ -104,21 +23,14 @@ function addItem() {
   fetch(uri,{
     
     method: 'POST',
-    // mode: 'no-cors',
     headers: {
-      // 'Origin': 'http://localhost:3000',
       'Access-Control-Allow-Origin':  'http://localhost:3000',
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-
     },
     body: JSON.stringify(item)
   })
     .then(response => response.json())
-    // .then(() => {
-    //   getItems();
-    //   addNameTextbox.value = '';
-    // })
     .catch(error => console.error('Unable to add item.', error));
 
 }
@@ -126,8 +38,9 @@ function addItem() {
 function deleteItem(id) {
   fetch(`${uri}/${id}`, {
     method: 'DELETE'
-  })
+  }) 
   .then(() => getItems())
+  //e rregullon qe kur te bohet delete mu fshi paraprakja
   .catch(error => console.error('Unable to delete item.', error));
 }
 
@@ -136,10 +49,8 @@ function updateItem() {
   const item = {
     ngjarjaid: itemId,
     title: document.getElementById('edit-title').value,
-    // event_date: document.getElementById('edit-date').value.trim(),
-    // theme: document.getElementById('edit-theme').value.trim,
-    event_date: 'test',
-    theme: 'green',
+    event_date: document.getElementById('edit-date').value,
+    theme: document.getElementById('edit-theme').value,
   };
 
   fetch(`${uri}`, {
@@ -153,6 +64,7 @@ function updateItem() {
     body: JSON.stringify(item)
   })
   .then(() => getItems())
+    //e rregullon qe kur te bohet delete mu fshi paraprakja
   .catch(error => console.error('Unable to update item.', error));
 
   return false;
@@ -161,16 +73,20 @@ function updateItem() {
 function _displayCount(itemCount) {
   const name = (itemCount === 1) ? 'to-do' : 'to-dos';
 
-  document.getElementById('counter').innerText = `${itemCount} ${name}`;
+  // document.getElementById('counter').innerText = `${itemCount} ${name}`;
 }
 
 function displayEditForm(id) {
   const item = todos.find(item => item.ngjarjaid === id);
   
   document.getElementById('edit-title').value = item.title;
-  // document.getElementById('edit-theme').value = item.theme;
+  document.getElementById('edit-theme').value = item.theme;
   document.getElementById('edit-id').value = item.ngjarjaid;
-  // document.getElementById('edit-data').checked = item.event_date;
+  document.getElementById('edit-date').value = item.event_date;
+  document.getElementById('edit-title').readOnly = false;
+  document.getElementById('edit-theme').readOnly = false;
+  document.getElementById('edit-date').readOnly = false;
+  document.getElementById('btnSubmit').disabled = false;
   document.getElementById('editForm').style.display = 'block';
 }
 
@@ -183,34 +99,40 @@ function _displayItems(data) {
   const button = document.createElement('button');
 
   data.forEach(item => {
-    // let isCompleteCheckbox = document.createElement('input');
-    // isCompleteCheckbox.type = 'checkbox';
-    // isCompleteCheckbox.disabled = true;
-    // isCompleteCheckbox.checked = item.isComplete;
 
     let editButton = button.cloneNode(false);
     editButton.innerText = 'Edit';
     editButton.setAttribute('onclick', `displayEditForm('${item.ngjarjaid}')`);
+    editButton.style.marginRight = "20px";
+    editButton.style.padding = "6px 10px 6px 10px";
+    editButton.style.backgroundColor = "green";
+    editButton.style.color = "white";
+    editButton.style.borderRadius = "5px";
 
     let deleteButton = button.cloneNode(false);
     deleteButton.innerText = 'Delete';
     deleteButton.setAttribute('onclick', `deleteItem('${item.ngjarjaid}')`);
-
+    deleteButton.style.color = "red";
 
     let tr = tBody.insertRow();
-    
-    // let td1 = tr.insertCell(0);
-    // td1.appendChild(isCompleteCheckbox);
 
     let td2 = tr.insertCell(0);
     let textNode = document.createTextNode(item.title);
     td2.appendChild(textNode);
 
     let td3 = tr.insertCell(1);
-    td3.appendChild(editButton);
+    let textNode1 = document.createTextNode(item.event_date);
+    td3.appendChild(textNode1);
 
     let td4 = tr.insertCell(2);
-    td4.appendChild(deleteButton);
+    let textNode2 = document.createTextNode(item.theme);
+    td4.appendChild(textNode2);
+
+    let td5 = tr.insertCell(3);
+    td5.appendChild(editButton);
+
+    let td6 = tr.insertCell(4);
+    td6.appendChild(deleteButton);
   });
 
   todos = data;
