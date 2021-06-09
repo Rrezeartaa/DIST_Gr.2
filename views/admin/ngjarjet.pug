@@ -1,17 +1,17 @@
 include adminPage
 link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
-script(src="/static/socket.io.js")
-script(src="/static/user/vendor/jquery/jquery.min.js")
+//- script(src="/static/socket.io.js")
+//- script(src="/static/user/vendor/jquery/jquery.min.js")
 script(src="javascripts/eventController.js" asp-append-version="true")
 style.
     [x-cloak] {
     display: none;
     }
 .antialiased.sans-serif.bg-gray-100.h-screen(x-data="{ isOpen: false }")
-        button(class="ml-32 bg-blue-500 text-white p-2 rounded-lg" @click="isOpen = true") Shiko ngjarjet e regjistruara
+        button(class="ml-32 mt-4 bg-blue-500 text-white p-2 rounded-lg" @click="isOpen = true") Shiko ngjarjet e regjistruara
         div(x-data='app()' x-init='[initDate(), getNoOfDays()]' x-cloak='')
-            .container.mx-auto.px-3.py-2(class='md:py-4')
+            .container.mx-auto.px-3.py-2.z-0(class='md:py-4')
                 .bg-white.rounded-lg.shadow.overflow-hidden
                     .flex.items-center.justify-between.py-2.px-6
                         div
@@ -45,7 +45,8 @@ style.
                                             'border-green-200 text-green-800 bg-green-100': event.event_theme === 'green',\
                                             'border-purple-200 text-purple-800 bg-purple-100': event.event_theme === 'purple'\
                                             }")
-                                                p.text-sm.truncate.leading-tight(x-text='event.event_title')
+                                                p.text-sm.truncate.leading-tight(x-text='event.event_title') 
+                                                //- qetu provo mi qit ngjarjet
             .fixed.z-40.top-0.right-0.left-0.bottom-0.h-full.w-full(style=' background-color: rgba(0, 0, 0, 0.8)' x-show.transition.opacity='openEventModal')
                 .p-4.max-w-xl.mx-auto.relative.absolute.left-0.right-0.overflow-hidden.mt-24
                     .shadow.absolute.right-0.top-0.w-10.h-10.rounded-full.bg-white.text-gray-500.inline-flex.items-center.justify-center.cursor-pointer(class='hover:text-gray-800' x-on:click='openEventModal = !openEventModal')
@@ -91,8 +92,6 @@ style.
                     event_title: "April Fool's Day",
                     event_theme: 'blue'
                     },
-                    //qetu me ja bo diqysh qe qato events qe i shtojna me dal qeshtu ////////////////////////////////////////
-                    //**********************************************************************************************************
                     {
                     event_date: new Date(2020, 3, 10),
                     event_title: "Birthday",

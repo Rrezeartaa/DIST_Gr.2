@@ -6,7 +6,7 @@ append head
 
 body.bg-gray-300.text-gray-800
     header.border-t-4.border-blue-600.bg-white.shadow-md
-        nav.container.mx-auto.px-4.flex.items-center.justify-between.py-4.z-40(x-data="{ isOpen: false }")
+        nav.container.mx-auto.px-4.flex.items-center.justify-between.py-4.z-40(x-data="{ isOpen: true }")
             div.flex
                 button(@click="isOpen = true")
                     svg(fill="currentColor" viewBox="0 0 24 24" width="24" height="24")
@@ -24,7 +24,7 @@ body.bg-gray-300.text-gray-800
                     button.text-2xl.mr-3.mt-1(@click="isOpen = false") &times;
                 ul
                     li
-                        a(href="#").flex.items-center.px-3.py-3
+                        a(href="/lendet").flex.items-center.px-3.py-3
                             img(src="https://img.icons8.com/cute-clipart/25/000000/book.png")
                             p.ml-3 Lendet 
                     li

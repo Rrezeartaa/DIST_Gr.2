@@ -1,3 +1,5 @@
+// const queue = require('C:/Users/Admin/DIST_PROJECT_Gr.2/public/javascripts/queue.js')
+
 const uri = 'http://localhost:5000/api/events';
 
 let events = [];
@@ -21,7 +23,6 @@ function addItem() {
   };
 
   fetch(uri,{
-    
     method: 'POST',
     headers: {
       'Access-Control-Allow-Origin':  'http://localhost:3000',
@@ -32,7 +33,7 @@ function addItem() {
   })
     .then(response => response.json())
     .catch(error => console.error('Unable to add item.', error));
-
+    // queue.send('incoming', 'Eshte krijuar nje event i ri!')
 }
 
 function deleteItem(id) {

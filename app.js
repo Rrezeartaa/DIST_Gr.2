@@ -12,6 +12,8 @@ var logger = require('morgan');
 const server = require("http").Server(app);
 app.set("view engine", "ejs");
 const io = require("socket.io")(server);
+const WebSocket = require('ws');
+var redis = require('redis');
 require("dotenv").config();
 const initializePassport = require("C:/Users/Admin/DIST_PROJECT_Gr.2/controllers/passport.js");
 

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/webtutsplus/videoChat-WebFrontend#readme",
   "dependencies": {
+    "amqplib": "^0.8.0",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
@@ -40,8 +41,11 @@
     "peer": "^0.6.1",
     "pug": "2.0.0-beta11",
     "randomcolor": "^0.6.2",
+    "redis": "^3.1.2",
+    "redis-server": "^1.2.2",
     "socket.io": "^4.1.2",
     "socket.io-client": "^4.1.2",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "websocket": "^1.0.34"
   }
 }
