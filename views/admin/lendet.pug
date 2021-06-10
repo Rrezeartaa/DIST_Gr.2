@@ -1,6 +1,7 @@
 include adminPage
 link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
+script(src="javascripts/eventController.js" asp-append-version="true")
 
 div.bg-white
     div(x-data="{ isOpen: false }")
@@ -23,11 +24,11 @@ div.bg-white
                                         td.py-3.px-6.text-left.whitespace-nowrap
                                             .flex.items-center
                                                 .mr-2
-                                                    span.font-medium kk
+                                                    span.font-medium#id
                                         td.py-3.px-6.text-left
                                             .flex.items-center
                                                 .mr-2   
-                                                    span.font-medium kk
+                                                    span.font-medium#emri
                                         td.py-3.px-6.text-left
                                             .flex.items-center
                                                 .mr-2   
@@ -40,4 +41,7 @@ div.bg-white
                                                 form( method="post", action="#") 
                                                     input(name="id", type="hidden", value='') 
                                                     input(id="delete", value="Delete", type="submit" class='bg-red-500 rounded-md px-4 py-2 text-white')
-        //- include shtoModal
+
+                                        
+ 
+

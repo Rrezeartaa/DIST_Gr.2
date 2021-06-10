@@ -3,10 +3,11 @@ import com.example.java.exception.ResourceNotFoundException;
 import com.example.java.models.Lendet;
 import com.example.java.repository.LendetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 import javax.validation.Valid;
 
 @RestController
@@ -16,8 +17,8 @@ public class LendetController {
     private LendetRepository lendetRepository;
 
     @GetMapping("/lendet")
-    public Page<Lendet> getLendet(Pageable pageable) {
-        return lendetRepository.findAll(pageable);
+    public List<Lendet> getLendet() {
+        return lendetRepository.findAll();
     }
 
     @PostMapping("/lendet")
