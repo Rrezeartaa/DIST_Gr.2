@@ -5,16 +5,13 @@ import javax.persistence.*;
 @Table(name = "lendet")
 public class Lendet {
     @Id
-    @GeneratedValue(generator = "lendet_generator")
-    @SequenceGenerator(
-            name = "lendet_generator",
-            sequenceName = "lendet_sequence",
-            initialValue = 1000
-    )
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
-    @Column(columnDefinition = "emri")
-    private String emri;
+    @Column(name = "id")
+    public Long id;
+
+    @Column(name = "emri")
+    public String emri;
 
 }
 
