@@ -41,6 +41,8 @@ router.post('/createUser', user_cont.createUser);
 
 router.post('/updateUser', user_cont.updateUser)
 router.post('/deleteUser/:id', user_cont.deleteUser)
+router.post('/editPassword', user_cont.editPassword)
+
 
 module.exports = router;
 

@@ -36,9 +36,6 @@ include adminPage
               .col-span-6(class='sm:col-span-3 lg:col-span-2')
                 label.block.text-sm.font-medium.text-gray-700(for='email') Email
                 input#email.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='email' value=email name='email' autocomplete='email' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" required)
-              .col-span-6(class='sm:col-span-3 lg:col-span-2')
-                label.block.text-sm.font-medium.text-gray-700(for='password') Password
-                input#password.mt-1.block.w-full.shadow-sm.border-gray-300.rounded-md(type='password' value='' name='password' autocomplete='password' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' minlength="6")
           .px-4.py-3.bg-white.text-right(class='sm:px-6')
             button.inline-flex.justify-center.py-2.px-4.border.border-transparent.shadow-sm.text-sm.font-medium.rounded-md.text-white.bg-indigo-600(type='submit' class='hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500')
               | Save

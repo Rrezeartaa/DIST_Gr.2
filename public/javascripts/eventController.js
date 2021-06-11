@@ -1,5 +1,3 @@
-// const queue = require('C:/Users/Admin/DIST_PROJECT_Gr.2/public/javascripts/queue.js')
-
 const uri = 'http://localhost:5000/api/events';
 
 let events = [];
@@ -8,6 +6,24 @@ function getItems() {
   fetch(uri)
     .then(response => response.json())
     .then(data => _displayItems(data))
+    .catch(error => console.error('Unable to get items.', error));
+}
+
+// function displayItems(data) {
+
+//   data.forEach(item => {
+//     document.getElementById("emri").value = item.emri;
+    
+//     document.getElementById("id").value = item.id;
+    
+//   });
+
+// }
+
+function getLendet(){
+  fetch('http://localhost:8080/lendet')
+    .then(response => response.json())
+    .then(data => displayItems(data))
     .catch(error => console.error('Unable to get items.', error));
 }
 
@@ -69,12 +85,6 @@ function updateItem() {
   .catch(error => console.error('Unable to update item.', error));
 
   return false;
-}
-
-function _displayCount(itemCount) {
-  const name = (itemCount === 1) ? 'to-do' : 'to-dos';
-
-  // document.getElementById('counter').innerText = `${itemCount} ${name}`;
 }
 
 function displayEditForm(id) {
