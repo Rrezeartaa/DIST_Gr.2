@@ -3,26 +3,10 @@ include faqjakryesore
 link(href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' rel='stylesheet')
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js' defer='')
 div(x-data="{ isOpen: false }")
-  input(name="id", type="hidden", value=2) 
-  .container.mx-auto.my-5.p-5
-    .no-wrap(class='md:flex md:-mx-2')
-      // Left Side
-      .w-full(class='md:w-3/12 md:mx-2')
-        // Profile Card
-        .bg-white.p-3.border-t-4.border-blue-600
-          .image.overflow-hidden
-            img.h-20.w-20.mx-auto(src='https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg' alt='')
-          h1.text-gray-900.font-bold.text-xl.leading-8.my-1 
-          h3.text-gray-600.font-lg.text-semibold.leading-6 Studente
-          p.text-sm.text-gray-500.leading-6(class='hover:text-gray-600')
-            | Lorem ipsum dolor sit amet
-            | consectetur adipisicing elit.
-            | Reprehenderit, eligendi dolorum sequi illum 
-          ul.bg-gray-100.text-gray-600.py-2.px-3.mt-3.divide-y.rounded.shadow-sm(class='hover:text-gray-700 hover:shadow')
-            li.flex.items-center.py-3
-              span Member since
-              span.ml-auto #{user.created_at}
-      .w-full.mx-2.h-64(class='md:w-9/12')
+  input(name="id", type="hidden", value=user.id) 
+  .mx-auto.my-5
+    .no-wrap(class='md:flex md:mx-auto')
+      .w-full.mx-auto.h-64(class='md:w-6/12')
         .bg-white.p-3.shadow-sm.rounded-sm
           .flex.items-center.space-x-2.font-semibold.text-gray-900.leading-8
             span(clas='text-blue-600')
@@ -53,5 +37,4 @@ div(x-data="{ isOpen: false }")
               .grid.grid-cols-2
                 .px-4.py-2.font-semibold Fjalekalimi
                 a(@click="isOpen = true").px-4.py-2.cursor-pointer Ndrysho fjalekalimin
-                //- kjo ka met pa u funksionalizu
   include changePassword
