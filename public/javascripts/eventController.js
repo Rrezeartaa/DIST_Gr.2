@@ -9,16 +9,23 @@ function getItems() {
     .catch(error => console.error('Unable to get items.', error));
 }
 
-// function displayItems(data) {
+function getEvents() {
+  fetch(uri)
+    .then(response => response.json())
+    .then(data => displayItems(data))
+    .catch(error => console.error('Unable to get items.', error));
+}
 
-//   data.forEach(item => {
-//     document.getElementById("emri").value = item.emri;
-    
-//     document.getElementById("id").value = item.id;
-    
-//   });
+function displayItems(data) {
 
-// }
+  data.forEach(item => {
+    document.getElementById("title").textContent = item.title;
+    
+    document.getElementById("date").textContent = item.event_date;
+    
+  });
+
+}
 
 function getLendet(){
   fetch('http://localhost:8080/lendet')
@@ -103,10 +110,6 @@ function displayEditForm(id) {
 
 function _displayItems(data) {
   const tBody = document.getElementById('todos');
-  // tBody.innerHTML = '';
-
-  _displayCount(data.length);
-
   const button = document.createElement('button');
 
   data.forEach(item => {
