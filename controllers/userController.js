@@ -1,5 +1,6 @@
 const { pool } = require('../databaza/konektimi')
 const bcrypt = require('bcrypt')
+const moment = require('moment')
 
 class UserController {
 
@@ -55,15 +56,16 @@ class UserController {
       if (error) {
         throw error
       }
-
       var students = results.rows
-
+      
+      var momentDate = moment(students[0]['data'])
+     
           res.render('admin/editModal', {
               id: id,
               idS: students[0]['ids'],
               name: students[0]['name'],        
               prindi: students[0]['prindi'],
-              data: students[0]['data'],
+              data: momentDate.format("DD/MM/YYYY"),
               vendi: students[0]['vendi'],
               adresa: students[0]['adresa'],
               numri: students[0]['numri'],
