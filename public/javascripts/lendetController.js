@@ -1,10 +1,11 @@
 function addLenda() {
-  const addNameTextbox = document.getElementById('emri');
+  const emri = document.getElementById('name');
 
   const item = {
-    emri: addNameTextbox.value
+    emri: emri.value,
   };
 
+  console.log(emri.value)
   fetch('http://localhost:8080/lendet',{
     method: 'POST',
     headers: {
