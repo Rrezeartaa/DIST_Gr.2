@@ -17,4 +17,6 @@ function addLenda() {
   })
     .then(response => response.json())
     .catch(error => console.error('Unable to add item.', error));
+    document.getElementById('name').value = "";
+
 }
