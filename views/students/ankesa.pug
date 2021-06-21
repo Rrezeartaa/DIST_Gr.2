@@ -1,3 +1,58 @@
 link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
 script(src='javascripts/eventController.js' asp-append-version='true')
+.bg-white
+  div(x-data='{ isOpen: false }')
+    p.text-2xl.font-semibold.text-center Ankesa
+    .overflow-x-auto.ml-40
+      .flex.items-center.justify-center.font-sans.overflow-hidden
+        .w-full(class='lg:w-5/6')
+          .bg-white.shadow-md.rounded.my-6
+            // Code on GiHub: https://github.com/vitalikda/form-floating-labels-tailwindcss
+            style.
+              .-z-1 {
+              z-index: -1;
+              }
+              .origin-0 {
+              transform-origin: 0%;
+              }
+              input:focus ~ label,
+              input:not(:placeholder-shown) ~ label,
+              textarea:focus ~ label,
+              textarea:not(:placeholder-shown) ~ label,
+              select:focus ~ label,
+              select:not([value='']):valid ~ label {
+              /* @apply transform; scale-75; -translate-y-6; */
+              --tw-translate-x: 0;
+              --tw-translate-y: 0;
+              --tw-rotate: 0;
+              --tw-skew-x: 0;
+              --tw-skew-y: 0;
+              transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate))
+              skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+              --tw-scale-x: 0.75;
+              --tw-scale-y: 0.75;
+              --tw-translate-y: -1.5rem;
+              }
+              input:focus ~ label,
+              select:focus ~ label {
+              /* @apply text-black; left-0; */
+              --tw-text-opacity: 1;
+              color: rgba(0, 0, 0, var(--tw-text-opacity));
+              left: 0px;
+              }
+            .min-h-screen.bg-gray-100.p-0(class='sm:p-12')
+              .mx-auto.max-w-md.px-6.py-12.bg-white.border-0.shadow-lg(class='sm:rounded-3xl')
+                h1.text-2xl.font-bold.mb-8.text-center Bej Ankese
+                form#form(novalidate='')
+                  .relative.z-0.w-full.mb-5
+                    input.pt-3.pb-2.block.w-full.px-0.mt-0.bg-transparent.border-0.border-b-2.appearance-none.border-gray-200(type='text' name='name' placeholder='Enter name' required='' class='focus:outline-none focus:ring-0 focus:border-black')
+                    span#error.text-sm.text-red-600.hidden Name is required
+                  .relative.z-0.w-full.mb-5
+                    input.pt-3.pb-2.block.w-full.px-0.mt-0.bg-transparent.border-0.border-b-2.appearance-none.border-gray-200(type='email' name='email' placeholder='Enter email address ' class='focus:outline-none focus:ring-0 focus:border-black')
+                    span#error.text-sm.text-red-600.hidden Email address is required
+                  .relative.z-0.w-full.mt-5
+                    .mt-1
+                      textarea#about.pt-5.pb-2.shadow-sm.mt-1.block.w-full.border-gray-300.rounded-md(name='about' rows='3' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' placeholder='Sheno ankesen')
+                  button#button.w-full.px-6.py-3.mt-10.text-lg.text-white.transition-all.duration-150.ease-linear.rounded-lg.shadow.outline-none.bg-pink-500(type='button' class='hover:bg-pink-600 hover:shadow-lg focus:outline-none')
+                    | Dergo Ankesen
