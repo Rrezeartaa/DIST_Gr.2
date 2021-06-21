@@ -43,9 +43,12 @@ router.get('/notat', function(req, res, next) {
   res.render('admin/nota', { title: 'Notat' });
 });
 
-router.get('/stafi', function(req, res, next) {
-  res.render('admin/stafi', { title: 'Stafi' });
-});
+// router.get('/stafi', function(req, res, next) {
+//   res.render('admin/stafi', { title: 'Stafi' });
+// });
+
+router.get('/stafi',user_cont.showProfessor);
+
 
 router.get('/ankesa', function(req, res, next) {
   res.render('students/ankesa', { title: 'Lendet' });
@@ -73,7 +76,6 @@ router.get('/lendet', function(req, res, next) {
     });
    
 });
-// router.get('/lendet',user_cont.showProfessor);
 
 router.get('/studentet',user_cont.showUser);
 router.get('/updateUser', user_cont.editUser)

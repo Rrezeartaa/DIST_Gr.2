@@ -1,0 +1,133 @@
+include faqjakryesore
+link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
+script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
+script(src='javascripts/eventController.js' asp-append-version='true')
+.bg-white
+  div(x-data='{ isOpen: false }')
+    p.text-2xl.font-semibold.text-center Personeli Akademik
+    .px-10.justify-end.flex
+      .shadow.flex
+        input.w-full.rounded.p-2(type='text' placeholder='Search...')
+        button.bg-white.w-auto.flex.justify-end.items-center.text-blue-500.p-2(class='hover:text-blue-400')
+          i.material-icons search
+    .overflow-x-auto.ml-40
+      .flex.items-center.justify-center.font-sans.overflow-hidden
+        .w-full(class='lg:w-5/6')
+          .bg-white.shadow-md.rounded.my-6
+            table.min-w-max.w-full.table-auto
+              thead.bg-gray-200
+                tr.bg-gray-200.text-gray-600.uppercase.text-sm.leading-normal
+                th.py-3.px-6.text-left Foto
+                th.py-3.px-6.text-left Emri i profesorit
+                th.py-3.px-6.text-left Lendet
+                th.py-3.px-6.text-left Shkarko CV
+              each val, i in students
+                tbody.text-gray-600.text-sm.font-light
+                  tr.border-b.border-gray-200(class='hover:bg-gray-100')
+                    td.py-3.px-6.text-left.whitespace-nowrap
+                      .flex.items-center
+                        .product-img
+                          img(src='7.jpg' width='100' height='100' alt='')
+                    td.py-3.px-6.text-left
+                      .flex.items-center
+                        .mr-2
+                          span.font-medium #{val.name}
+                    td.py-3.px-6.text-left
+                      .flex.items-center
+                        .mr-2
+                          span.font-medium MATEMATIKE
+                    td.pt-4.px-6.text-center
+                      .flex.flex-row
+                        form(method='get' action='#')
+                          input(name='id' type='hidden' value='')
+                          input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white(value='Sharko' type='submit' @click='isOpenModal = true')
+                  //- tr.border-b.border-gray-200(class='hover:bg-gray-100')
+                  //-   td.py-3.px-6.text-left.whitespace-nowrap
+                  //-     .flex.items-center
+                  //-       .product-img
+                  //-         img(src='2.jpg' width='100' height='100' alt='')
+                  //-   td.py-3.px-6.text-left
+                  //-     .flex.items-center
+                  //-       .mr-2
+                  //-         span.font-medium Fizike
+                  //-   td.py-3.px-6.text-left
+                  //-     .flex.items-center
+                  //-       .mr-2
+                  //-         span.font-medium Skender
+                  //-   td.pt-4.px-6.text-center
+                  //-     .flex.flex-row
+                  //-       form(method='get' action='#')
+                  //-         input(name='id' type='hidden' value='')
+                  //-         input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white(value='Sharko' type='submit' @click='isOpenModal = true')
+                  //- tr.border-b.border-gray-200(class='hover:bg-gray-100')
+                  //-   td.py-3.px-6.text-left.whitespace-nowrap
+                  //-     .flex.items-center
+                  //-       .product-img
+                  //-         img(src='8.jpg' width='100' height='100' alt='')
+                  //-   td.py-3.px-6.text-left
+                  //-     .flex.items-center
+                  //-       .mr-2
+                  //-         span.font-medium Anglisht
+                  //-   td.py-3.px-6.text-left
+                  //-     .flex.items-center
+                  //-       .mr-2
+                  //-         span.font-medium Gazmend
+                  //-   td.pt-4.px-6.text-center
+                  //-     .flex.flex-row
+                  //-       form(method='get' action='#')
+                  //-         input(name='id' type='hidden' value='')
+                  //-         input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white(value='Sharko' type='submit' @click='isOpenModal = true')
+                  //- tr.border-b.border-gray-200(class='hover:bg-gray-100')
+                  //-   td.py-3.px-6.text-left.whitespace-nowrap
+                  //-     .flex.items-center
+                  //-       .product-img
+                  //-         img(src='4.jpg' width='100' height='100' alt='')
+                  //-   td.py-3.px-6.text-left
+                  //-     .flex.items-center
+                  //-       .mr-2
+                  //-         span.font-medium Kimi
+                  //-   td.py-3.px-6.text-left
+                  //-     .flex.items-center
+                  //-       .mr-2
+                  //-         span.font-medium Valon
+                  //-   td.pt-4.px-6.text-center
+                  //-     .flex.flex-row
+                  //-       form(method='get' action='#')
+                  //-         input(name='id' type='hidden' value='')
+                  //-         input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white(value='Sharko' type='submit' @click='isOpenModal = true')
+                  //- tr.border-b.border-gray-200(class='hover:bg-gray-100')
+                  //-   td.py-3.px-6.text-left.whitespace-nowrap
+                  //-     .flex.items-center
+                  //-       .product-img
+                  //-         img(src='5.jpg' width='100' height='100' alt='')
+                  //-   td.py-3.px-6.text-left
+                  //-     .flex.items-center
+                  //-       .mr-2
+                  //-         span.font-medium Kimi
+                  //-   td.py-3.px-6.text-left
+                  //-     .flex.items-center
+                  //-       .mr-2
+                  //-         span.font-medium Valon
+                  //-   td.pt-4.px-6.text-center
+                  //-     .flex.flex-row
+                  //-       form(method='get' action='#')
+                  //-         input(name='id' type='hidden' value='')
+                  //-         input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white(value='Sharko' type='submit' @click='isOpenModal = true')
+                  //- tr.border-b.border-gray-200(class='hover:bg-gray-100')
+                  //-   td.py-3.px-6.text-left.whitespace-nowrap
+                  //-     .flex.items-center
+                  //-       .product-img
+                  //-         img(src='6.jpg' width='100' height='100' alt='')
+                  //-   td.py-3.px-6.text-left
+                  //-     .flex.items-center
+                  //-       .mr-2
+                  //-         span.font-medium Kimi
+                  //-   td.py-3.px-6.text-left
+                  //-     .flex.items-center
+                  //-       .mr-2
+                  //-         span.font-medium Valon
+                  //-   td.pt-4.px-6.text-center
+                  //-     .flex.flex-row
+                  //-       form(method='get' action='#')
+                  //-         input(name='id' type='hidden' value='')
+                  //-         input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white(value='Sharko' type='submit' @click='isOpenModal = true')

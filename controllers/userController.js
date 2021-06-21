@@ -48,14 +48,14 @@ class UserController {
   }
 
   showProfessor(req, res){
-    pool.query('SELECT name FROM students where isprofessor = 0', (error, results) => {
+    pool.query('SELECT name FROM students where isprofessor = 1', (error, results) => {
         if(error){
             throw error
         }
         var students = results.rows
 
-        res.render('admin/createLenda', {
-            title: 'Studentet',
+        res.render('students/stafi', {
+            title: 'Stafi',
             students: students
         });
     })
