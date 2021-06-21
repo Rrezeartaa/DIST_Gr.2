@@ -31,6 +31,28 @@ router.get('/admin-index', function(req, res, next) {
   res.render('admin/adminPage', { title: 'Faqja Kryesore' });
 });
 
+router.get('/st-lendet', function(req, res, next) {
+  res.render('students/lendet', { title: 'Lendet' });
+});
+
+router.get('/literatura', function(req, res, next) {
+  res.render('students/literatura', { title: 'Lendet' });
+});
+
+router.get('/notat', function(req, res, next) {
+  res.render('admin/nota', { title: 'Notat' });
+});
+
+router.get('/stafi', function(req, res, next) {
+  res.render('admin/stafi', { title: 'Stafi' });
+});
+
+router.get('/ankesa', function(req, res, next) {
+  res.render('students/ankesa', { title: 'Lendet' });
+});
+
+
+
 router.get("/event", function(req, res, next){
 	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
 });
@@ -44,14 +66,14 @@ router.get('/lendet', function(req, res, next) {
         console.log(item.emri)
 
       })
-    }).then(  res.render('admin/lendet', { title: 'Lendet', emri: res.emri })
+    }).then( res.render('admin/lendet', { title: 'Lendet', emri: res.emri })
     )
     .catch(err => {
         console.log(err); 
     });
    
 });
-// router.get('/lendet',lendet_cont.getLendet);
+// router.get('/lendet',user_cont.showProfessor);
 
 router.get('/studentet',user_cont.showUser);
 router.get('/updateUser', user_cont.editUser)

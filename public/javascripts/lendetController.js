@@ -3,6 +3,7 @@ function addLenda() {
 
   const item = {
     emri: emri.value,
+    // prof_id: emri.value
   };
 
   console.log(emri.value)
