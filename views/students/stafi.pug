@@ -20,3 +20,43 @@ script(src='javascripts/eventController.js' asp-append-version='true')
                 th.py-3.px-6.text-left Emri i profesorit
                 th.py-3.px-6.text-left Lendet
                 th.py-3.px-6.text-left Shkarko CV
+ tbody.text-gray-600.text-sm.font-light
+                tr.border-b.border-gray-200(class='hover:bg-gray-100')
+                  td.py-3.px-6.text-left.whitespace-nowrap
+                    .flex.items-center
+                      .product-img
+                        img(src='1.jpg' width='100' height='100' alt='')
+                  td.py-3.px-6.text-left
+                    .flex.items-center
+                      .mr-2
+                        span.font-medium Qefsere
+                  td.py-3.px-6.text-left
+                    .flex.items-center
+                      .mr-2
+                        span.font-medium MATEMATIKE
+                  td.pt-4.px-6.text-center
+                    .flex.flex-row
+                      form(method='get' action='#')
+                        input(name='id' type='hidden' value='')
+                        input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white(value='Sharko' type='submit' @click='isOpenModal = true')
+                tr.border-b.border-gray-200(class='hover:bg-gray-100')
+                  td.py-3.px-6.text-left.whitespace-nowrap
+                    .flex.items-center
+                      .product-img
+                        img(src='2.jpg' width='100' height='100' alt='')
+                  td.py-3.px-6.text-left
+                    .flex.items-center
+                      .mr-2
+                        span.font-medium Fizike
+                  td.py-3.px-6.text-left
+                    .flex.items-center
+                      .mr-2
+                        span.font-medium Skender
+                  td.pt-4.px-6.text-center
+                    .flex.flex-row
+                      form(method='get' action='#')
+                        input(name='id' type='hidden' value='')
+                        input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white(value='Sharko' type='submit' @click='isOpenModal = true')
+                tr.border-b.border-gray-200(class='hover:bg-gray-100')
+                  td.py-3.px-6.text-left.whitespace-nowrap
+                    .flex.items-center
