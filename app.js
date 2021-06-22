@@ -72,6 +72,11 @@ app.get("/chat", checkNotAuthenticated, function(req, res, next){
 	res.render("students/student-chat", { user: req.user });
 });
 
+app.get('/ankesa', checkNotAuthenticated, function(req, res, next) {
+  res.render('students/ankesa', { user: req.user });
+});
+
+
 app.get("/logout", (req, res) => {
     req.logout();
     res.render("loginSt", { message: "You have logged out successfully" });

@@ -25,10 +25,6 @@ router.get('/map', function(req, res, next) {
   res.render('map', { title: 'Harta' });
 });
 
-// app.get('/student-profile', checkNotAuthenticated, function(req, res, next) {
-//   res.render('students/student-profile', { user: req.user });  
-// });
-
 router.get('/st-lendet', function(req, res, next) {
   res.render('students/lendet', { title: 'Lendet' });
 });
@@ -37,15 +33,15 @@ router.get('/literatura', function(req, res, next) {
   res.render('students/literatura', { title: 'Lendet' });
 });
 
+router.get('/ankesat', function(req, res, next) {
+  res.render('admin/ankesat', { title: 'Login' });
+});
+
 router.get('/notat', function(req, res, next) {
   res.render('professor/nota', { title: 'Notat' });
 });
 
 router.get('/stafi',user_cont.showProfessor);
-
-router.get('/ankesa', function(req, res, next) {
-  res.render('students/ankesa', { title: 'Lendet' });
-});
 
 router.get("/event", function(req, res, next){
 	res.render("professor/ngjarjet", { title: 'Ngjarjet' });

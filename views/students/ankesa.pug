@@ -45,10 +45,10 @@ script(src='javascripts/ankesatController.js' asp-append-version='true')
                 h1.text-2xl.font-bold.mb-8.text-center Bej Ankese
                 form(action="javascript:void(0);" method="POST" onsubmit="addAnkesa()")
                   .relative.z-0.w-full.mb-5
-                    input.pt-3.pb-2.block.w-full.px-0.mt-0.bg-transparent.border-0.border-b-2.appearance-none.border-gray-200(type='text' name='name' id="name" placeholder='Enter name' required='' class='focus:outline-none focus:ring-0 focus:border-black')
+                    input.pt-3.pb-2.block.w-full.px-0.mt-0.bg-transparent.border-0.border-b-2.appearance-none.border-gray-200(type='text' value=user.name name='name' id="name" placeholder='Enter name' required='' class='focus:outline-none focus:ring-0 focus:border-black')
                     span#error.text-sm.text-red-600.hidden Name is required
                   .relative.z-0.w-full.mb-5
-                    input.pt-3.pb-2.block.w-full.px-0.mt-0.bg-transparent.border-0.border-b-2.appearance-none.border-gray-200(type='email' name='email' id="email" placeholder='Enter email address ' class='focus:outline-none focus:ring-0 focus:border-black')
+                    input.pt-3.pb-2.block.w-full.px-0.mt-0.bg-transparent.border-0.border-b-2.appearance-none.border-gray-200(type='email' value=user.email name='email' id="email" placeholder='Enter email address ' class='focus:outline-none focus:ring-0 focus:border-black')
                     span#error.text-sm.text-red-600.hidden Email address is required
                   .relative.z-0.w-full.mt-5
                     .mt-1
