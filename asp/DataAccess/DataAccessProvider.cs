@@ -18,7 +18,13 @@ namespace asp.DataAccess
             _context.events.Add(events);  
             _context.SaveChanges();  
         }  
-  
+
+        public void AddAnkesaRecord(Ankesa ankesat)  
+        {  
+            _context.ankesat.Add(ankesat);  
+            _context.SaveChanges();  
+        }  
+
         public void UpdateEventRecord(Event events)  
         {  
             _context.events.Update(events);  
@@ -41,5 +47,10 @@ namespace asp.DataAccess
         {  
             return _context.events.ToList();  
         }  
+
+        public List<Ankesa> GetAnkesaRecords()  
+        {  
+            return _context.ankesat.ToList();  
+        } 
     }  
 }

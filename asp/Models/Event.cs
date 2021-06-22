@@ -8,7 +8,7 @@ namespace asp.Models
         public string ngjarjaid {get; set;}
         public string title {get; set;}
         public string event_date {get; set;}
-        public string theme{get; set;}
+        public string theme {get; set;}
 
     }
 }

@@ -8,7 +8,9 @@ namespace asp.DataAccess
         {  
         }  
   
-        public DbSet<Event> events { get; set; }  
+        public DbSet<Event> events { get; set; } 
+
+        public DbSet<Ankesa> ankesat { get; set; }  
   
         protected override void OnModelCreating(ModelBuilder builder)  
         {  

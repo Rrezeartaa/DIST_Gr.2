@@ -2,10 +2,9 @@ include adminPage
 link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
 script(src="javascripts/lendetController.js" asp-append-version="true")
-
 div.bg-white
     div(x-data="{ isOpen: false }")
-        button(onclick='test()') Test
+        button(onclick="getItems()" class="ml-32 bg-blue-500 text-white p-2 rounded-lg") test
         p.text-2xl.font-semibold.text-center Lendet
         .px-10.justify-end.flex
             button.bg-blue-600.text-white.rounded.p-2.mr-20(@click="isOpen = true") Shto lende
@@ -18,6 +17,7 @@ div.bg-white
                                 tr.bg-gray-200.text-gray-600.uppercase.text-sm.leading-normal
                                 th.py-3.px-6.text-left ID
                                 th.py-3.px-6.text-left Emri i lendes
+                                th.py-3.px-6.text-left Profesori
                                 th.py-3.px-6.text-left Numri i studenteve
                                 th.py-3.px-6.text-left                             
                             tbody.text-gray-600.text-sm.font-light
@@ -29,7 +29,11 @@ div.bg-white
                                         td.py-3.px-6.text-left
                                             .flex.items-center
                                                 .mr-2   
-                                                    span.font-medium#emri #{emri}
+                                                    span.font-medium#emri
+                                        td.py-3.px-6.text-left
+                                            .flex.items-center
+                                                .mr-2   
+                                                    span.font-medium kk
                                         td.py-3.px-6.text-left
                                             .flex.items-center
                                                 .mr-2   
