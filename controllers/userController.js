@@ -20,7 +20,7 @@ class UserController {
       const saltRounds = 10;
       bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(password, salt, function(err, hash) {
-        pool.query('INSERT INTO students (idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password, isprofessor) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, hash], (error, results) => {
+        pool.query('INSERT INTO students (idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password, isprofessor) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, hash, isprofessor], (error, results) => {
         if (error) {
                 throw error
             }
@@ -34,7 +34,7 @@ class UserController {
     }
 
   showUser(req, res){
-      pool.query('SELECT * FROM students where isprofessor = 0', (error, results) => {
+      pool.query('SELECT * FROM students', (error, results) => {
           if(error){
               throw error
           }
@@ -84,7 +84,7 @@ class UserController {
               adresa: students[0]['adresa'],
               numri: students[0]['numri'],
               gjinia : students[0]['gjinia'],
-              email: students[0]['email']
+              email: students[0]['email'],
           });
     })  
 
@@ -123,7 +123,7 @@ editPassword(req,res){
           if (error) {
               throw error
           }
-          res.redirect('/users')
+          res.redirect('/student-profile')
       });
 });});
 }
