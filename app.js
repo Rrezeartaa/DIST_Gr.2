@@ -48,15 +48,22 @@ io.of( '/stream' ).on( 'connection', stream );
 
 
 app.get("/loginSt", checkAuthenticated, (req, res) => {
-    // console.log(req.session.flash.error);
     res.render("loginSt");
 });
   
 app.get("/index", checkNotAuthenticated, (req, res) => {
-    console.log(req.isAuthenticated());  
-    res.render("students/faqjakryesore", { user: req.user.name }); 
+
+  if(req.user.isprofessor == 0){
+    res.render("students/faqjakryesore", { user: req.user.name });
+  }
+  else if(req.user.isprofessor == 2){
+      res.render("admin/adminPage"); 
+  }
+  else if(req.user.isprofessor == 1){
+      res.render('professor/adminPage', { title: 'Faqja Kryesore' });
+  }
 });
-  
+
 app.get('/student-profile', checkNotAuthenticated, function(req, res, next) {
   res.render('students/student-profile', { user: req.user });  
 });

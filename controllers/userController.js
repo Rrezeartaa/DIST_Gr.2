@@ -5,7 +5,7 @@ const moment = require('moment')
 class UserController {
 
     createUser(req,res){
-      const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password} = req.body
+      const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password, isprofessor} = req.body
       
       pool.query('SELECT * from students WHERE email = $1 or ids = $2', [email, idS], (error, results) => {
         var emaili = results.rows
@@ -20,12 +20,12 @@ class UserController {
       const saltRounds = 10;
       bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(password, salt, function(err, hash) {
-        pool.query('INSERT INTO students (idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, hash], (error, results) => {
+        pool.query('INSERT INTO students (idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password, isprofessor) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, hash], (error, results) => {
         if (error) {
                 throw error
             }
 
-            res.redirect('/studentet')
+          res.redirect('/users')
         })
         });
       });
@@ -34,14 +34,14 @@ class UserController {
     }
 
   showUser(req, res){
-      pool.query('SELECT * FROM students', (error, results) => {
+      pool.query('SELECT * FROM students where isprofessor = 0', (error, results) => {
           if(error){
               throw error
           }
           var students = results.rows
 
-          res.render('admin/shtoStudent', {
-              title: 'Studentet',
+          res.render('admin/users', {
+              title: 'Users',
               students: students
           });
       })
@@ -60,7 +60,6 @@ class UserController {
         });
     })
 }
-
 
   editUser(req,res){
 
@@ -102,7 +101,7 @@ class UserController {
             if (error) {
                 throw error
             }
-            res.redirect('/studentet')
+            res.redirect('/users')
         });
         
   }
@@ -124,7 +123,7 @@ editPassword(req,res){
           if (error) {
               throw error
           }
-          res.redirect('/studentet')
+          res.redirect('/users')
       });
 });});
 }
@@ -141,7 +140,7 @@ deleteUser(req,res){
     if (error) {
       throw error
     }
-    res.redirect('/studentet')
+    res.redirect('/users')
   })
 }
 

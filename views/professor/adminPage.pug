@@ -24,13 +24,17 @@ body.bg-gray-300.text-gray-800
                     button.text-2xl.mr-3.mt-1(@click="isOpen = false") &times;
                 ul
                     li
-                        a(href="/lendet").flex.items-center.px-3.py-3
-                            img(src="https://img.icons8.com/cute-clipart/25/000000/book.png")
-                            p.ml-3 Lendet 
+                        a(href="/notat").flex.items-center.px-3.py-3
+                            img(src="https://img.icons8.com/nolan/25/report-card.png")
+                            p.ml-3 Notat
                     li
-                        a(href="/users").flex.items-center.px-3.py-3
-                            img(src="https://img.icons8.com/ios-filled/25/000000/student-registration.png")
-                            p.ml-3 Shto studente
+                        a(href="/event").flex.items-center.px-3.py-3 
+                            img(src="https://img.icons8.com/carbon-copy/25/000000/calendar--v2.png")
+                            p.ml-3 Shto njoftime / ngjarje
+                    li
+                        a(href="#").flex.items-center.px-3.py-3 
+                            img(src="https://img.icons8.com/carbon-copy/25/000000/calendar--v2.png")
+                            p.ml-3 Shto literature
     div.absolute.bottom-0.right-0.w-auto.h-15.ml-50
         div.justify-end.flex
             a(href="/chat")

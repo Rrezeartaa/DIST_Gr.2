@@ -9,8 +9,6 @@ var lendet_controller = require('../controllers/lendetController');
 
 var user_cont = new user_controller();
 
-// var lendet_cont = new lendet_controller();
-
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'E-Shkolla' });
 });
@@ -27,9 +25,9 @@ router.get('/map', function(req, res, next) {
   res.render('map', { title: 'Harta' });
 });
 
-router.get('/admin-index', function(req, res, next) {
-  res.render('admin/adminPage', { title: 'Faqja Kryesore' });
-});
+// app.get('/student-profile', checkNotAuthenticated, function(req, res, next) {
+//   res.render('students/student-profile', { user: req.user });  
+// });
 
 router.get('/st-lendet', function(req, res, next) {
   res.render('students/lendet', { title: 'Lendet' });
@@ -40,24 +38,17 @@ router.get('/literatura', function(req, res, next) {
 });
 
 router.get('/notat', function(req, res, next) {
-  res.render('admin/nota', { title: 'Notat' });
+  res.render('professor/nota', { title: 'Notat' });
 });
 
-// router.get('/stafi', function(req, res, next) {
-//   res.render('admin/stafi', { title: 'Stafi' });
-// });
-
 router.get('/stafi',user_cont.showProfessor);
-
 
 router.get('/ankesa', function(req, res, next) {
   res.render('students/ankesa', { title: 'Lendet' });
 });
 
-
-
 router.get("/event", function(req, res, next){
-	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
+	res.render("professor/ngjarjet", { title: 'Ngjarjet' });
 });
 
 router.get('/lendet', function(req, res, next) {
@@ -77,7 +68,7 @@ router.get('/lendet', function(req, res, next) {
    
 });
 
-router.get('/studentet',user_cont.showUser);
+router.get('/users',user_cont.showUser);
 router.get('/updateUser', user_cont.editUser)
 
 router.post('/createUser', user_cont.createUser);
