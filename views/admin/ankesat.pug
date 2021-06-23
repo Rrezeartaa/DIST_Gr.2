@@ -1,7 +1,32 @@
 include adminPage
 link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
-script(src="javascripts/lendetController.js" asp-append-version="true")
+script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript")
+script.
+     $(document).ready(function () {  
+            $.getJSON('http://localhost:5000/api/ankesat')  
+            .done(function (data) {  
+                $.each(data, function (key, item) {  
+                    $('#ankesat').append(
+                        "<tr class='border-b border-gray-200'>"+
+                            "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                            "<div class='flex items-center'>"+
+                            "<div class='mr-2'>"+"<span class='font-medium'>"
+                               
+                        + item.name +"</span></div></div></td>"+
+                        "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                            "<div class='flex items-center'>"+
+                            "<div class='mr-2'>"+"<span class='font-medium'>"
+                               
+                        + item.email +"</span></div></div></td>"+
+                        "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                            "<div class='flex items-center'>"+
+                            "<div class='mr-2'>"+"<span class='font-medium'>"
+                               
+                        + item.content +"</span></div></div></td></tr>" );  
+                });  
+            });  
+        });
 div.bg-white
     div(x-data="{ isOpen: false }")
         p.text-2xl.font-semibold.text-center Ankesat
@@ -15,17 +40,4 @@ div.bg-white
                                 th.py-3.px-6.text-left Emri
                                 th.py-3.px-6.text-left Email
                                 th.py-3.px-6.text-left Ankesa                 
-                            tbody.text-gray-600.text-sm.font-light
-                                    tr.border-b.border-gray-200(class='hover:bg-gray-100')
-                                        td.py-3.px-6.text-left.whitespace-nowrap
-                                            .flex.items-center
-                                                .mr-2
-                                                    span.font-medium#id
-                                        td.py-3.px-6.text-left
-                                            .flex.items-center
-                                                .mr-2   
-                                                    span.font-medium#emri
-                                        td.py-3.px-6.text-left
-                                            .flex.items-center
-                                                .mr-2   
-                                                    span.font-medium kk
+                            tbody.text-gray-600.text-sm.font-light#ankesat
