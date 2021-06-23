@@ -31,7 +31,6 @@ public class LendetController {
                                    @Valid @RequestBody Lendet lendetRequest) {
         return lendetRepository.findById(lendaId)
                 .map(lenda -> {
-                    // lenda.setEmri('k');
                     return lendetRepository.save(lenda);
                 }).orElseThrow(() -> new ResourceNotFoundException("Lenda me ID " + lendaId + " nuk u gjet!"));
     }
