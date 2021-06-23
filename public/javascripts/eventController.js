@@ -9,30 +9,23 @@ function getItems() {
     .catch(error => console.error('Unable to get items.', error));
 }
 
-function getEvents() {
-  fetch(uri)
-    .then(response => response.json())
-    .then(data => displayItems(data))
-    .catch(error => console.error('Unable to get items.', error));
-}
+// function getEvents() {
+//   fetch(uri)
+//     .then(response => response.json())
+//     .then(data => displayItems(data))
+//     .catch(error => console.error('Unable to get items.', error));
+// }
 
-function displayItems(data) {
+// function displayItems(data) {
 
-  data.forEach(item => {
-    document.getElementById("title").textContent = item.title;
+//   data.forEach(item => {
+//     document.getElementById("title").textContent = item.title;
     
-    document.getElementById("date").textContent = item.event_date;
+//     document.getElementById("date").textContent = item.event_date;
     
-  });
+//   });
 
-}
-
-function getLendet(){
-  fetch('http://localhost:8080/lendet')
-    .then(response => response.json())
-    .then(data => displayItems(data))
-    .catch(error => console.error('Unable to get items.', error));
-}
+// }
 
 function addItem() {
   const addNameTextbox = document.getElementById('title');
