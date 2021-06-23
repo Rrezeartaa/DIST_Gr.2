@@ -44,7 +44,7 @@ router.get('/notat', function(req, res, next) {
 router.get('/stafi',user_cont.showProfessor);
 
 router.get("/event", function(req, res, next){
-	res.render("professor/ngjarjet", { title: 'Ngjarjet' });
+	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
 });
 
 router.get('/lendet', function(req, res, next) {
@@ -72,6 +72,7 @@ router.post('/createUser', user_cont.createUser);
 router.post('/updateUser', user_cont.updateUser)
 router.post('/deleteUser/:id', user_cont.deleteUser)
 router.post('/editPassword', user_cont.editPassword)
+router.post('/stafi',user_cont.showOne);
 
 
 module.exports = router;

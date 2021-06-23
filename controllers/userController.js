@@ -61,6 +61,22 @@ class UserController {
     })
 }
 
+showOne(req, res){
+
+  const { name } = req.body
+
+  pool.query('SELECT name FROM students where isprofessor = 1 and name = $1',[name], (error, results) => {
+      if(error){
+          throw error
+      }
+      var students = results.rows
+
+      res.render('students/stafi', {
+          title: 'Stafi',
+          students: students
+      });
+  })
+}
   editUser(req,res){
 
     var post = req.query;
