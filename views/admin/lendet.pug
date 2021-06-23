@@ -2,6 +2,49 @@ include adminPage
 link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
 script(src="javascripts/lendetController.js" asp-append-version="true")
+script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript")
+script.
+     $(document).ready(function () {  
+            $.getJSON('http://localhost:8080/lendet')  
+            .done(function (data) {  
+                $.each(data, function (key, item) {  
+                    $('#lendet').append(
+                        "<tr class='border-b border-gray-200'>"+
+
+                        "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                            "<div class='flex items-center'>"+
+                            "<div class='mr-2'>"+"<span class='font-medium'>"
+                        + item.id +"</span></div></div></td>"+
+
+                            "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                            "<div class='flex items-center'>"+
+                            "<div class='mr-2'>"+"<span class='font-medium'>"
+                               
+                        + item.emri +"</span></div></div></td>"+
+
+                        "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                            "<div class='flex items-center'>"+
+                            "<div class='mr-2'>"+"<span class='font-medium'>"
+                        + 'prof' +"</span></div></div></td>"+
+
+                        "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                            "<div class='flex items-center'>"+
+                            "<div class='mr-2'>"+"<span class='font-medium'>"
+                        + 2 +"</span></div></div></td>"+
+
+                        "<td class='pt-4 align-right'>"+
+                            "<div class='flex flex-row'>"+
+                            "<form method='get' action='#'><input name='id' type='hidden' value="+item.id+" />"+
+                            "<input id='edit' value='Edit' type='submit' class='bg-green-500 rounded-md px-4 py-2 mr-4 text-white' /></form>"+
+                        
+                        "<form method='post' action='#'><input name='id' type='hidden' value="+item.id+" />"+
+                            "<input id='delete' value='Delete' type='submit' class='bg-red-500 rounded-md px-4 py-2 text-white' /></form>"+
+                       "</div>"+ 
+                        "</td></tr>" );  
+                                  
+                });  
+            });  
+        });
 div.bg-white
     div(x-data="{ isOpen: false }")
         button(onclick="getItems()" class="ml-32 bg-blue-500 text-white p-2 rounded-lg") test
@@ -20,32 +63,7 @@ div.bg-white
                                 th.py-3.px-6.text-left Profesori
                                 th.py-3.px-6.text-left Numri i studenteve
                                 th.py-3.px-6.text-left                             
-                            tbody.text-gray-600.text-sm.font-light
-                                    tr.border-b.border-gray-200(class='hover:bg-gray-100')
-                                        td.py-3.px-6.text-left.whitespace-nowrap
-                                            .flex.items-center
-                                                .mr-2
-                                                    span.font-medium#id
-                                        td.py-3.px-6.text-left
-                                            .flex.items-center
-                                                .mr-2   
-                                                    span.font-medium#emri
-                                        td.py-3.px-6.text-left
-                                            .flex.items-center
-                                                .mr-2   
-                                                    span.font-medium kk
-                                        td.py-3.px-6.text-left
-                                            .flex.items-center
-                                                .mr-2   
-                                                    span.font-medium kk
-                                        td.pt-4.px-6.text-center
-                                            .flex.flex-row
-                                                form( method="get", action="#") 
-                                                    input(name="id", type="hidden", value="") 
-                                                    input(id="edit", value="Edit", type="submit" @click="isOpenModal = true" class='bg-green-500 rounded-md px-4 py-2 mr-4 text-white')
-                                                form( method="post", action="#") 
-                                                    input(name="id", type="hidden", value='') 
-                                                    input(id="delete", value="Delete", type="submit" class='bg-red-500 rounded-md px-4 py-2 text-white')
+                            tbody.text-gray-600.text-sm.font-light#lendet
         include createLenda
                                         
  
