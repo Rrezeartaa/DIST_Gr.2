@@ -47,6 +47,10 @@ router.get("/event", function(req, res, next){
 	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
 });
 
+router.get("/profesor/literatura", function(req, res, next){
+	res.render("professor/shtoLiterature", { title: 'Shto Literature' });
+});
+
 router.get('/lendet', function(req, res, next) {
   fetch('http://localhost:8080/lendet')
     .then(res => res.json())
