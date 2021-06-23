@@ -7,9 +7,10 @@ script(src='javascripts/eventController.js' asp-append-version='true')
     p.text-2xl.font-semibold.text-center Personeli Akademik
     .px-10.justify-end.flex
       .shadow.flex
-        input.w-full.rounded.p-2(type='text' placeholder='Search...')
-        button.bg-white.w-auto.flex.justify-end.items-center.text-blue-500.p-2(class='hover:text-blue-400')
-          i.material-icons search
+        form(action='/stafi' method='post')
+          input.w-full.rounded.p-2(type='text' placeholder='Search...' name='name' id='name')
+          button.bg-white.w-auto.flex.justify-end.items-center.text-blue-500.p-2(class='hover:text-blue-400' type='submit')
+            i.material-icons search
     .overflow-x-auto.ml-40
       .flex.items-center.justify-center.font-sans.overflow-hidden
         .w-full(class='lg:w-5/6')

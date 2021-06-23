@@ -1,6 +1,5 @@
 include faqjakryesore
 //- //paraqitja studentit ngjarjet ne tabele edhe plus ke pas me bo edhe si njoftim qe u kriju ni ngjarje e re
-//- script(src="javascripts/eventController.js" asp-append-version="true")
 script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript")
 script.
      $(document).ready(function () {  
@@ -9,12 +8,12 @@ script.
                 $.each(data, function (key, item) {  
                     $('#events').append(
                         "<tr class='border-b border-gray-200'>"+
-                        "<td></td>"+
                             "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
                             "<div class='flex items-center'>"+
                             "<div class='mr-2'>"+"<span class='font-medium'>"
                                
                         + item.title+"</span></div></div></td>"+
+
                         "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
                             "<div class='flex items-center'>"+
                             "<div class='mr-2'>"+"<span class='font-medium'>"
@@ -38,7 +37,6 @@ div.bg-white
                         table.min-w-max.w-full.table-auto
                             thead.bg-gray-200
                                 tr.bg-gray-200.text-gray-600.uppercase.text-sm.leading-normal
-                                th.py-3.px-6.text-left Profesori 
                                 th.py-3.px-6.text-left Titulli 
                                 th.py-3.px-6.text-left Data 
                                 th.py-3.px-6.text-left Pershkrimi  
