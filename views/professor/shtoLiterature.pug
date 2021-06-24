@@ -1,7 +1,7 @@
 include adminPage
 link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
-script(src='javascripts/ankesatController.js' asp-append-version='true')
+script(src='/javascripts/literatureController.js' asp-append-version='true')
 .bg-white
   div(x-data='{ isOpen: false }')
     .overflow-x-auto.ml-40
@@ -41,19 +41,19 @@ script(src='javascripts/ankesatController.js' asp-append-version='true')
               }
             .min-h-screen.bg-gray-100.p-0(class='sm:p-8')
               .mx-auto.max-w-md.px-6.py-12.bg-white.border-0.shadow-lg(class='sm:rounded-3xl')
-                form()
+                form(action='javascript:void(0);' onsubmit='addLiterature(1)')
                   .relative.z-0.w-full.mb-5
                     label Emri
                     input.pt-3.pb-2.block.w-full.px-0.mt-0.bg-transparent.border-0.border-b-2.appearance-none.border-gray-200(type='text' value='' name='name' id="name" placeholder='Sheno emrin e librit' required='' class='focus:outline-none focus:ring-0 focus:border-black')
                     span#error.text-sm.text-red-600.hidden Name is required
                   .relative.z-0.w-full.mb-5
                     label Autori
-                    input.pt-3.pb-2.block.w-full.px-0.mt-0.bg-transparent.border-0.border-b-2.appearance-none.border-gray-200(type='email' value='' name='email' id="email" placeholder='Sheno autorin' class='focus:outline-none focus:ring-0 focus:border-black')
+                    input.pt-3.pb-2.block.w-full.px-0.mt-0.bg-transparent.border-0.border-b-2.appearance-none.border-gray-200(type='text' value='' name='author' id="author" placeholder='Sheno autorin' class='focus:outline-none focus:ring-0 focus:border-black')
                     span#error.text-sm.text-red-600.hidden Email address is required
                   .relative.z-0.w-full.mt-5
                     .mt-1
                       label Pershkrimi
-                      textarea.pt-5.pb-2.shadow-sm.mt-1.block.w-full.border-gray-300.rounded-md(name='content' id="content" rows='3' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' placeholder='Shkruaj pershkrimin')
+                      textarea.pt-5.pb-2.shadow-sm.mt-1.block.w-full.border-gray-300.rounded-md(name='description' id="description" rows='3' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' placeholder='Shkruaj pershkrimin')
                   .relative.z-0.w-full.mt-5
                     .mt-1
                       label Ngarko file

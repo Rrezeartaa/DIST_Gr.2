@@ -76,6 +76,9 @@ app.get('/ankesa', checkNotAuthenticated, function(req, res, next) {
   res.render('students/ankesa', { user: req.user });
 });
 
+app.get("/profesor/literatura", checkNotAuthenticated, function(req, res, next){
+	res.render("professor/shtoLiterature", { user: req.user });
+});
 
 app.get("/logout", (req, res) => {
     req.logout();
