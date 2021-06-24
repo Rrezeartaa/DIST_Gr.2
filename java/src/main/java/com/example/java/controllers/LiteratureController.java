@@ -21,6 +21,11 @@ public class LiteratureController {
     @Autowired
     private UserRepository userRepository;
 
+    @GetMapping("/literature")
+    public List<Literatura> getLiterature() {
+        return literatureRepository.findAll();
+    }
+
     @GetMapping("/literature/{user_id}")
     public List<Literatura> getLiteratura(@PathVariable Long user_id) {
         return literatureRepository.findByUserId(user_id);

@@ -5,12 +5,12 @@ function addLiterature(id) {
     const description = document.getElementById('description');
     const author = document.getElementById('author');
     const file = document.getElementById('file');
-  
+
     const item = {
       emri: emri.value,
       description: description.value,
       author: author.value,
-    //   file: file.value
+      file: file.files[0].name
     };
 
     fetch(`http://localhost:8080/literature/${id}`,{
@@ -24,6 +24,11 @@ function addLiterature(id) {
     })
       .then(response => response.json())
       .catch(error => console.error('Unable to add item.', error));
-    //   document.getElementById('name').value = "";
+      document.getElementById('emri').value = "";
+      document.getElementById('description').value = "";
+      document.getElementById('author').value = "";
+      document.getElementById('file').value = "";
+
+
   
   }
