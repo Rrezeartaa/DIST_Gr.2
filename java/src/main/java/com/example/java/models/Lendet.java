@@ -1,10 +1,14 @@
 package com.example.java.models;
 import javax.persistence.*;
 
-//me bo edhe created, updated edhe id diqka si autoincrement
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "lendet")
+
 public class Lendet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,6 +18,16 @@ public class Lendet {
 
     @Column(name = "emri")
     public String emri;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private User user;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 }
 
