@@ -5,16 +5,34 @@ function getItems() {
     .catch(error => console.error('Unable to get items.', error));
 }
 
-function addLenda() {
+// function addLiterature(id) {
+//   const emri = document.getElementById('name');
+//   const description = document.getElementById('description');
+//   const author = document.getElementById('author');
+//   const file = document.getElementById('file');
+
+//   // upload(file);
+
+//   const item = {
+//     emri: emri.value,
+//     description: description.value,
+//     author: author.value,
+//     file: file.files[0].name
+//   };
+
+//   fetch(`http://localhost:8080/literature/${id}`,{
+
+function addLenda(id) {
   const emri = document.getElementById('name');
+  // const select = document.getElementById('select');
 
   const item = {
     emri: emri.value,
-    // prof_id: emri.value
+    // user_id: 2
   };
 
   console.log(emri.value)
-  fetch('http://localhost:8080/lendet',{
+  fetch(`http://localhost:8080/lendet/${id}`,{
     method: 'POST',
     headers: {
       'Access-Control-Allow-Origin':  'http://localhost:3000',

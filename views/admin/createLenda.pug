@@ -1,18 +1,36 @@
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js' defer='')
 script(src="javascripts/lendetController.js" asp-append-version="true")
+script.
+     $(document).ready(function () {  
+            $.getJSON('http://localhost:8080/users')  
+            .done(function (data) {  
+                $.each(data, function (key, item) {  
+                    $('#select').append(
+                        "<option value="+item.id+">"+
+                            item.name+
+                            "</option>")
+                });  
+            });  
+        });
+
+        function test(){
+          var e = document.getElementById("select");
+                var strUser = e.options[e.selectedIndex].value;
+                $('#form').attr('onsubmit', `addLenda('${strUser}')`);
+        }
 .mx-auto.absolute.top-0.left-0.w-full.h-full.flex.items-center.shadow-lg.overflow-y-auto(style='background-color:rgba(0,0,0,.5)' x-show='isOpen')
   .rounded.p-4.mt-2.overflow-y-auto
     .bg-white.rounded.h-96.px-8.py-8
       p.font-black.text-lg.mb-3 Shto lende
       hr
       span.alert #{message}
-      form(action="javascript:void(0);" method="POST" onsubmit="addLenda()")
+      form(action='javascript:void(0);' onsubmit='test()' enctype='multipart/form-data' id='form')
           .modal-body.mb-5.mt-3.grid.grid-cols-6.gap-4
               label(for='emri') Emri
               input(type='text' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 mr-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='name' required)
               label(for='emri') Profesori
-              select(name="" class="border rounded-md") 
-                option(value="1") Choose Options...
+              select#select(name="" class="border rounded-md") 
+                option(value="0") Choose Options...
           .my-5.items-center
             a(@click='isOpen = false' x-ref='modalCloseButton')
               button.w-32.rounded-md.text-sm.p-3.mr-4(class='hover:bg-gray-100' type="reset") Cancel
