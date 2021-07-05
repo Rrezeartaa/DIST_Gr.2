@@ -29,6 +29,15 @@ public class Lendet {
         this.user = user;
     }
 
+    // @ManyToMany(fetch = FetchType.LAZY,
+    // cascade = {
+    //     CascadeType.PERSIST,
+    //     CascadeType.MERGE
+    // })
+    // @JoinTable(name = "lu",
+    // joinColumns = { @JoinColumn(name = "l_id") },
+    // inverseJoinColumns = { @JoinColumn(name = "s_id") })
+
 }
 
 

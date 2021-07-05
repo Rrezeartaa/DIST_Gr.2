@@ -32,10 +32,12 @@ script.
                             "<form method='get' action='#'><input name='id' type='hidden' value="+item.id+" />"+
                             "<input id='edit' value='Edit' type='submit' class='bg-green-500 rounded-md px-4 py-2 mr-4 text-white' /></form>"+
                         
-                        "<form method='post' action='#'><input name='id' type='hidden' value="+item.id+" />"+
-                            "<input id='delete' value='Delete' type='submit' class='bg-red-500 rounded-md px-4 py-2 text-white' /></form>"+
+                            "<button id='delete' onclick='deleteItem(63)' class='bg-red-500 rounded-md px-4 py-2 text-white'>Delete</button>"+
                        "</div>"+ 
                         "</td></tr>" );  
+                //- `addLiterature('${user.id}')`
+                            //- deleteButton.setAttribute('onclick', `deleteItem('${item.ngjarjaid}')`);
+
                                   
                 });  
             });  

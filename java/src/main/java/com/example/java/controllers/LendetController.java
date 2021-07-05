@@ -31,7 +31,6 @@ public class LendetController {
         return lendetRepository.save(lenda);
     }
 
-
     @PostMapping("/lendet/{user_id}")
     public Lendet createLenda(@PathVariable Long user_id, @Valid @RequestBody Lendet lenda) {
         

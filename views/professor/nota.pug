@@ -2,24 +2,38 @@ include adminPage
 link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
 script(src='javascripts/eventController.js' asp-append-version='true')
+script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript")
+script.
+     $(document).ready(function () {  
+            $.getJSON('http://localhost:8080/students')  
+            .done(function (data) {  
+                $.each(data, function (key, item) {  
+                    $('#students').append(
+                        "<tr class='border-b border-gray-200'>"+
+                            "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                            "<div class='flex items-center'>"+
+                            "<div class='mr-2'>"+"<span class='font-medium'>"
+                               
+                        + item.ids +"</span></div></div></td>"+
+                        "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                            "<div class='flex items-center'>"+
+                            "<div class='mr-2'>"+"<span class='font-medium'>"
+                               
+                        + item.name +"</span></div></div></td>"+
+                        "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                            "<div class='flex items-center'>"+
+                            "<div class='mr-2'>"+"<select id='notat'>"+
+                            "<option value='1'>1</option><option value='2'>2</option>"+
+                            "<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option>"+
+                            
+                            "</select></div></div></td>"+
+                        "</tr>")
+                });  
+            });  
+        });
 .bg-white
   div(x-data='{ isOpen: false }')
     p.text-2xl.font-semibold.text-center Vleresimi
-    .px-10.justify-end.flex
-      button.bg-blue-600.text-white.rounded.p-2.mr-px-20(@click='isOpen = true') Zgjedh Klasen
-      .mr-2
-        select.block.appearance-none.w-full.bg-white.border.border-gray-400.px-4.py-2.pr-8.rounded.shadow.leading-tight(class='hover:border-gray-500 mr-0.5 focus:outline-none focus:shadow-outline')
-          option 10
-          option 11
-          option 12
-      button.bg-blue-600.text-white.rounded.p-2.ml-10(@click='isOpen = true') Zgjedh Paralelen
-      .mr-2
-        select.block.appearance-none.w-full.bg-white.border.border-gray-400.px-4.py-2.pr-8.rounded.shadow.leading-tight(class='hover:border-gray-500 focus:outline-none focus:shadow-outline')
-          option 1
-          option 2
-          option 3
-          option 4
-          option 5
     .overflow-x-auto.ml-40
       .flex.items-center.justify-center.font-sans.overflow-hidden
         .w-full(class='lg:w-5/6')
@@ -29,32 +43,8 @@ script(src='javascripts/eventController.js' asp-append-version='true')
                 tr.bg-gray-200.text-gray-600.uppercase.text-sm.leading-normal
                 th.py-3.px-6.text-left Student ID
                 th.py-3.px-6.text-left Emri i nxenesit
-                th.py-3.px-6.text-left Klasa
-                th.py-3.px-6.text-left Nota e vleresimit
-              tbody.text-gray-600.text-sm.font-light
-                tr.border-b.border-gray-200(class='hover:bg-gray-100')
-                  td.py-3.px-6.text-left.whitespace-nowrap
-                    .flex.items-center
-                      .mr-2
-                        span#id.font-medium 10055
-                  td.py-3.px-6.text-left
-                    .flex.items-center
-                      .mr-2
-                        span#emri.font-medium Student Student
-                  td.py-3.px-6.text-left
-                    .flex.items-center
-                      .mr-2
-                        span.font-medium 11
-                  td.py-3.px-6.text-left
-                    .flex.items-center
-                      .mr-2
-                        select#cars(name='cars')
-                          option(value='volvo') 1
-                          option(value='saab') 2
-                          option(value='fiat') 3
-                          option(value='audi') 4
-                          option(value='audi') 5
-                  td.pt-4.px-6.text-center
+                th.py-3.px-6.text-left Nota
+              tbody.text-gray-600.text-sm.font-light#students
       .flex.flex-row.justify-end.mr-20
         form(method='get' action='#')
           input(name='id' type='hidden' value='')
@@ -75,7 +65,7 @@ script(src='javascripts/eventController.js' asp-append-version='true')
     var chart = new CanvasJS.Chart("chartContainer",
     {
     title:{
-    text: "Mesatarja e notimit te nxeneseve"
+    text: "Mesatarja e notimit te nxenesve"
     },
     legend: {
     maxWidth: 450,
