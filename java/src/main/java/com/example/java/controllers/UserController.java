@@ -31,6 +31,12 @@ public class UserController {
         return userRepository.findByid(user_id);
     }
 
+    @PostMapping("/notimi")
+    public User addNewUser(@Valid @RequestBody User userRequest) {
+		
+		return userRepository.save(userRequest);
+	}
+    
     
     
 }

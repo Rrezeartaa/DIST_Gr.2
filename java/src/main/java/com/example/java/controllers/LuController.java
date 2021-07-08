@@ -32,4 +32,12 @@ public class LuController {
     //                 return luRepository.save(lu);
     //             }).orElseThrow(() -> new ResourceNotFoundException("User me id " + user_id + " nuk u gjet!"));
     // }
+
+    // @GetMapping("/{user_id}/notat/{lenda_id}")
+    // public List<Lendet> saveLenda(@RequestBody List<Lendet> lendet) {
+		// List<Lendet> lenda = (List<Lendet>) luRepository.saveLenda(lendet);
+		// return lenda;
+	// }
+
+
 }

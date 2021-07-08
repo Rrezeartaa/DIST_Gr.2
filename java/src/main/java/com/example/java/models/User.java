@@ -1,5 +1,13 @@
 package com.example.java.models;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 //me bo edhe created, updated edhe id diqka si autoincrement
 
@@ -45,5 +53,15 @@ public class User {
     @Column(name = "isprofessor")
     public int isprofessor;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+      @JoinTable(name = "lu", 
+      joinColumns = @JoinColumn(name = "s_id", referencedColumnName = "id"), 
+      inverseJoinColumns = @JoinColumn(name = "l_id", 
+      referencedColumnName = "id"))
+      private Set<Lendet> lendet = new HashSet<>();
+
+    // @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users")
+    // private Set<Lendet> lendet = new HashSet<>();
+    
 }
 
