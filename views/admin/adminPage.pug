@@ -6,7 +6,7 @@ append head
 
 body.bg-gray-300.text-gray-800
     header.border-t-4.border-blue-600.bg-white.shadow-md
-        nav.container.mx-auto.px-4.flex.items-center.justify-between.py-4.z-40(x-data="{ isOpen: true }")
+        nav.container.mx-auto.px-4.flex.items-center.justify-between.py-4.z-40(x-data="{ isOpen: false }")
             div.flex
                 button(@click="isOpen = true")
                     svg(fill="currentColor" viewBox="0 0 24 24" width="24" height="24")
@@ -30,10 +30,15 @@ body.bg-gray-300.text-gray-800
                     li
                         a(href="/users").flex.items-center.px-3.py-3
                             img(src="https://img.icons8.com/ios-filled/25/000000/student-registration.png")
-                            p.ml-3 Shto users
+                            p.ml-3 Shto perdorues
+                    //- li
+                    //-     a(href="/enroll").flex.items-center.px-3.py-3
+                    //-         img(src="https://img.icons8.com/ios-filled/25/000000/student-registration.png")
+                    //-         p.ml-3 Regjistro studentin
                     li
                         a(href="/ankesat").flex.items-center.px-3.py-3
-                            img(src="https://img.icons8.com/ios-filled/25/000000/student-registration.png")
+                            svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+                                path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4")
                             p.ml-3 Lista e ankesave
                     li
                         a(href="/event").flex.items-center.px-3.py-3 

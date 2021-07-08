@@ -48,7 +48,7 @@ class UserController {
   }
 
   showProfessor(req, res){
-    pool.query('SELECT name FROM students where isprofessor = 1', (error, results) => {
+    pool.query('SELECT * FROM students where isprofessor = 1', (error, results) => {
         if(error){
             throw error
         }
@@ -61,11 +61,57 @@ class UserController {
     })
 }
 
+showProfessors(req, res){
+  pool.query('SELECT students.name, lendet.emri, lendet.id FROM lendet INNER JOIN students ON lendet.user_id=students.id', (error, results) => {
+      if(error){
+          throw error
+      }
+      var students = results.rows
+
+      res.render('students/lendet', {
+          title: 'Lendet',
+          students: students
+      });
+  })
+}
+
+literature(req, res){
+  pool.query('SELECT students.name, literature.emri, literature.description, literature.author, literature.file FROM literature INNER JOIN students ON literature.user_id=students.id', (error, results) => {
+      if(error){
+          throw error
+      }
+      var students = results.rows
+
+      res.render('students/literatura', {
+          title: 'Literatura',
+          students: students
+      });
+  })
+}
+
+
+showOneLit(req, res){
+
+  const { emri } = req.body
+
+  pool.query('SELECT students.name, literature.emri, literature.description, literature.author, literature.file FROM literature INNER JOIN students ON literature.user_id=students.id where literature.emri = $1',[emri], (error, results) => {
+      if(error){
+          throw error
+      }
+      var students = results.rows
+
+      res.render('students/literatura', {
+          title: 'Literatura',
+          students: students
+      });
+  })
+}
+
 showOne(req, res){
 
   const { name } = req.body
 
-  pool.query('SELECT name FROM students where isprofessor = 1 and name = $1',[name], (error, results) => {
+  pool.query('SELECT * FROM students where isprofessor = 1 and name = $1',[name], (error, results) => {
       if(error){
           throw error
       }

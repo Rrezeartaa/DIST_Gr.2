@@ -1,4 +1,8 @@
 package com.example.java.models;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,14 +33,12 @@ public class Lendet {
         this.user = user;
     }
 
-    // @ManyToMany(fetch = FetchType.LAZY,
-    // cascade = {
-    //     CascadeType.PERSIST,
-    //     CascadeType.MERGE
-    // })
-    // @JoinTable(name = "lu",
-    // joinColumns = { @JoinColumn(name = "l_id") },
-    // inverseJoinColumns = { @JoinColumn(name = "s_id") })
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "lu",
+          joinColumns = @JoinColumn(name = "l_id", referencedColumnName = "id"),
+          inverseJoinColumns = @JoinColumn(name = "s_id", referencedColumnName = "id"))
+    private Set<User> users = new HashSet<>();
+
 
 }
 

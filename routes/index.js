@@ -11,6 +11,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'E-Shkolla' });
 });
 
+router.get('/enroll', function(req, res, next) {
+  res.render('admin/enroll', { title: 'Enroll' });
+});
+
 router.get('/loginPr', function(req, res, next) {
   res.render('loginPr', { title: 'Login' });
 });
@@ -23,13 +27,9 @@ router.get('/map', function(req, res, next) {
   res.render('map', { title: 'Harta' });
 });
 
-router.get('/st-lendet', function(req, res, next) {
-  res.render('students/lendet', { title: 'Lendet' });
-});
+router.get('/st-lendet', user_cont.showProfessors);
 
-router.get('/literatura', function(req, res, next) {
-  res.render('students/literatura', { title: 'Lendet' });
-});
+router.get('/literatura', user_cont.literature);
 
 router.get('/ankesat', function(req, res, next) {
   res.render('admin/ankesat', { title: 'Login' });
@@ -72,7 +72,7 @@ router.post('/updateUser', user_cont.updateUser)
 router.post('/deleteUser/:id', user_cont.deleteUser)
 router.post('/editPassword', user_cont.editPassword)
 router.post('/stafi',user_cont.showOne);
-
+router.post('/literatura', user_cont.showOneLit);
 
 module.exports = router;
 
