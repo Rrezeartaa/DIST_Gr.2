@@ -22,19 +22,18 @@ script.
                                
                         + item.emri +"</span></div></div></td>"+
 
-                        "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
-                            "<div class='flex items-center'>"+
-                            "<div class='mr-2'>"+"<span class='font-medium'>"
-                        + item.user_id +"</span></div></div></td>"+
+                        //- "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                        //-     "<div class='flex items-center'>"+
+                        //-     "<div class='mr-2'>"+"<span class='font-medium'>"
+                        //- + item.user_id +"</span></div></div></td>"+
 
                         "<td class='pt-4 align-right'>"+
                             "<div class='flex flex-row'>"+
-                            "<form method='get' action='#'><input name='id' type='hidden' value="+item.id+" />"+
-                            "<input id='edit' value='Edit' type='submit' class='bg-green-500 rounded-md px-4 py-2 mr-4 text-white' /></form>"+
-                        
-                            "<button id='delete' onclick='deleteItem(63)' class='bg-red-500 rounded-md px-4 py-2 text-white'>Delete</button>"+
+                            "<form method='get' action='#'><input name='id' type='hidden' value="+item.id+" />"+                        
+                            "<button id='delete' onclick='deleteItem(" + item.id+")' class='bg-red-500 rounded-md px-4 py-2 text-white'>Delete</button>"+
                        "</div>"+ 
-                        "</td></tr>" );  
+                        "</td>"+
+                        "</tr>" );  
                 //- `addLiterature('${user.id}')`
                             //- deleteButton.setAttribute('onclick', `deleteItem('${item.ngjarjaid}')`);
 
@@ -44,7 +43,6 @@ script.
         });
 div.bg-white
     div(x-data="{ isOpen: false }")
-        button(onclick="getItems()" class="ml-32 bg-blue-500 text-white p-2 rounded-lg") test
         p.text-2xl.font-semibold.text-center Lendet
         .px-10.justify-end.flex
             button.bg-blue-600.text-white.rounded.p-2.mr-20(@click="isOpen = true") Shto lende
@@ -57,7 +55,7 @@ div.bg-white
                                 tr.bg-gray-200.text-gray-600.uppercase.text-sm.leading-normal
                                 th.py-3.px-6.text-left ID
                                 th.py-3.px-6.text-left Emri i lendes
-                                th.py-3.px-6.text-left Profesori
+                                //- th.py-3.px-6.text-left Profesori
                                 th.py-3.px-6.text-left                             
                             tbody.text-gray-600.text-sm.font-light#lendet
         include createLenda

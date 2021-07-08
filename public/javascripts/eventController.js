@@ -18,7 +18,6 @@ function addItem() {
     title: addNameTextbox.value.trim(),
     event_date: addNameTextbox1.value.trim(),
     theme: addNameTextbox2.value.trim(),
-    // prof_id: 1
   };
 
   fetch(uri,{
@@ -32,15 +31,17 @@ function addItem() {
   })
     .then(response => response.json())
     .catch(error => console.error('Unable to add item.', error));
-    // queue.send('incoming', 'Eshte krijuar nje event i ri!')
+}
+
+function goBack() {
+  location.reload();
 }
 
 function deleteItem(id) {
   fetch(`${uri}/${id}`, {
     method: 'DELETE'
   }) 
-  .then(() => getItems())
-  //e rregullon qe kur te bohet delete mu fshi paraprakja
+  .then(() => goBack())
   .catch(error => console.error('Unable to delete item.', error));
 }
 
@@ -63,8 +64,7 @@ function updateItem() {
     },
     body: JSON.stringify(item)
   })
-  .then(() => getItems())
-    //e rregullon qe kur te bohet delete mu fshi paraprakja
+  .then(() => goBack())
   .catch(error => console.error('Unable to update item.', error));
 
   return false;

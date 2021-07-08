@@ -1,9 +1,29 @@
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js' defer='')
+script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript")
+script(src="javascripts/userController.js" asp-append-version="true")
+//- script.
+//-      $(document).ready(function () {  
+//-             $.getJSON('http://localhost:8080/lendet')  
+//-             .done(function (data) {  
+//-                 $.each(data, function (key, item) {  
+//-                      $('#select').append(
+//-                         "<option value="+item.id+">"+
+//-                             item.emri+
+//-                             "</option>") 
+//-                 });
+//-             });
+//-      });
+//-      function test(){
+//-           var e = document.getElementById("select");
+//-                 var strUser = e.options[e.selectedIndex].value;
+//-                 $('#form').attr('onsubmit', 'addStudent()');
+//-         }
 .mx-auto.absolute.top-0.left-0.w-full.h-full.flex.items-center.shadow-lg.overflow-y-auto(style='background-color:rgba(0,0,0,.5)' x-show='isOpen')
   .container.rounded.p-4.mt-2.overflow-y-auto
     .bg-white.rounded.h-60.px-8.py-8
       p.font-black.text-lg.mb-3 Shto student
       hr
+            //- form(action='javascript:void(0);' onsubmit='test()' enctype='multipart/form-data' id='form')
       span.alert #{message}
       form(action='/createUser' method='post')
         .modal-body.mb-5.mt-3.grid.grid-cols-6.gap-4
@@ -26,11 +46,14 @@ script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.j
             label(for='email') Email
             input(type='email' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='email' name='email' pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" value="" required)
             label(for='role') Roli 
-            select(name = 'isprofessor' class="border rounded-md")
+            select(name = 'isprofessor' id='isprofessor' class="border rounded-md")
               option Choose Options...
               option(value='0') Student 
               option(value='1') Profesor 
               option(value='2') Admin
+            //- label(for='emri') Lenda
+            //- select#select(name="select" class="border rounded-md" multiple) 
+            //-     option(value="0") Choose Options...
             label(for='password') Fjalekalimi
             input(type='password' class="bg-white border border-gray-300 px-2 focus:outline-none focus:ring-0 shadow-sm relative ml-4 bottom-8 focus:outline-none rounded-lg w-60 h-8" id='password' name='password' minlength="6" value="" required)
         .my-5.items-center
