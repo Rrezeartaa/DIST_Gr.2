@@ -18,33 +18,34 @@ script(src='javascripts/eventController.js' asp-append-version='true')
                 th.py-3.px-6.text-left Emri i lendes
                 th.py-3.px-6.text-left Emri i profesorit
                 th.py-3.px-6.text-left Nota e vleresimit
-                th.py-3.px-6.text-left Pranimi
-              tbody.text-gray-600.text-sm.font-light
-                tr.border-b.border-gray-200(class='hover:bg-gray-100')
-                  td.py-3.px-6.text-left.whitespace-nowrap
-                    .flex.items-center
-                      .mr-2
-                        span#id.font-medium 10055
-                  td.py-3.px-6.text-left
-                    .flex.items-center
-                      .mr-2
-                        span#emri.font-medium Matematika
-                  td.py-3.px-6.text-left
-                    .flex.items-center
-                      .mr-2
-                        span.font-medium Qefsere
-                  td.py-3.px-6.text-left
-                    .flex.items-center
-                      .mr-2
-                        span.font-medium 4
-                  td.pt-4.px-6.text-center
-                    .flex.flex-row
-                      form(method='get' action='#')
-                        input(name='id' type='hidden' value='')
-                        input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white(value='Prano' type='submit' @click='isOpenModal = true')
-                      form(method='post' action='#')
-                        input(name='id' type='hidden' value='')
-                        input#delete.bg-red-500.rounded-md.px-4.py-2.text-white(value='Refuzo' type='submit')
+                //- th.py-3.px-6.text-left Pranimi
+              each val, i in students
+                tbody.text-gray-600.text-sm.font-light
+                  tr.border-b.border-gray-200(class='hover:bg-gray-100')
+                    td.py-3.px-6.text-left
+                      .flex.items-center
+                        .mr-2
+                          span.font-medium #{val.id}
+                    td.py-3.px-6.text-left
+                      .flex.items-center
+                        .mr-2
+                          span.font-medium #{val.emri}
+                    td.py-3.px-6.text-left
+                      .flex.items-center
+                        .mr-2
+                          span.font-medium #{val.name}
+                    td.py-3.px-6.text-left
+                      .flex.items-center
+                        .mr-2
+                          span.font-medium 4
+                    //- td.pt-4.px-6.text-center
+                    //-   .flex.flex-row
+                    //-     form(method='get' action='#')
+                    //-       input(name='id' type='hidden' value='')
+                    //-       input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white(value='Prano' type='submit' @click='isOpenModal = true')
+                    //-     form(method='post' action='#')
+                    //-       input(name='id' type='hidden' value='')
+                    //-       input#delete.bg-red-500.rounded-md.px-4.py-2.text-white(value='Refuzo' type='submit')
   script.
     function median(values){
     values.sort(function(a,b){
@@ -61,7 +62,7 @@ script(src='javascripts/eventController.js' asp-append-version='true')
     var chart = new CanvasJS.Chart("chartContainer",
     {
     title:{
-    text: "Grafiku i notave te nxenesit"
+    text: "Grafiku i notave"
     },
     legend: {
     maxWidth: 450,
