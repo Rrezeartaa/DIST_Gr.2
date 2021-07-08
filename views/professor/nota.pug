@@ -3,6 +3,7 @@ link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
 script(src='javascripts/eventController.js' asp-append-version='true')
 script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript")
+script(src="javascripts/lendetController.js" asp-append-version="true")
 script.
      $(document).ready(function () {  
             $.getJSON('http://localhost:8080/students')  
@@ -18,15 +19,19 @@ script.
                         "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
                             "<div class='flex items-center'>"+
                             "<div class='mr-2'>"+"<span class='font-medium'>"
-                               
                         + item.name +"</span></div></div></td>"+
+
                         "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
+                            "<form action='javascript:void(0);' method='POST' onsubmit='addNota()'>"+
+
                             "<div class='flex items-center'>"+
-                            "<div class='mr-2'>"+"<select id='notat'>"+
+                            "<div class='mr-2'>"+"<select id='nota'>"+
                             "<option value='1'>1</option><option value='2'>2</option>"+
                             "<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option>"+
                             
-                            "</select></div></div></td>"+
+                            "</select>"+
+                            "<input id='mm' type='submit' class='bg-green-500 p-2'>"+
+                            "</div></div></form></td>"+
                         "</tr>")
                 });  
             });  
@@ -45,10 +50,10 @@ script.
                 th.py-3.px-6.text-left Emri i nxenesit
                 th.py-3.px-6.text-left Nota
               tbody.text-gray-600.text-sm.font-light#students
-      .flex.flex-row.justify-end.mr-20
-        form(method='get' action='#')
-          input(name='id' type='hidden' value='')
-          input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white.content-end(value='Ruaj Ndryshimet' type='submit' @click='isOpenModal = true')
+      //- .flex.flex-row.justify-end.mr-20
+      //-   form(method='get' action='#')
+      //-     input(name='id' type='hidden' value='')
+      //-     input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white.content-end(value='Ruaj Ndryshimet' type='submit' @click='isOpenModal = true')
   script.
     function median(values){
     values.sort(function(a,b){

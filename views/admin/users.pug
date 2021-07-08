@@ -41,6 +41,5 @@ div.bg-white
                                                         input(id="edit", value="Edit", type="submit" @click="isOpenModal = true" class='bg-green-500 rounded-md px-4 mr-4 py-2 text-white')
                                                     form( method="post", action="/deleteUser/:id") 
                                                         input(name="id", type="hidden", value=val.id) 
-                                                        input(id="delete", value="Delete", type="submit" class='bg-red-500 rounded-md px-4 py-2 text-white')
-                                                    
+                                                        input(id="delete", value="Delete", type="submit" class='bg-red-500 rounded-md px-4 py-2 text-white')                                              
         include shtoModal
