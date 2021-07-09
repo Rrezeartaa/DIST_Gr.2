@@ -8,3 +8,5 @@ let storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "../DIST_PROJECT_Gr.2/uploads/");
   },
+  filename: (req, file, cb) => {
+    console.log(file.originalname);
