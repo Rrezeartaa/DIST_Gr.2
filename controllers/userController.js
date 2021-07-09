@@ -9,11 +9,11 @@ class UserController {
       
       pool.query('SELECT * from students WHERE email = $1 or ids = $2', [email, idS], (error, results) => {
         var emaili = results.rows
-        console.log(emaili)   //edhe te Edit me kshyr!
+        console.log(emaili)   
       
       if(emaili.length == 1){ 
-        // console.log('This user already exists!')
-        var message = 'Ky student vecse ekziston!'
+        console.log('This user already exists!')
+        // var message = 'Ky student vecse ekziston!'
 
       }
       else {
@@ -69,6 +69,23 @@ showProfessors(req, res){
       var students = results.rows
 
       res.render('students/lendet', {
+          title: 'Lendet',
+          students: students
+      });
+  })
+}
+
+showLendaId(req, res){
+
+  const { id } = req.body
+
+  pool.query('SELECT lendet.id FROM lendet INNER JOIN students ON lendet.user_id=students.id WHERE lendet.user_id=$1',[id] ,(error, results) => {
+      if(error){
+          throw error
+      }
+      var students = results.rows
+
+      res.render('professor/nota', {
           title: 'Lendet',
           students: students
       });
@@ -230,6 +247,17 @@ deleteLiterature(req,res){
     }
     res.redirect('/literaturaUp')
   })
+}
+
+notoStudentin(req,res){
+  const { l_id, s_id, nota } = req.body
+pool.query('INSERT INTO lu (l_id, s_id, nota) VALUES ($1, $2, $3)', [l_id, s_id, nota], (error, results) => {
+  if (error) {
+      throw error
+  }
+
+res.redirect('/notat')
+});
 }
 
 }

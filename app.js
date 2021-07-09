@@ -68,6 +68,10 @@ app.get('/student-profile', checkNotAuthenticated, function(req, res, next) {
   res.render('students/student-profile', { user: req.user });  
 });
 
+app.get('/notat', checkNotAuthenticated, function(req, res, next) {
+  res.render('professor/nota', { user: req.user });
+});
+
 app.get("/chat", checkNotAuthenticated, function(req, res, next){
 	res.render("students/student-chat", { user: req.user });
 });

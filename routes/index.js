@@ -8,6 +8,10 @@ var user_controller = require('../controllers/userController');
 
 var user_cont = new user_controller();
 
+// var notat_controller = require('../controllers/notatController');
+
+// var notat_cont = new notat_controller();
+
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'E-Shkolla' });
 });
@@ -40,16 +44,11 @@ router.get('/ankesat', function(req, res, next) {
   res.render('admin/ankesat', { title: 'Login' });
 });
 
-router.get('/notat', function(req, res, next) {
-  res.render('professor/nota', { title: 'Notat' });
-});
-
 router.get('/stafi',user_cont.showProfessor);
 
 router.get("/event", function(req, res, next){
 	res.render("admin/ngjarjet", { title: 'Ngjarjet' });
 });
-
 
 router.get('/lendet', function(req, res, next) {
   fetch('http://localhost:8080/lendet')
@@ -80,6 +79,7 @@ router.post('/editPassword', user_cont.editPassword)
 router.post('/stafi',user_cont.showOne);
 router.post('/literatura', user_cont.showOneLit);
 router.post("/literaturaupload", controller.upload);
+router.post("/notat", user_cont.notoStudentin);
 
 module.exports = router;
 

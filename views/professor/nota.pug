@@ -10,6 +10,7 @@ script.
             .done(function (data) {  
                 $.each(data, function (key, item) {  
                     $('#students').append(
+                        
                         "<tr class='border-b border-gray-200'>"+
                             "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
                             "<div class='flex items-center'>"+
@@ -22,15 +23,15 @@ script.
                         + item.name +"</span></div></div></td>"+
 
                         "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
-                            "<form action='javascript:void(0);' method='POST' onsubmit='addNota()'>"+
-
+                        "<form action='/notat' method='POST'>"+
+                        "<input type='hidden' id='s_id' name='s_id' value='"+item.id+"' />"+
+                        "<input type='hidden' id='l_id' name='l_id' value='65'/>"+
                             "<div class='flex items-center'>"+
-                            "<div class='mr-2'>"+"<select id='nota'>"+
-                            "<option value='1'>1</option><option value='2'>2</option>"+
-                            "<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option>"+
-                            
+                            "<div class='mr-2'>"+"<select id='nota' name='nota'>"+
+                            "<option value='0'></option><option value='1'>1</option><option value='2'>2</option>"+
+                            "<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option>"+    
                             "</select>"+
-                            "<input id='mm' type='submit' class='bg-green-500 p-2'>"+
+                            "<input type='submit' class='bg-green-500 p-2 mx-4 text-white rounded-md'>"+
                             "</div></div></form></td>"+
                         "</tr>")
                 });  
@@ -50,10 +51,6 @@ script.
                 th.py-3.px-6.text-left Emri i nxenesit
                 th.py-3.px-6.text-left Nota
               tbody.text-gray-600.text-sm.font-light#students
-      //- .flex.flex-row.justify-end.mr-20
-      //-   form(method='get' action='#')
-      //-     input(name='id' type='hidden' value='')
-      //-     input#edit.bg-green-500.rounded-md.px-4.py-2.mr-4.text-white.content-end(value='Ruaj Ndryshimet' type='submit' @click='isOpenModal = true')
   script.
     function median(values){
     values.sort(function(a,b){
