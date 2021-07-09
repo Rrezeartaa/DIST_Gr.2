@@ -69,4 +69,6 @@ const getListFiles = (req, res) => {
 const download = (req, res) => {
   
   const fileName = req.params.name;
+  
+   const directoryPath = "C:/Users/Admin/DIST_PROJECT_Gr.2/uploads/";
         
