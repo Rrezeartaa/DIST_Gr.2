@@ -28,9 +28,9 @@ router.get('/st-ngjarjet', function(req, res, next) {
   res.render('students/ngjarjet', { title: 'Ngjarjet' });
 });
 
-router.get('/map', function(req, res, next) {
-  res.render('map', { title: 'Harta' });
-});
+// router.get('/map', function(req, res, next) {
+//  res.render('map', { title: 'Harta' });
+// });
 
 router.get('/st-lendet', user_cont.showProfessors);
 
