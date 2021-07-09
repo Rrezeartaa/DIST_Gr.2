@@ -85,5 +85,5 @@ script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" typ
                           span.font-medium #{val.description}
                     td.pt-4.align-right
                       .flex.flex-row
-                        form(method='get' action='#')
-                          input(id='edit' value='Shkarko' type='submit' class='bg-green-500 rounded-md px-4 py-2 mr-4 text-white') 
+                        form( method="get", action="/file/"+val.file) 
+                          input(id="download", value="Shkarko", type="submit" class='bg-blue-500 rounded-md px-4 py-2 text-white')                                              

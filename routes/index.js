@@ -2,6 +2,7 @@
 var express = require('express');
 var router = express.Router();
 global.fetch = require("node-fetch");
+const controller = require("../controllers/fileController");
 
 var user_controller = require('../controllers/userController');
 
@@ -30,6 +31,9 @@ router.get('/map', function(req, res, next) {
 router.get('/st-lendet', user_cont.showProfessors);
 
 router.get('/literatura', user_cont.literature);
+
+  // router.get("/files", controller.getListFiles);
+router.get("/file/:name", controller.download);
 
 router.get('/ankesat', function(req, res, next) {
   res.render('admin/ankesat', { title: 'Login' });
@@ -73,6 +77,7 @@ router.post('/deleteUser/:id', user_cont.deleteUser)
 router.post('/editPassword', user_cont.editPassword)
 router.post('/stafi',user_cont.showOne);
 router.post('/literatura', user_cont.showOneLit);
+router.post("/literaturaupload", controller.upload);
 
 module.exports = router;
 

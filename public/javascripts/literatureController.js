@@ -1,11 +1,13 @@
-
 function addLiterature(id) {
     const emri = document.getElementById('name');
     const description = document.getElementById('description');
     const author = document.getElementById('author');
     const file = document.getElementById('file');
 
-    // upload(file);
+    // var fileData = JSON.stringify(file, undefined, 4); // first use JSON.stringify 
+    // var blob = new Blob([fileData], {type: "text/json;charset=utf-8"}); // save as Blob 
+    // var fileName = "Report.json";
+    // saveAs(blob, fileName); 
 
     const item = {
       emri: emri.value,
@@ -25,10 +27,6 @@ function addLiterature(id) {
     })
       .then(response => response.json())
       .catch(error => console.error('Unable to add item.', error));
-
-      // var oldpath = file.files[0].name
-      // var newpath = 'C:/Users/Admin/DIST_PROJECT_Gr.2/public/uploads/' + oldpath;
-      // fs.rename(oldpath, newpath)
 
       document.getElementById('name').value = "";
       document.getElementById('description').value = "";
