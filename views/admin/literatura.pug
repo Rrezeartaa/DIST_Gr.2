@@ -1,0 +1,43 @@
+include adminPage
+link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
+script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
+script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript")
+.bg-white
+  div(x-data='{ isOpen: false }')
+    p.text-2xl.font-semibold.text-center Literatura
+    .overflow-x-auto.ml-40
+      .flex.items-center.justify-center.font-sans.overflow-hidden
+        .w-full(class='lg:w-5/6')
+          .bg-white.shadow-md.rounded.my-6
+            table.min-w-max.w-full.table-auto
+              thead.bg-gray-200
+                tr.bg-gray-200.text-gray-600.uppercase.text-sm.leading-normal
+                th.py-3.px-6.text-left Profesori
+                th.py-3.px-6.text-left Emri i librit
+                th.py-3.px-6.text-left Autori
+                th.py-3.px-6.text-left Pershkrimi
+                th.py-3.px-6.text-left
+              each val, i in students
+                tbody.text-gray-600.text-sm.font-light
+                  tr.border-b.border-gray-200(class='hover:bg-gray-100')
+                    td.py-3.px-6.text-left
+                      .flex.items-center
+                        .mr-2
+                          span.font-medium #{val.name}
+                    td.py-3.px-6.text-left
+                      .flex.items-center
+                        .mr-2
+                          span.font-medium #{val.emri}
+                    td.py-3.px-6.text-left
+                      .flex.items-center
+                        .mr-2
+                          span.font-medium #{val.author}      
+                    td.py-3.px-6.text-left
+                      .flex.items-center
+                        .mr-2
+                          span.font-medium #{val.description}
+                    td.pt-4.align-right
+                      .flex.flex-row
+                        form( method="post", action="/deleteLiterature/:id") 
+                            input(name="id", type="hidden", value=val.id) 
+                            input(id="delete", value="Delete", type="submit" class='bg-red-500 rounded-md px-4 py-2 text-white')                                              
