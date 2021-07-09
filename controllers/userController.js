@@ -89,6 +89,19 @@ literature(req, res){
   })
 }
 
+literatureUp(req, res){
+  pool.query('SELECT students.name, literature.emri, literature.description, literature.author, literature.file, literature.id FROM literature INNER JOIN students ON literature.user_id=students.id', (error, results) => {
+      if(error){
+          throw error
+      }
+      var students = results.rows
+
+      res.render('admin/literatura', {
+          title: 'Literatura',
+          students: students
+      });
+  })
+}
 
 showOneLit(req, res){
 
@@ -203,6 +216,19 @@ deleteUser(req,res){
       throw error
     }
     res.redirect('/users')
+  })
+}
+
+deleteLiterature(req,res){ 
+
+  var post = req.body;
+  var id = post.id;
+
+  pool.query('DELETE FROM literature WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      throw error
+    }
+    res.redirect('/literaturaUp')
   })
 }
 

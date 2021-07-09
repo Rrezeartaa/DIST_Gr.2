@@ -32,7 +32,8 @@ router.get('/st-lendet', user_cont.showProfessors);
 
 router.get('/literatura', user_cont.literature);
 
-  // router.get("/files", controller.getListFiles);
+router.get('/literaturaUp', user_cont.literatureUp);
+
 router.get("/file/:name", controller.download);
 
 router.get('/ankesat', function(req, res, next) {
@@ -74,6 +75,7 @@ router.post('/createUser', user_cont.createUser);
 
 router.post('/updateUser', user_cont.updateUser)
 router.post('/deleteUser/:id', user_cont.deleteUser)
+router.post('/deleteLiterature/:id', user_cont.deleteLiterature)
 router.post('/editPassword', user_cont.editPassword)
 router.post('/stafi',user_cont.showOne);
 router.post('/literatura', user_cont.showOneLit);
