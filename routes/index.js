@@ -8,10 +8,6 @@ var user_controller = require('../controllers/userController');
 
 var user_cont = new user_controller();
 
-// var notat_controller = require('../controllers/notatController');
-
-// var notat_cont = new notat_controller();
-
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'E-Shkolla' });
 });
@@ -27,10 +23,6 @@ router.get('/loginPr', function(req, res, next) {
 router.get('/st-ngjarjet', function(req, res, next) {
   res.render('students/ngjarjet', { title: 'Ngjarjet' });
 });
-
-// router.get('/map', function(req, res, next) {
-//  res.render('map', { title: 'Harta' });
-// });
 
 router.get('/st-lendet', user_cont.showProfessors);
 
@@ -68,8 +60,14 @@ router.get('/lendet', function(req, res, next) {
 });
 
 router.get('/users',user_cont.showUser);
-router.get('/updateUser', user_cont.editUser)
+router.get('/updateUser', user_cont.editUser);
 router.get("/notaMesatare", user_cont.notaMesatare);
+
+router.get('/notat', user_cont.showLendaId);
+
+// router.get('/notat', checkNotAuthenticated, function(req, res, next) {
+//   res.render('professor/nota', { user: req.user });
+// });
 
 router.post('/createUser', user_cont.createUser);
 

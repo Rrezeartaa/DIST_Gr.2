@@ -60,13 +60,7 @@ class UserController {
 
 showProfessors(req, res){
   // pool.query('SELECT students.name, lendet.emri, lendet.id FROM lendet INNER JOIN students ON lendet.user_id=students.id', (error, results) => {
-    pool.query('SELECT lendet.id, lendet.emri, students.name, lu.nota FROM lendet INNER JOIN lu ON lendet.id=lu.l_id  INNER JOIN students ON lendet.user_id = students.id', (error, results) => {
-
-//     
-//
-// 
-//;
-    
+    pool.query('SELECT lendet.id, lendet.emri, students.name, lu.nota FROM lendet INNER JOIN lu ON lendet.id=lu.l_id INNER JOIN students ON lendet.user_id = students.id', (error, results) => {
     if(error){
           throw error
       }
@@ -81,13 +75,13 @@ showProfessors(req, res){
 
 showLendaId(req, res){
 
-  const { id } = req.body
-
-  pool.query('SELECT lendet.id FROM lendet INNER JOIN students ON lendet.user_id=students.id WHERE lendet.user_id=$1',[id] ,(error, results) => {
+  pool.query('SELECT lendet.id FROM lendet INNER JOIN students ON lendet.user_id=students.id' ,(error, results) => {
       if(error){
           throw error
       }
       var students = results.rows
+
+      console.log(students)
 
       res.render('professor/nota', {
           title: 'Lendet',
@@ -107,6 +101,25 @@ notaMesatare(req,res){
       console.log(students)
 
       res.render('professor/nota', {
+          title: 'Lendet',
+          students: students[0]['avg']
+      });
+  })
+}
+
+notaMesatareSt(req,res){
+
+  const { s_id } = req.body
+
+  pool.query("SELECT AVG(nota) FROM lu WHERE s_id = $1",[s_id],(error, results) => {
+
+      if(error){
+          throw error
+      }
+      var students = results.rows
+      console.log(students)
+
+      res.render('students/lendet', {
           title: 'Lendet',
           students: students[0]['avg']
       });

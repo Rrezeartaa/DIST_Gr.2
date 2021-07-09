@@ -1,10 +1,8 @@
-var createError = require('http-errors');
 const session = require("express-session");
 const flash = require("express-flash");
 var express = require('express');
 var passport = require('passport');
 var app = express();
-var cors = require('cors');
 var path = require('path');
 let stream = require( 'C:/Users/Admin/DIST_PROJECT_Gr.2/ws/stream' );
 var cookieParser = require('cookie-parser');
@@ -12,8 +10,6 @@ var logger = require('morgan');
 const server = require("http").Server(app);
 app.set("view engine", "ejs");
 const io = require("socket.io")(server);
-const WebSocket = require('ws');
-var redis = require('redis');
 require("dotenv").config();
 const initializePassport = require("C:/Users/Admin/DIST_PROJECT_Gr.2/controllers/passport.js");
 
@@ -66,10 +62,6 @@ app.get("/index", checkNotAuthenticated, (req, res) => {
 
 app.get('/student-profile', checkNotAuthenticated, function(req, res, next) {
   res.render('students/student-profile', { user: req.user });  
-});
-
-app.get('/notat', checkNotAuthenticated, function(req, res, next) {
-  res.render('professor/nota', { user: req.user });
 });
 
 app.get("/chat", checkNotAuthenticated, function(req, res, next){
