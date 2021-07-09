@@ -55,12 +55,14 @@ script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" typ
                     .mt-1
                       label Pershkrimi
                       textarea.pt-5.pb-2.shadow-sm.mt-1.block.w-full.border-gray-300.rounded-md(name='description' id="description" rows='3' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' placeholder='Shkruaj pershkrimin')
-                  .relative.z-0.w-full.mt-5
-                    .mt-1
-                      label Ngarko file
-                      input.pt-5.pb-2.shadow-sm.mt-1.block.w-full.border-gray-300.rounded-md(name='file' id="file" rows='3' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' type='file')
+                  //.relative.z-0.w-full.mt-5
+                   // .mt-1
+                    //  label Ngarko file
+                    //  input.pt-5.pb-2.shadow-sm.mt-1.block.w-full.border-gray-300.rounded-md(name='file' id="file" rows='3' class='focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' type='file')
                   button#button.w-full.px-6.py-3.mt-10.text-lg.text-white.transition-all.duration-150.ease-linear.rounded-lg.shadow.outline-none.bg-blue-600(type='submit' class='hover:bg-blue-700 hover:shadow-lg focus:outline-none')
                     | Shto literature
+                     form(action="/literaturaupload" enctype="multipart/form-data" id='form1' method="POST")
+                  div.flex.justify-between.h-16
 
                     //-  form(action="/literaturaupload" enctype="multipart/form-data" method="POST")
                     //-     input(type="submit" value="Save your file")
