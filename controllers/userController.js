@@ -4,34 +4,31 @@ const moment = require('moment')
 
 class UserController {
 
-    createUser(req,res){
-      const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password, isprofessor} = req.body
-      
-      pool.query('SELECT * from students WHERE email = $1 or ids = $2', [email, idS], (error, results) => {
-        var emaili = results.rows
-        console.log(emaili)   
-      
-      if(emaili.length == 1){ 
-        console.log('This user already exists!')
-        // var message = 'Ky student vecse ekziston!'
-
-      }
-      else {
-      const saltRounds = 10;
-      bcrypt.genSalt(saltRounds, function(err, salt) {
-        bcrypt.hash(password, salt, function(err, hash) {
-        pool.query('INSERT INTO students (idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password, isprofessor) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, hash, isprofessor], (error, results) => {
-        if (error) {
-                throw error
-            }
-
-          res.redirect('/users')
-        })
+  createUser(req,res){
+        const { idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password, isprofessor} = req.body
+        
+        pool.query('SELECT * from students WHERE email = $1 or ids = $2', [email, idS], (error, results) => {
+          var emaili = results.rows
+          console.log(emaili)   
+        
+        if(emaili.length == 1){ 
+          console.log('This user already exists!')
+        }
+        else {
+        const saltRounds = 10;
+        bcrypt.genSalt(saltRounds, function(err, salt) {
+          bcrypt.hash(password, salt, function(err, hash) {
+          pool.query('INSERT INTO students (idS, name, prindi, data, vendi, adresa, numri, gjinia, email, password, isprofessor) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)', [idS, name, prindi, data, vendi, adresa, numri, gjinia, email, hash, isprofessor], (error, results) => {
+          if (error) {
+                  throw error
+              }
+            res.redirect('/users')
+          })
+          });
         });
-      });
-    }
-  });
-    }
+      }
+    });
+  }
 
   showUser(req, res){
       pool.query('SELECT * FROM students', (error, results) => {

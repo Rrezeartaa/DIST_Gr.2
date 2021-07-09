@@ -9,7 +9,6 @@ namespace asp.DataAccess
         void DeleteEventRecord(string id);  
         Event GetEventSingleRecord(string id);  
         List<Event> GetEventRecords();
-
         void AddAnkesaRecord(Ankesa ankesat); 
         List<Ankesa> GetAnkesaRecords(); 
     }

@@ -2,46 +2,6 @@ include faqjakryesore
 link(rel='stylesheet' href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css')
 script(src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js' defer='')
 script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript")
-//- script.
-//-      $(document).ready(function () {  
-//-             $.getJSON('http://localhost:8080/literature')  
-//-             .done(function (data) {  
-//-                 $.each(data, function (key, item) {  
-//-                     $('#literature').append(
-//-                         "<tr class='border-b border-gray-200'>"+
-
-//-                          "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
-//-                             "<div class='flex items-center'>"+
-//-                             "<div class='mr-2'>"+"<span class='font-medium'>"
-//-                         + 'Emri i profesorit' +"</span></div></div></td>"+
-
-//-                         "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
-//-                             "<div class='flex items-center'>"+
-//-                             "<div class='mr-2'>"+"<span class='font-medium'>"
-//-                         + item.emri +"</span></div></div></td>"+
-
-//-                             "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
-//-                             "<div class='flex items-center'>"+
-//-                             "<div class='mr-2'>"+"<span class='font-medium'>"
-                               
-//-                         + item.author +"</span></div></div></td>"+
-
-//-                         "<td class='py-3 px-6 text-left whitespace-nowrap'>"+
-//-                             "<div class='flex items-center'>"+
-//-                             "<div class='mr-2'>"+"<span class='font-medium'>"
-//-                         + item.description +"</span></div></div></td>"+
-
-//-                         "<td class='pt-4 align-right'>"+
-//-                             "<div class='flex flex-row'>"+
-//-                             "<form method='get' action='#'>"+
-//-                             "<input id='edit' value='Shkarko' type='submit' class='bg-green-500 rounded-md px-4 py-2 mr-4 text-white' /></form>"+
-                        
-//-                        "</div>"+ 
-//-                         "</td></tr>" );  
-
-//-                 });  
-//-             });  
-//-         });
 .bg-white
   div(x-data='{ isOpen: false }')
     p.text-2xl.font-semibold.text-center Literatura
@@ -63,7 +23,6 @@ script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" typ
                 th.py-3.px-6.text-left Autori
                 th.py-3.px-6.text-left Pershkrimi
                 th.py-3.px-6.text-left
-              //- tbody.text-gray-600.text-sm.font-light#literature
               each val, i in students
                 tbody.text-gray-600.text-sm.font-light
                   tr.border-b.border-gray-200(class='hover:bg-gray-100')

@@ -11,20 +11,17 @@ body.bg-gray-300.text-gray-800
                 button(@click="isOpen = true")
                     svg(fill="currentColor" viewBox="0 0 24 24" width="24" height="24")
                         path(fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 7h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0")
-            div.flex.flex-row 
-                div.mr-4
+            
+            div.relative(x-data='{ isOpen: false }')
+                button.flex.items-center(@click='isOpen = !isOpen' @keydown.escape='isOpen = false')
                     svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor")
-                        path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9")
-                div.relative(x-data='{ isOpen: false }')
-                    button.flex.items-center(@click='isOpen = !isOpen' @keydown.escape='isOpen = false')
-                        svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor")
-                            path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z")
-                    ul.absolute.font-normal.bg-white.shadow.overflow-hidden.rounded.w-48.border.mt-2.py-1.right-0.z-20(x-show='isOpen' @click.away='isOpen = false' x-transition:enter='transition ease-out duration-500' x-transition:enter-start='opacity-0 transform scale-90' x-transition:enter-end='opacity-100 transform scale-100' x-transition:leave='transition ease-in duration-300' x-transition:leave-start='opacity-100 transform scale-100' x-transition:leave-end='opacity-0 transform scale-90')
-                        li
+                        path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z")
+                ul.absolute.font-normal.bg-white.shadow.overflow-hidden.rounded.w-48.border.mt-2.py-1.right-0.z-20(x-show='isOpen' @click.away='isOpen = false' x-transition:enter='transition ease-out duration-500' x-transition:enter-start='opacity-0 transform scale-90' x-transition:enter-end='opacity-100 transform scale-100' x-transition:leave='transition ease-in duration-300' x-transition:leave-start='opacity-100 transform scale-100' x-transition:leave-end='opacity-0 transform scale-90')
+                    li
                         a.flex.items-center.px-3.py-3(href='/student-profile' class='hover:bg-gray-200')
                             img(src='https://img.icons8.com/ios/30/000000/guest-male.png')
                             span.ml-2 Profili im 
-                        li
+                    li
                         a.flex.items-center.px-3.py-3(href='/logout' class='hover:bg-gray-200')
                             img(src='https://img.icons8.com/metro/25/000000/logout-rounded-left.png')
                             span.ml-2 Logout
@@ -50,7 +47,7 @@ body.bg-gray-300.text-gray-800
                         a(href="/ankesa" class='hover:bg-gray-200').flex.items-center.px-3.py-3
                             svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor")
                                 path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4")
-                            p.ml-3 Lista e ankesave
+                            p.ml-3 Bej ankese
                     li
                         a(href="/st-ngjarjet" class='hover:bg-gray-200').flex.items-center.px-3.py-3
                             img(src="https://img.icons8.com/nolan/25/tear-off-calendar.png")

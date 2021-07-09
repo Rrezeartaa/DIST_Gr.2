@@ -1,12 +1,8 @@
 package com.example.java.models;
 import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
-//me bo edhe created, updated edhe id diqka si autoincrement
 
 @Entity
 @Table(name = "literature")
@@ -38,6 +34,5 @@ public class Literatura {
     public void setUser(User user) {
         this.user = user;
     }
-
 }
 

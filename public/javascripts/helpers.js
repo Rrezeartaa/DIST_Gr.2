@@ -6,7 +6,6 @@ export default {
         return crypto.getRandomValues(array);
     },
 
-
     closeVideo( elemId ) {
         if ( document.getElementById( elemId ) ) {
             document.getElementById( elemId ).remove();
@@ -14,11 +13,9 @@ export default {
         }
     },
 
-
     pageHasFocus() {
         return !( document.hidden || document.onfocusout || window.onpagehide || window.onblur );
     },
-
 
     getQString( url = '', keyToReturn = '' ) {
         url = url ? url : location.href;
@@ -84,7 +81,6 @@ export default {
             throw new Error( 'User media not available' );
         }
     },
-
 
 
     shareScreen() {

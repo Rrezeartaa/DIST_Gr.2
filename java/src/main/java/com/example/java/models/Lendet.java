@@ -1,12 +1,8 @@
 package com.example.java.models;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
 import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -38,7 +34,6 @@ public class Lendet {
           joinColumns = @JoinColumn(name = "l_id", referencedColumnName = "id"),
           inverseJoinColumns = @JoinColumn(name = "s_id", referencedColumnName = "id"))
     private Set<User> users = new HashSet<>();
-
 
 }
 
