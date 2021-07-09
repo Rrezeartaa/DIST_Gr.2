@@ -85,4 +85,21 @@ const download = (req, res) => {
   });
   
 };
+
+
+
+module.exports = {
+  
+  upload,
+  
+  getListFiles,
+  
+  download,
+  
+  
+  
+  
+  
+  
+};
         
