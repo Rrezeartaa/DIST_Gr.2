@@ -65,4 +65,8 @@ const getListFiles = (req, res) => {
   });
   
 };
+
+const download = (req, res) => {
+  
+  const fileName = req.params.name;
         
