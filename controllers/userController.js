@@ -89,6 +89,23 @@ showLendaId(req, res){
   })
 }
 
+notaMesatare(req,res){
+
+  pool.query("SELECT AVG(nota) FROM lu WHERE l_id = 65" ,(error, results) => {
+
+      if(error){
+          throw error
+      }
+      var students = results.rows
+      console.log(students)
+
+      res.render('professor/nota', {
+          title: 'Lendet',
+          students: students[0]['avg']
+      });
+  })
+}
+
 literature(req, res){
   pool.query('SELECT students.name, literature.emri, literature.description, literature.author, literature.file FROM literature INNER JOIN students ON literature.user_id=students.id', (error, results) => {
       if(error){
@@ -246,16 +263,16 @@ deleteLiterature(req,res){
   })
 }
 
-notoStudentin(req,res){
-  const { l_id, s_id, nota } = req.body
-pool.query('INSERT INTO lu (l_id, s_id, nota) VALUES ($1, $2, $3)', [l_id, s_id, nota], (error, results) => {
-  if (error) {
-      throw error
-  }
+  notoStudentin(req,res){
+    const { l_id, s_id, nota } = req.body
+    pool.query('INSERT INTO lu (l_id, s_id, nota) VALUES ($1, $2, $3)', [l_id, s_id, nota], (error, results) => {
+      if (error) {
+          throw error
+      }
 
-res.redirect('/notat')
-});
-}
+    res.redirect('/notat')
+    });
+  }
 
 }
 

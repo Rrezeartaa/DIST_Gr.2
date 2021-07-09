@@ -69,6 +69,7 @@ router.get('/lendet', function(req, res, next) {
 
 router.get('/users',user_cont.showUser);
 router.get('/updateUser', user_cont.editUser)
+router.get("/notaMesatare", user_cont.notaMesatare);
 
 router.post('/createUser', user_cont.createUser);
 

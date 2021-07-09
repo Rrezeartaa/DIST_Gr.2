@@ -27,7 +27,7 @@ script.
                         "<input type='hidden' id='s_id' name='s_id' value='"+item.id+"' />"+
                         "<input type='hidden' id='l_id' name='l_id' value='65'/>"+
                             "<div class='flex items-center'>"+
-                            "<div class='mr-2'>"+"<select id='nota' name='nota'>"+
+                            "<div class='mr-2'>"+"<select id='nota' name='nota' required>"+
                             "<option value='0'></option><option value='1'>1</option><option value='2'>2</option>"+
                             "<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option>"+    
                             "</select>"+
@@ -39,7 +39,10 @@ script.
         });
 .bg-white
   div(x-data='{ isOpen: false }')
-    p.text-2xl.font-semibold.text-center Vleresimi
+    p.text-2xl.font-semibold.text-center Vleresimi 
+    .px-10.justify-end.flex
+      p.mt-2.mx-2 Nota mesatare: #{students}
+      a(href="/notaMesatare" class='bg-blue-500 rounded-md px-2 py-2 text-white mr-20') Nota Mesatare
     .overflow-x-auto.ml-40
       .flex.items-center.justify-center.font-sans.overflow-hidden
         .w-full(class='lg:w-5/6')
@@ -51,44 +54,44 @@ script.
                 th.py-3.px-6.text-left Emri i nxenesit
                 th.py-3.px-6.text-left Nota
               tbody.text-gray-600.text-sm.font-light#students
-  script.
-    function median(values){
-    values.sort(function(a,b){
-    return a-b;
-    });
-    var half = Math.floor(values.length / 2);
-    if (values.length % 2)
-    return values[half];
-    else
-    return (values[half - 1] + values[half]) / 2.0;
-    }
-  script(type='text/javascript').
-    window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer",
-    {
-    title:{
-    text: "Mesatarja e notimit te nxenesve"
-    },
-    legend: {
-    maxWidth: 450,
-    itemWidth: 120
-    },
-    data: [
-    {
-    type: "pie",
-    showInLegend: true,
-    legendText: "{indexLabel}",
-    dataPoints: [
-    { y: 4, indexLabel: "5" },
-    { y: 2, indexLabel: "4" },
-    { y: 3, indexLabel: "3" },
-    { y: 5, indexLabel: "2"},
-    { y: 1, indexLabel: "1" }
-    ]
-    }
-    ]
-    });
-    chart.render();
-    }
-  script(type='text/javascript' src='https://canvasjs.com/assets/script/canvasjs.min.js')
-  #chartContainer(style='height: 400px; width: 100%;')
+  //- script.
+  //-   function median(values){
+  //-   values.sort(function(a,b){
+  //-   return a-b;
+  //-   });
+  //-   var half = Math.floor(values.length / 2);
+  //-   if (values.length % 2)
+  //-   return values[half];
+  //-   else
+  //-   return (values[half - 1] + values[half]) / 2.0;
+  //-   }
+  //- script(type='text/javascript').
+  //-   window.onload = function () {
+  //-   var chart = new CanvasJS.Chart("chartContainer",
+  //-   {
+  //-   title:{
+  //-   text: "Mesatarja e notimit te nxenesve"
+  //-   },
+  //-   legend: {
+  //-   maxWidth: 450,
+  //-   itemWidth: 120
+  //-   },
+  //-   data: [
+  //-   {
+  //-   type: "pie",
+  //-   showInLegend: true,
+  //-   legendText: "{indexLabel}",
+  //-   dataPoints: [
+  //-   { y: 4, indexLabel: "5" },
+  //-   { y: 2, indexLabel: "4" },
+  //-   { y: 3, indexLabel: "3" },
+  //-   { y: 5, indexLabel: "2"},
+  //-   { y: 1, indexLabel: "1" }
+  //-   ]
+  //-   }
+  //-   ]
+  //-   });
+  //-   chart.render();
+  //-   }
+  //- script(type='text/javascript' src='https://canvasjs.com/assets/script/canvasjs.min.js')
+  //- #chartContainer(style='height: 400px; width: 100%;')
