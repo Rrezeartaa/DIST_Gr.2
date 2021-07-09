@@ -59,8 +59,15 @@ class UserController {
 }
 
 showProfessors(req, res){
-  pool.query('SELECT students.name, lendet.emri, lendet.id FROM lendet INNER JOIN students ON lendet.user_id=students.id', (error, results) => {
-      if(error){
+  // pool.query('SELECT students.name, lendet.emri, lendet.id FROM lendet INNER JOIN students ON lendet.user_id=students.id', (error, results) => {
+    pool.query('SELECT lendet.id, lendet.emri, students.name, lu.nota FROM lendet INNER JOIN lu ON lendet.id=lu.l_id  INNER JOIN students ON lendet.user_id = students.id', (error, results) => {
+
+//     
+//
+// 
+//;
+    
+    if(error){
           throw error
       }
       var students = results.rows
@@ -91,7 +98,7 @@ showLendaId(req, res){
 
 notaMesatare(req,res){
 
-  pool.query("SELECT AVG(nota) FROM lu WHERE l_id = 65" ,(error, results) => {
+  pool.query("SELECT AVG(nota) FROM lu WHERE l_id = 117" ,(error, results) => {
 
       if(error){
           throw error
@@ -236,7 +243,6 @@ editPassword(req,res){
 
 }
 
-
 deleteUser(req,res){ 
 
   var post = req.body;
@@ -263,7 +269,7 @@ deleteLiterature(req,res){
   })
 }
 
-  notoStudentin(req,res){
+notoStudentin(req,res){
     const { l_id, s_id, nota } = req.body
     pool.query('INSERT INTO lu (l_id, s_id, nota) VALUES ($1, $2, $3)', [l_id, s_id, nota], (error, results) => {
       if (error) {
@@ -272,7 +278,7 @@ deleteLiterature(req,res){
 
     res.redirect('/notat')
     });
-  }
+}
 
 }
 
