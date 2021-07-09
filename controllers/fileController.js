@@ -22,3 +22,10 @@ const upload = async (req, res) => {
         message: "File size cannot be larger than 2MB!",
       });
     }
+  res.status(500).send({
+      message: `Could not upload the file: ${req.file.originalname}. ${err}`,
+    });
+  }
+};
+
+const
